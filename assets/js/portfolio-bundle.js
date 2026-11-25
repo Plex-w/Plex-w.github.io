@@ -1066,17 +1066,17 @@ window.MEDIA_DATA = {
 
   if (heroVideo) {
     const heroSource = heroVideo.querySelector("source");
-    const heroSrc = heroSource?.src;
+    const heroSrc = heroVideo.getAttribute("src") || heroSource?.src;
     let heroLoaded = Boolean(heroSrc);
-    let heroStartAllowed = false;
     if (heroSource) heroSource.remove();
 
     heroVideo.muted = true;
     heroVideo.loop = true;
+    heroVideo.preload = "auto";
     heroVideo.setAttribute("playsinline", "");
 
     const playHeroVideo = () => {
-      if (!heroLoaded || !heroStartAllowed || !heroVideo.getAttribute("src") || !heroVideo.paused) {
+      if (!heroLoaded || !heroVideo.getAttribute("src") || !heroVideo.paused) {
         return;
       }
       const attempt = heroVideo.play();
@@ -1103,27 +1103,9 @@ window.MEDIA_DATA = {
       if (!document.hidden) playHeroVideo();
     }, 5000);
 
-    // Let the page text, scripts and images settle before the large hero file
-    // starts downloading. The poster remains visible in the meantime.
-    const startHeroVideo = () => {
-      if (!heroLoaded) return;
-      heroStartAllowed = true;
-      if (!heroVideo.getAttribute("src")) heroVideo.src = heroSrc;
-      heroVideo.preload = "auto";
-      if (heroVideo.readyState < 1) heroVideo.load();
-      playHeroVideo();
-    };
-    const scheduleHeroStart = () => {
-      window.setTimeout(() => {
-        if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(startHeroVideo, { timeout: 900 });
-        } else {
-          startHeroVideo();
-        }
-      }, 600);
-    };
-    if (document.readyState === "complete") scheduleHeroStart();
-    else window.addEventListener("load", scheduleHeroStart, { once: true });
+    // The 4K source starts immediately from the markup; play as soon as a
+    // frame is available, while the poster covers the initial buffer.
+    playHeroVideo();
 
     // Release the large hero file once it leaves the viewport, so the lower
     // sections and project videos get the connection on mobile.
@@ -1137,7 +1119,7 @@ window.MEDIA_DATA = {
         heroVideo.load();
       };
       const reloadHeroVideo = () => {
-        if (!heroStartAllowed || heroLoaded) return;
+        if (heroLoaded) return;
         heroLoaded = true;
         heroVideo.src = heroSrc;
         heroVideo.load();
