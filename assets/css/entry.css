@@ -186,6 +186,7 @@
   width: 38px;
   height: 38px;
   flex: none;
+  overflow: hidden;
   place-items: center;
   border: 1px solid rgba(238, 233, 222, 0.42);
   border-radius: 50%;
@@ -196,6 +197,14 @@
   letter-spacing: 0.05em;
   line-height: 1;
   backdrop-filter: blur(8px);
+}
+
+.brand-monogram img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
 }
 
 .brand-name {
