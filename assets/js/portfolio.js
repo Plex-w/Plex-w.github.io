@@ -189,8 +189,10 @@
     aboutVideos.forEach((aboutVideo) => {
       aboutVideo.preload = "auto";
       if (aboutVideo.readyState < 1) aboutVideo.load();
-      const attempt = aboutVideo.play();
-      if (attempt?.catch) attempt.catch(() => {});
+      if (aboutVideo.dataset.offscreen !== "true") {
+        const attempt = aboutVideo.play();
+        if (attempt?.catch) attempt.catch(() => {});
+      }
     });
   };
 
@@ -201,7 +203,7 @@
         activateAboutVideo();
         observer.disconnect();
       },
-      { rootMargin: "200px 0px" }
+      { rootMargin: "800px 0px" }
     );
     aboutVideoObserver.observe(aboutStage);
   } else {
@@ -264,7 +266,7 @@
           warmEvidenceVideo();
           observer.disconnect();
         },
-        { rootMargin: "300px 0px" }
+        { rootMargin: "800px 0px" }
       );
       evidenceObserver.observe(evidenceStage);
     } else {
@@ -322,7 +324,9 @@
       workActive = true;
       workBackgroundVideo.preload = "auto";
       if (workBackgroundVideo.readyState < 1) workBackgroundVideo.load();
-      playWorkBackgroundVideo();
+      if (workBackgroundVideo.dataset.offscreen !== "true") {
+        playWorkBackgroundVideo();
+      }
     };
 
     const videoScope = $(".video-scope");
@@ -333,7 +337,7 @@
           activateWorkBackgroundVideo();
           observer.disconnect();
         },
-        { rootMargin: "600px 0px" }
+        { rootMargin: "1200px 0px" }
       );
       workVideoObserver.observe(videoScope);
       pauseWhenHidden(workBackgroundVideo, videoScope, playWorkBackgroundVideo);
@@ -430,7 +434,9 @@
       } catch (_error) {
         // Metadata may still be loading; playback starts at zero anyway.
       }
-      playContactBackgroundVideo();
+      if (contactBackgroundVideo.dataset.offscreen !== "true") {
+        playContactBackgroundVideo();
+      }
     };
 
     const contactSection = $("#contact");
@@ -441,7 +447,7 @@
           activateContactVideo();
           observer.disconnect();
         },
-        { rootMargin: "300px 0px", threshold: 0.01 }
+        { rootMargin: "1200px 0px", threshold: 0.01 }
       );
       contactVideoObserver.observe(contactSection);
       pauseWhenHidden(contactBackgroundVideo, contactSection, playContactBackgroundVideo);
