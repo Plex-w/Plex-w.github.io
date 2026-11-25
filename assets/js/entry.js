@@ -492,6 +492,57 @@
     if (url) enter(url.href, event);
   });
 
+  /* Keep the chapter index and lower homepage copy from colliding. --------- */
+  const chapterIndex = document.querySelector(".chapter-index");
+  const entryCopy = document.querySelector(".entry-copy");
+  let textLayoutFrame = 0;
+
+  const separateHomepageText = () => {
+    textLayoutFrame = 0;
+    if (!chapterIndex || !entryCopy) return;
+    chapterIndex.style.transform = "";
+    const main = document.querySelector(".entry-main");
+    if (!main) return;
+    const indexBounds = chapterIndex.getBoundingClientRect();
+    const copyBounds = entryCopy.getBoundingClientRect();
+    const gap = copyBounds.top - indexBounds.bottom;
+    const desiredGap = 20;
+    if (gap >= desiredGap) return;
+    const mainBounds = main.getBoundingClientRect();
+    const roomAbove = Math.max(0, indexBounds.top - mainBounds.top - 16);
+    const shift = Math.min(desiredGap - gap, roomAbove);
+    if (shift > 0.5) {
+      chapterIndex.style.transform = `translateY(-${shift.toFixed(1)}px)`;
+    }
+  };
+
+  const scheduleHomepageText = () => {
+    if (textLayoutFrame) return;
+    textLayoutFrame = window.requestAnimationFrame(separateHomepageText);
+  };
+
+  if (chapterIndex && entryCopy) {
+    scheduleHomepageText();
+    window.addEventListener("load", scheduleHomepageText, { passive: true });
+    window.addEventListener("resize", scheduleHomepageText, { passive: true });
+    window.setTimeout(scheduleHomepageText, 900);
+    window.setTimeout(scheduleHomepageText, 1800);
+    window.setTimeout(scheduleHomepageText, 2800);
+    window.setTimeout(scheduleHomepageText, 3800);
+    let textSeparationTries = 0;
+    const textSeparationTimer = window.setInterval(() => {
+      scheduleHomepageText();
+      textSeparationTries += 1;
+      if (textSeparationTries >= 14) window.clearInterval(textSeparationTimer);
+    }, 400);
+    if (document.fonts?.ready) document.fonts.ready.then(scheduleHomepageText);
+    if ("ResizeObserver" in window) {
+      const textResizeObserver = new ResizeObserver(scheduleHomepageText);
+      textResizeObserver.observe(chapterIndex);
+      textResizeObserver.observe(entryCopy);
+    }
+  }
+
   /* Initial values --------------------------------------------------------- */
 
   root.style.setProperty("--cursor-x", "-100px");
