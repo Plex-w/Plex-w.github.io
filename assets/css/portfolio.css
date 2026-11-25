@@ -7346,3 +7346,77 @@ body {
     font-size: 7.5px;
   }
 }
+
+/* Project experience cards ------------------------------------------------ */
+
+.about-exp-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+  border-top: 0;
+}
+
+.about-exp-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--about-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.about-exp-date {
+  padding-top: 0;
+  color: var(--about-gold);
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.about-exp-title h4 {
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.about-exp-title span {
+  margin-top: 3px;
+  font-size: 6.8px;
+  line-height: 1.45;
+}
+
+.about-exp-content p {
+  margin-top: 4px;
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+
+.about-exp-tags {
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.about-exp-tags span {
+  padding: 3px 5px;
+  font-size: 5.2px;
+}
+
+@media (max-width: 700px) {
+  .about-exp-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-exp-item {
+    padding: 13px;
+  }
+
+  .about-exp-title h4 {
+    font-size: 0.88rem;
+  }
+
+  .about-exp-content p {
+    font-size: 0.78rem;
+  }
+}
