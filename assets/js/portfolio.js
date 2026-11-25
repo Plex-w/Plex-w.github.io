@@ -60,15 +60,17 @@
     const heroSource = heroVideo.querySelector("source");
     const heroSrc = heroSource?.src;
     let heroLoaded = Boolean(heroSrc);
+    let heroStartAllowed = false;
     if (heroSource) heroSource.remove();
-    if (heroSrc) heroVideo.src = heroSrc;
 
     heroVideo.muted = true;
     heroVideo.loop = true;
     heroVideo.setAttribute("playsinline", "");
 
     const playHeroVideo = () => {
-      if (!heroLoaded || !heroVideo.paused) return;
+      if (!heroLoaded || !heroStartAllowed || !heroVideo.getAttribute("src") || !heroVideo.paused) {
+        return;
+      }
       const attempt = heroVideo.play();
       if (attempt?.catch) attempt.catch(() => {});
     };
@@ -93,20 +95,27 @@
       if (!document.hidden) playHeroVideo();
     }, 5000);
 
-    // Let the page text and images paint before the large hero video starts.
+    // Let the page text, scripts and images settle before the large hero file
+    // starts downloading. The poster remains visible in the meantime.
     const startHeroVideo = () => {
       if (!heroLoaded) return;
+      heroStartAllowed = true;
+      if (!heroVideo.getAttribute("src")) heroVideo.src = heroSrc;
       heroVideo.preload = "auto";
       if (heroVideo.readyState < 1) heroVideo.load();
       playHeroVideo();
     };
-    window.setTimeout(() => {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(startHeroVideo, { timeout: 700 });
-      } else {
-        startHeroVideo();
-      }
-    }, 350);
+    const scheduleHeroStart = () => {
+      window.setTimeout(() => {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(startHeroVideo, { timeout: 900 });
+        } else {
+          startHeroVideo();
+        }
+      }, 600);
+    };
+    if (document.readyState === "complete") scheduleHeroStart();
+    else window.addEventListener("load", scheduleHeroStart, { once: true });
 
     // Release the large hero file once it leaves the viewport, so the lower
     // sections and project videos get the connection on mobile.
@@ -120,7 +129,7 @@
         heroVideo.load();
       };
       const reloadHeroVideo = () => {
-        if (heroLoaded) return;
+        if (!heroStartAllowed || heroLoaded) return;
         heroLoaded = true;
         heroVideo.src = heroSrc;
         heroVideo.load();
