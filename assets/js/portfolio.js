@@ -203,7 +203,7 @@
         activateAboutVideo();
         observer.disconnect();
       },
-      { rootMargin: "800px 0px" }
+      { rootMargin: "600px 0px" }
     );
     aboutVideoObserver.observe(aboutStage);
   } else {
@@ -266,7 +266,7 @@
           warmEvidenceVideo();
           observer.disconnect();
         },
-        { rootMargin: "800px 0px" }
+        { rootMargin: "600px 0px" }
       );
       evidenceObserver.observe(evidenceStage);
     } else {
@@ -337,7 +337,7 @@
           activateWorkBackgroundVideo();
           observer.disconnect();
         },
-        { rootMargin: "1200px 0px" }
+        { rootMargin: "800px 0px" }
       );
       workVideoObserver.observe(videoScope);
       pauseWhenHidden(workBackgroundVideo, videoScope, playWorkBackgroundVideo);
@@ -356,7 +356,7 @@
   if (contactBackgroundVideo) {
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = "assets/video/contact-background-web.mp4";
+    contactVideoSource.src = "assets/video/contact-background-desktop.mp4";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;
@@ -442,7 +442,7 @@
           activateContactVideo();
           observer.disconnect();
         },
-        { rootMargin: "1200px 0px", threshold: 0.01 }
+        { rootMargin: "600px 0px", threshold: 0.01 }
       );
       contactVideoObserver.observe(contactSection);
       pauseWhenHidden(contactBackgroundVideo, contactSection, playContactBackgroundVideo);
@@ -450,19 +450,6 @@
       activateContactVideo();
     }
   }
-
-  // Warm the small, compressed background files after first paint. Playback
-  // still waits for the section observers, so nothing decodes offscreen.
-  window.setTimeout(() => {
-    $$(".about-stage:not(.about-stage--evidence) .about-stage__video, #work-background-video, #contact-background-video").forEach(
-      (video) => {
-        if (video.readyState < 1) {
-          video.preload = "auto";
-          video.load();
-        }
-      }
-    );
-  }, 1600);
 
   /* ---------------------------------------------------------------------
      Folder-based work archive
