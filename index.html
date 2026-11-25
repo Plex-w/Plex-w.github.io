@@ -3947,6 +3947,8 @@ body {
   }
 
   function onPointerMove(event) {
+    // Keep pointer effects off the critical path of the 4K background.
+    return;
     updateCursor(event);
 
     if (!reduceMotion.matches) {
