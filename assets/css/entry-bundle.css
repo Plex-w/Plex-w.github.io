@@ -475,6 +475,29 @@ em {
   }
 }
 
+/* Lighten compositing while the page is actively scrolling. */
+html.is-scrolling .site-header,
+html.is-scrolling .site-nav a,
+html.is-scrolling .header-contact,
+html.is-scrolling .menu-toggle,
+html.is-scrolling .primary-enter,
+html.is-scrolling .about-card,
+html.is-scrolling .about-experience,
+html.is-scrolling .about-credentials {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.is-scrolling .about-credentials__orb,
+html.is-scrolling .about-credentials__spark,
+html.is-scrolling .about-outro__track,
+html.is-scrolling .section-head__orbit,
+html.is-scrolling .section-head__spark,
+html.is-scrolling .work-overview__spark,
+html.is-scrolling .about-stage__motion {
+  animation-play-state: paused !important;
+}
+
 /* ==== entry.css ==== */
 /* ==========================================================================
    ENTRY / LIVING BACKGROUND
