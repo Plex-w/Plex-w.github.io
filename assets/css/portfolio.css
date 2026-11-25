@@ -7523,7 +7523,8 @@ body {
 }
 
 .about-cert__name {
-  color: var(--about-text);
+  color: var(--about-text) !important;
+  -webkit-text-fill-color: var(--about-text);
   font-size: 0.67rem;
   line-height: 1.4;
 }
