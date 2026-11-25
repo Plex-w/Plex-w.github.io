@@ -33,6 +33,24 @@
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2200);
   }
 
+  // Keep only the background video near the viewport decoding/playing.
+  function pauseWhenHidden(video, target, onVisible) {
+    if (!video || !target || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          delete video.dataset.offscreen;
+          onVisible();
+        } else {
+          video.dataset.offscreen = "true";
+          video.pause();
+        }
+      },
+      { rootMargin: "120px 0px", threshold: 0.01 }
+    );
+    observer.observe(target);
+  }
+
   /* ---------------------------------------------------------------------
      Hero background video
      --------------------------------------------------------------------- */
@@ -134,7 +152,11 @@
     aboutVideo.setAttribute("playsinline", "");
 
     const playAboutVideo = () => {
-      if (!aboutActive || !aboutVideo.paused) return;
+      if (
+        !aboutActive ||
+        aboutVideo.dataset.offscreen === "true" ||
+        !aboutVideo.paused
+      ) return;
       const attempt = aboutVideo.play();
       if (attempt?.catch) attempt.catch(() => {});
     };
@@ -158,6 +180,8 @@
     window.setInterval(() => {
       if (!document.hidden) playAboutVideo();
     }, 5000);
+
+    pauseWhenHidden(aboutVideo, aboutStage, playAboutVideo);
   });
 
   const activateAboutVideo = () => {
@@ -214,15 +238,25 @@
 
   const evidenceVideo = $(".about-stage__video--evidence");
   if (evidenceVideo) {
-    const warmEvidenceVideo = () => {
-      evidenceVideo.muted = true;
-      evidenceVideo.preload = "auto";
-      if (evidenceVideo.readyState < 1) evidenceVideo.load();
+    const evidenceStage = $(".about-stage--evidence");
+    let evidenceActive = false;
+
+    const playEvidenceVideo = () => {
+      if (!evidenceActive || evidenceVideo.dataset.offscreen === "true") return;
       const attempt = evidenceVideo.play();
       if (attempt?.catch) attempt.catch(() => {});
     };
 
-    const evidenceStage = $(".about-stage--evidence");
+    const warmEvidenceVideo = () => {
+      evidenceActive = true;
+      evidenceVideo.muted = true;
+      evidenceVideo.preload = "auto";
+      if (evidenceVideo.readyState < 1) evidenceVideo.load();
+      playEvidenceVideo();
+    };
+
+    pauseWhenHidden(evidenceVideo, evidenceStage, playEvidenceVideo);
+
     if (evidenceStage && "IntersectionObserver" in window) {
       const evidenceObserver = new IntersectionObserver(
         (entries, observer) => {
@@ -252,7 +286,11 @@
     workBackgroundVideo.setAttribute("playsinline", "");
 
     const playWorkBackgroundVideo = () => {
-      if (!workActive || !workBackgroundVideo.paused) return;
+      if (
+        !workActive ||
+        workBackgroundVideo.dataset.offscreen === "true" ||
+        !workBackgroundVideo.paused
+      ) return;
       const attempt = workBackgroundVideo.play();
       if (attempt?.catch) attempt.catch(() => {});
     };
@@ -298,6 +336,7 @@
         { rootMargin: "600px 0px" }
       );
       workVideoObserver.observe(videoScope);
+      pauseWhenHidden(workBackgroundVideo, videoScope, playWorkBackgroundVideo);
     } else {
       activateWorkBackgroundVideo();
     }
@@ -336,7 +375,10 @@
     applyContactVideoRate();
 
     const playContactBackgroundVideo = () => {
-      if (!contactActive) return;
+      if (
+        !contactActive ||
+        contactBackgroundVideo.dataset.offscreen === "true"
+      ) return;
       applyContactVideoRate();
       if (!contactBackgroundVideo.paused) return;
       const attempt = contactBackgroundVideo.play();
@@ -402,6 +444,7 @@
         { rootMargin: "300px 0px", threshold: 0.01 }
       );
       contactVideoObserver.observe(contactSection);
+      pauseWhenHidden(contactBackgroundVideo, contactSection, playContactBackgroundVideo);
     } else {
       activateContactVideo();
     }

@@ -14,7 +14,7 @@
   const progressBar = loader.querySelector("[data-loader-progress]");
   const canvas = loader.querySelector("[data-loader-stars]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const duration = reduceMotion.matches ? 700 : 2200;
+  const duration = reduceMotion.matches ? 600 : 1500;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const stars = [];
   const shootingStars = [];
@@ -146,7 +146,7 @@
         loader.remove();
         window.dispatchEvent(new CustomEvent("xw:loader-complete"));
       }, 760);
-    }, 520);
+    }, 400);
   }
 
   function frame(now) {
