@@ -24,11 +24,10 @@
 
   /* Autoplaying background ------------------------------------------------ */
 
-  const FALLBACK_VIDEO = "assets/video/home-loop-1440.mp4";
-  let videoFallbackUsed = false;
+  let videoLoadStarted = false;
 
   async function playVideo() {
-    if (!video) return;
+    if (!video || !videoLoadStarted) return;
     video.muted = true;
     video.loop = true;
     try {
@@ -38,11 +37,11 @@
     }
   }
 
-  function useFallbackVideo() {
-    if (!video || videoFallbackUsed) return;
-    videoFallbackUsed = true;
-    video.src = FALLBACK_VIDEO;
-    video.load();
+  function startVideoLoad() {
+    if (!video || videoLoadStarted) return;
+    videoLoadStarted = true;
+    video.preload = "auto";
+    if (video.readyState < 1) video.load();
     playVideo();
   }
 
@@ -51,35 +50,15 @@
     video.loop = true;
     video.setAttribute("playsinline", "");
 
-    // Prefer the 4K file, but never leave the page on a frozen 4K frame.
-    video.addEventListener("error", useFallbackVideo);
-    video.querySelector("source")?.addEventListener("error", useFallbackVideo);
-
     const startPlayback = () => {
-      playVideo();
+      if (videoLoadStarted) playVideo();
     };
-
-    // iOS and narrow screens use the lighter 1440p source up front.
-    if (
-      window.matchMedia(
-        "(max-width: 900px), (pointer: coarse)"
-      ).matches
-    ) {
-      useFallbackVideo();
-    }
 
     if (video.readyState >= 2) startPlayback();
     else {
       video.addEventListener("loadeddata", startPlayback, { once: true });
       video.addEventListener("canplay", startPlayback, { once: true });
     }
-
-    window.setTimeout(() => {
-      if (!video || videoFallbackUsed) return;
-      if (video.readyState < 2 || video.currentTime < 0.15) {
-        useFallbackVideo();
-      }
-    }, 2000);
 
     document.addEventListener(
       "visibilitychange",
@@ -102,6 +81,32 @@
     window.setInterval(() => {
       if (video && video.paused && !document.hidden) playVideo();
     }, 5000);
+  }
+
+  const scheduleVideoLoad = () => {
+    if (videoLoadStarted) return;
+    const begin = () => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(startVideoLoad, { timeout: 900 });
+      } else {
+        startVideoLoad();
+      }
+    };
+    window.setTimeout(begin, 220);
+  };
+
+  if (video) {
+    window.addEventListener("xw:loader-complete", scheduleVideoLoad, { once: true });
+    window.addEventListener(
+      "load",
+      () => {
+        if (!document.documentElement.classList.contains("is-loading")) {
+          scheduleVideoLoad();
+        }
+      },
+      { once: true }
+    );
+    window.setTimeout(scheduleVideoLoad, 3800);
   }
 
   const handleMotionPreference = () => {
