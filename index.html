@@ -14,8 +14,6 @@
       content="邓晓雯的设计作品集：UI/UX、视觉系统、AIGC、三维、海报、融媒体与视频作品，关注信息、界面与人的关系。"
     />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="assets/fonts/PuHuiTi-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="assets/fonts/PuHuiTi-Medium.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/entry.css" />
@@ -85,6 +83,23 @@
 
       <p class="site-loader__bottom" aria-hidden="true">建议全屏观看 · BEST VIEWED FULLSCREEN</p>
     </div>
+    <script>
+      (() => {
+        const safety = () => {
+          const loader = document.querySelector("[data-site-loader]");
+          const loading = document.documentElement.classList.contains("is-loading");
+          if (!loader && !loading) return;
+          if (loader) {
+            loader.classList.add("is-leaving");
+            window.setTimeout(() => loader.remove(), 360);
+          }
+          document.documentElement.classList.remove("is-loading");
+          document.body.classList.add("is-ready");
+          window.dispatchEvent(new CustomEvent("xw:loader-complete"));
+        };
+        window.setTimeout(safety, 2100);
+      })();
+    </script>
 
     <noscript>
       <style>
