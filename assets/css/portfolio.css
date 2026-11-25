@@ -7752,12 +7752,126 @@ body {
   }
 }
 
+/* Large vertical certificate rail --------------------------------------- */
+
+.about-credentials {
+  height: clamp(640px, 84vh, 900px);
+  align-self: start;
+}
+
+.about-credentials__grid {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-right: -6px;
+  padding-right: 8px;
+  scroll-snap-type: y proximity;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 230, 210, 0.38) transparent;
+}
+
+.about-credentials__grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.about-credentials__grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.about-credentials__grid::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(184, 230, 210, 0.32);
+}
+
+.about-cert {
+  flex: none;
+  gap: 7px;
+  scroll-snap-align: start;
+}
+
+.about-cert__media {
+  width: 100%;
+  aspect-ratio: 491 / 670;
+}
+
+.about-cert__name {
+  font-size: 0.78rem;
+}
+
+.about-cert--award .about-cert__media {
+  aspect-ratio: 980 / 692;
+  background: #fff9ed;
+}
+
+.about-cert--award .about-cert__media img {
+  object-fit: contain;
+  background: #fff9ed;
+}
+
+.about-credentials__hint {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  color: var(--about-soft);
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 0.12em;
+}
+
+.about-credentials__hint i {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(199, 218, 255, 0.12);
+}
+
+.about-credentials__hint i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: certificate-scroll-line 3.2s ease-in-out infinite;
+}
+
+@keyframes certificate-scroll-line {
+  0% {
+    left: -30%;
+  }
+  55%,
+  100% {
+    left: 110%;
+  }
+}
+
+.site-logo__mark {
+  width: 34px;
+  height: 34px;
+}
+
+@media (max-width: 900px) {
+  .about-credentials {
+    height: min(76vh, 700px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-credentials__orb,
   .about-credentials__spark,
   .section-head__orbit,
   .section-head__spark,
-  .work-overview__spark {
+  .work-overview__spark,
+  .about-credentials__hint i::after {
     animation: none;
   }
 }
