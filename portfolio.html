@@ -12945,7 +12945,7 @@ body {
 
 
 </style>
-    <link rel="preload" href="assets/video/hero-portfolio.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="assets/video/hero-portfolio-loop.mp4" as="video" type="video/mp4" />
     <link rel="preload" href="assets/video/hero-portfolio-poster.webp" as="image" />
     <link rel="preload" href="assets/img/avatar-top.webp" as="image" />
   </head>
@@ -13054,7 +13054,7 @@ body {
             playsinline
             preload="auto"
             poster="assets/video/hero-portfolio-poster.webp"
-            src="assets/video/hero-portfolio.mp4"
+            src="assets/video/hero-portfolio-loop.mp4"
           ></video>
         </div>
         <div class="hero__veil" aria-hidden="true"></div>
@@ -13126,7 +13126,7 @@ body {
                 poster="assets/video/about-background-poster.webp"
                 tabindex="-1"
               >
-                <source src="assets/video/about-background.mp4" type="video/mp4" />
+                <source src="assets/video/about-background-loop.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="about-stage__veil" aria-hidden="true"></div>
@@ -13575,7 +13575,7 @@ body {
             tabindex="-1"
             disablepictureinpicture
           >
-            <source src="assets/video/work-background.mp4" type="video/mp4" />
+            <source src="assets/video/work-background-loop.mp4" type="video/mp4" />
           </video>
           <div class="work-bg__veil"></div>
         </div>
@@ -15463,7 +15463,7 @@ window.MEDIA_DATA = {
   if (contactBackgroundVideo) {
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = "assets/video/contact-background-desktop.mp4";
+    contactVideoSource.src = "assets/video/contact-background-desktop-loop.mp4";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;
