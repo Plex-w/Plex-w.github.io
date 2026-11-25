@@ -1,3 +1,56 @@
+/* ==== scroll-performance.js ==== */
+/* Pause background video decoding while the page is being scrolled.
+   The original file and resolution are untouched; playback resumes at the
+   same position as soon as scrolling settles. */
+(() => {
+  const root = document.documentElement;
+  let settleTimer = 0;
+
+  const pauseForScroll = () => {
+    root.classList.add("is-scrolling");
+    document.querySelectorAll("video:not([controls])").forEach((video) => {
+      if (video.paused) return;
+      video.dataset.scrollPaused = "1";
+      video.pause();
+    });
+  };
+
+  const resumeAfterScroll = () => {
+    root.classList.remove("is-scrolling");
+    document.querySelectorAll('video[data-scroll-paused="1"]').forEach((video) => {
+      delete video.dataset.scrollPaused;
+      if (video.dataset.offscreen === "true" || document.hidden) return;
+      const rect = video.getBoundingClientRect();
+      if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+      const attempt = video.play();
+      if (attempt?.catch) attempt.catch(() => {});
+    });
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      pauseForScroll();
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(resumeAfterScroll, 150);
+    },
+    { passive: true }
+  );
+
+  // Guards against observer/interval play calls while a scroll is in progress.
+  document.addEventListener(
+    "play",
+    (event) => {
+      const video = event.target;
+      if (!(video instanceof HTMLVideoElement) || video.controls) return;
+      if (!root.classList.contains("is-scrolling")) return;
+      video.dataset.scrollPaused = "1";
+      video.pause();
+    },
+    true
+  );
+})();
+
 /* ==== loader.js ==== */
 /* ==========================================================================
    SITE LOADER / COSMIC-INSPIRED
@@ -583,11 +636,18 @@
       ctx.globalCompositeOperation = "source-over";
     }
 
+    let lastDustFrame = 0;
+
     function animateDust(now) {
       if (document.hidden) {
         canvasFrame = window.requestAnimationFrame(animateDust);
         return;
       }
+      if (now - lastDustFrame < 32) {
+        canvasFrame = window.requestAnimationFrame(animateDust);
+        return;
+      }
+      lastDustFrame = now;
       if (!lastTime) lastTime = now;
       const delta = Math.min(48, now - lastTime);
       lastTime = now;
