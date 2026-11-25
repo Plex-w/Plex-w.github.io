@@ -356,7 +356,7 @@
   if (contactBackgroundVideo) {
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = "assets/video/contact-background-mobile.mp4";
+    contactVideoSource.src = "assets/video/contact-background-web.mp4";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;
