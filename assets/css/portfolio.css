@@ -7347,76 +7347,80 @@ body {
   }
 }
 
-/* Project experience cards ------------------------------------------------ */
+/* Project experience rows ------------------------------------------------ */
 
 .about-exp-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 16px;
-  border-top: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8px;
+  border-top: 1px solid var(--about-line);
 }
 
 .about-exp-item {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 6px;
-  padding: 12px;
-  border: 1px solid var(--about-line);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.025);
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 16px;
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid var(--about-line);
+  border-radius: 0;
+  background: transparent;
 }
 
 .about-exp-date {
-  padding-top: 0;
+  padding-top: 2px;
   color: var(--about-gold);
-  font-size: 7px;
-  line-height: 1.5;
+  font-size: 7.5px;
+  line-height: 1.65;
 }
 
 .about-exp-title h4 {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.35;
 }
 
 .about-exp-title span {
   margin-top: 3px;
-  font-size: 6.8px;
+  font-size: 7.2px;
   line-height: 1.45;
 }
 
 .about-exp-content p {
   margin-top: 4px;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   line-height: 1.55;
 }
 
 .about-exp-tags {
   gap: 4px;
-  margin-top: auto;
-  padding-top: 6px;
+  margin-top: 7px;
+  padding-top: 0;
 }
 
 .about-exp-tags span {
-  padding: 3px 5px;
-  font-size: 5.2px;
+  padding: 3px 6px;
+  font-size: 5.5px;
 }
 
 @media (max-width: 700px) {
   .about-exp-list {
-    grid-template-columns: minmax(0, 1fr);
+    flex: 0 0 auto;
+    justify-content: flex-start;
   }
 
   .about-exp-item {
-    padding: 13px;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px 0;
   }
 
   .about-exp-title h4 {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
 
   .about-exp-content p {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
 }
