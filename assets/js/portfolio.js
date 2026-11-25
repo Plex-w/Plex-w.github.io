@@ -2627,6 +2627,8 @@
     title: card.dataset.certTitle || "",
     registration: card.dataset.certReg || "",
     date: card.dataset.certDate || "",
+    meta: card.dataset.certMeta || "",
+    kind: card.dataset.certKind || "software",
   }));
   let activeCertificateIndex = 0;
   let activeCertificateTrigger = null;
@@ -2636,11 +2638,16 @@
     if (!certificate) return;
     if (certificateImage) {
       certificateImage.src = certificate.image;
-      certificateImage.alt = `${certificate.title} 计算机软件著作权登记证书`;
+      certificateImage.alt =
+        certificate.kind === "award"
+          ? `${certificate.title} 获奖证书`
+          : `${certificate.title} 计算机软件著作权登记证书`;
     }
     if (certificateTitle) certificateTitle.textContent = certificate.title;
     if (certificateMeta) {
-      certificateMeta.textContent = `登记号 ${certificate.registration} · ${certificate.date}`;
+      certificateMeta.textContent =
+        certificate.meta ||
+        `登记号 ${certificate.registration} · ${certificate.date}`;
     }
     if (certificateCounter) {
       certificateCounter.textContent = `${String(activeCertificateIndex + 1).padStart(
