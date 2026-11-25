@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 950" width="700" height="950" role="img" aria-label="2025 建行杯中国国际大学生创新大赛省级铜奖获奖证书">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f2e4"/>
+      <stop offset="0.52" stop-color="#f3ead7"/>
+      <stop offset="1" stop-color="#eadfc8"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9bd82"/>
+      <stop offset="0.48" stop-color="#a9854d"/>
+      <stop offset="1" stop-color="#e3ca94"/>
+    </linearGradient>
+    <radialGradient id="seal" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#365a4b"/>
+      <stop offset="1" stop-color="#1c342b"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="700" height="950" fill="url(#paper)"/>
+  <rect x="28" y="28" width="644" height="894" fill="none" stroke="#b99c68" stroke-width="1.5"/>
+  <rect x="42" y="42" width="616" height="866" fill="none" stroke="#26483b" stroke-width="0.8"/>
+  <path d="M42 92h616M42 858h616" stroke="#b99c68" stroke-width="0.7" opacity="0.7"/>
+
+  <g fill="#b3925b" font-family="Georgia, 'Times New Roman', serif">
+    <text x="350" y="113" text-anchor="middle" font-size="12" letter-spacing="5">CERTIFICATE OF HONOR</text>
+    <text x="350" y="137" text-anchor="middle" font-size="8" letter-spacing="3.2">PORTFOLIO / 2027</text>
+  </g>
+
+  <g fill="#20382d" font-family="'Songti SC', 'STSong', 'SimSun', serif">
+    <text x="350" y="235" text-anchor="middle" font-size="54" letter-spacing="8">获奖证书</text>
+    <text x="350" y="282" text-anchor="middle" font-size="13" letter-spacing="4" fill="#876c42">CERTIFICATE OF AWARD</text>
+  </g>
+
+  <path d="M210 315h280" stroke="#b99c68" stroke-width="0.8"/>
+  <circle cx="350" cy="315" r="3" fill="#b99c68"/>
+
+  <g fill="#263d32" font-family="'Songti SC', 'STSong', 'SimSun', serif" text-anchor="middle">
+    <text x="350" y="390" font-size="15" letter-spacing="3">兹 有</text>
+    <text x="350" y="462" font-size="48" letter-spacing="9">邓 晓 雯</text>
+    <text x="350" y="526" font-size="15" letter-spacing="1">在 2025 年「建行杯」中国国际大学生创新大赛中</text>
+    <text x="350" y="582" font-size="35" letter-spacing="5" fill="#9a6a32">荣 获 · 省 级 铜 奖</text>
+    <text x="350" y="632" font-size="13" letter-spacing="2" fill="#526156">项目 / 千顺莞香</text>
+  </g>
+
+  <g transform="translate(350 716)">
+    <circle r="48" fill="url(#seal)"/>
+    <circle r="43" fill="none" stroke="#d9c08a" stroke-width="1.2" stroke-dasharray="2 3"/>
+    <path d="M0-22 6.2-7.2 22-6.8 9.8 3.8 13.8 19.4 0 10.4-13.8 19.4-9.8 3.8-22-6.8-6.2-7.2Z" fill="#d8bd83"/>
+    <text y="30" text-anchor="middle" fill="#e8d5a7" font-family="Georgia, serif" font-size="7" letter-spacing="2">2025</text>
+  </g>
+
+  <g fill="#8b744f" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="350" y="817" font-size="9" letter-spacing="3">HONOR · INNOVATION · DESIGN</text>
+    <text x="350" y="843" font-size="8" letter-spacing="2">PORTFOLIO CERTIFICATE / 06</text>
+  </g>
+
+  <circle cx="92" cy="180" r="26" fill="none" stroke="#c7ad7b" stroke-width="0.8" opacity="0.7"/>
+  <circle cx="608" cy="180" r="26" fill="none" stroke="#c7ad7b" stroke-width="0.8" opacity="0.7"/>
+  <path d="M84 168c18 14 32 34 38 58M616 168c-18 14-32 34-38 58" fill="none" stroke="#c7ad7b" stroke-width="0.7" opacity="0.55"/>
+</svg>
