@@ -14,6 +14,8 @@
       content="邓晓雯的设计作品集：UI/UX、视觉系统、AIGC、三维、海报、融媒体与视频作品，关注信息、界面与人的关系。"
     />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/fonts/PuHuiTi-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/PuHuiTi-Medium.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/entry.css" />
@@ -100,11 +102,10 @@
         <video
           class="cosmos__video"
           id="hero-video"
-          autoplay
           muted
           loop
           playsinline
-          preload="auto"
+          preload="none"
           poster="assets/video/home-loop-poster.webp"
         >
           <source src="assets/video/home-loop.mp4" type="video/mp4" />
