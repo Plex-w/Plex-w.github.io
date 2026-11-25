@@ -96,17 +96,21 @@
   };
 
   if (video) {
-    window.addEventListener("xw:loader-complete", scheduleVideoLoad, { once: true });
-    window.addEventListener(
-      "load",
-      () => {
-        if (!document.documentElement.classList.contains("is-loading")) {
-          scheduleVideoLoad();
-        }
-      },
-      { once: true }
-    );
-    window.setTimeout(scheduleVideoLoad, 3800);
+    if (!document.documentElement.classList.contains("is-loading")) {
+      scheduleVideoLoad();
+    } else {
+      window.addEventListener("xw:loader-complete", scheduleVideoLoad, { once: true });
+      window.addEventListener(
+        "load",
+        () => {
+          if (!document.documentElement.classList.contains("is-loading")) {
+            scheduleVideoLoad();
+          }
+        },
+        { once: true }
+      );
+      window.setTimeout(scheduleVideoLoad, 2600);
+    }
   }
 
   const handleMotionPreference = () => {
