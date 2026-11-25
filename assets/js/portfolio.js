@@ -75,6 +75,21 @@
       if (!document.hidden) playHeroVideo();
     }, 5000);
 
+    // Let the page text and images paint before the large hero video starts.
+    const startHeroVideo = () => {
+      if (!heroLoaded) return;
+      heroVideo.preload = "auto";
+      if (heroVideo.readyState < 1) heroVideo.load();
+      playHeroVideo();
+    };
+    window.setTimeout(() => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(startHeroVideo, { timeout: 700 });
+      } else {
+        startHeroVideo();
+      }
+    }, 350);
+
     // Release the large hero file once it leaves the viewport, so the lower
     // sections and project videos get the connection on mobile.
     const heroSection = $("#top");

@@ -24,7 +24,7 @@
 
   /* Autoplaying background ------------------------------------------------ */
 
-  const FALLBACK_VIDEO = "assets/video/home-loop-1440.mp4";
+  const FALLBACK_VIDEO = "assets/video/home-loop-1080.mp4";
   let videoFallbackUsed = false;
 
   async function playVideo() {

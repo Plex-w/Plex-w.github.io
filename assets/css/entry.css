@@ -889,15 +889,16 @@
   width: 43px;
   height: 43px;
   place-items: center;
-  border: 1px solid rgba(238, 233, 222, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  background: rgba(10, 16, 13, 0.16);
-  mix-blend-mode: difference;
+  background: rgba(7, 12, 10, 0.36);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(184, 230, 210, 0.2);
   pointer-events: none;
   opacity: 0;
   transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0)
     translate(-50%, -50%);
-  backdrop-filter: blur(2px);
   transition:
     width 0.3s var(--ease-out),
     height 0.3s var(--ease-out),
@@ -953,6 +954,19 @@
   cursor: none !important;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button,
+  .has-custom-cursor .entry-main {
+    cursor: auto !important;
+  }
+
+  .entry-cursor {
+    display: none !important;
+  }
+}
+
 /* Transition ------------------------------------------------------------- */
 
 .entry-flash {
@@ -1004,13 +1018,8 @@
 
 /* State after first paint ------------------------------------------------- */
 
-.js .entry .entry-cursor {
-  visibility: hidden;
-}
-
-.has-custom-cursor .entry-cursor {
-  visibility: visible;
-}
+/* The cursor starts transparent. Visibility must stay visible so the
+   has-custom-cursor reveal can actually show it. */
 
 /* Fallback --------------------------------------------------------------- */
 

@@ -14,7 +14,7 @@
   const progressBar = loader.querySelector("[data-loader-progress]");
   const canvas = loader.querySelector("[data-loader-stars]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const duration = reduceMotion.matches ? 900 : 3200;
+  const duration = reduceMotion.matches ? 700 : 2200;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const stars = [];
   const shootingStars = [];

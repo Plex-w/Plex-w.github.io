@@ -73,15 +73,18 @@ body.portfolio {
   top: 0;
   left: 0;
   display: grid;
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
   place-items: center;
+  border: 1px solid rgba(7, 10, 9, 0.82);
   border-radius: 50%;
   background: var(--paper);
   color: var(--ink);
+  box-shadow:
+    0 0 0 1px rgba(232, 227, 214, 0.55),
+    0 0 16px rgba(158, 223, 201, 0.2);
   opacity: 0;
   pointer-events: none;
-  mix-blend-mode: difference;
   transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0)
     translate(-50%, -50%);
   transition:
@@ -134,6 +137,38 @@ body.portfolio {
 .has-custom-cursor a,
 .has-custom-cursor button {
   cursor: none;
+}
+
+.has-custom-cursor input,
+.has-custom-cursor textarea {
+  cursor: text;
+}
+
+/* Native dialogs live in the browser top layer, above the custom cursor.
+   Restore the real pointer while any modal is open. */
+body.modal-open,
+body.modal-open a,
+body.modal-open button,
+body.modal-open input,
+body.modal-open textarea,
+body.modal-open select {
+  cursor: auto !important;
+}
+
+body.modal-open .cursor {
+  opacity: 0 !important;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button {
+    cursor: auto !important;
+  }
+
+  .cursor {
+    display: none !important;
+  }
 }
 
 .toast {
