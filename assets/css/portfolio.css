@@ -7661,13 +7661,27 @@ body {
   position: relative;
   min-height: 92px;
   align-self: stretch;
-  border-left: 0;
+  border-left: 1px solid var(--line);
 }
 
 .work-overview__motion::before,
 .work-overview__motion::after {
-  display: none;
-  content: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.work-overview__motion::before {
+  width: 68%;
+}
+
+.work-overview__motion::after {
+  width: 42%;
+  transform: rotate(-24deg) translateY(10px);
+  opacity: 0.55;
 }
 
 .work-overview__node {
@@ -7734,7 +7748,8 @@ body {
 
   .work-overview__motion {
     min-height: 56px;
-    border-top: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
 }
 
