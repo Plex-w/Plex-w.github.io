@@ -49,6 +49,8 @@
     </noscript>
     <link rel="stylesheet" href="assets/css/portfolio-bundle.css" />
     <link rel="preload" href="assets/js/portfolio-bundle.js" as="script" />
+    <link rel="preload" href="assets/video/hero-portfolio-poster.webp" as="image" />
+    <link rel="preload" href="assets/img/avatar-top.webp" as="image" />
   </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
@@ -153,11 +155,10 @@
             muted
             loop
             playsinline
-            preload="none"
+            preload="auto"
             poster="assets/video/hero-portfolio-poster.webp"
-          >
-            <source src="assets/video/hero-portfolio.mp4" type="video/mp4" />
-          </video>
+            src="assets/video/hero-portfolio.mp4"
+          ></video>
         </div>
         <div class="hero__veil" aria-hidden="true"></div>
 
