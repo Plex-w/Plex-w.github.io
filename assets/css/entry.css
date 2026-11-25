@@ -1439,7 +1439,7 @@
 }
 
 /* Short desktop viewports: reserve breathing room above the lower copy. */
-@media (min-width: 901px) and (max-height: 880px) {
+@media (min-width: 1360px) and (max-height: 880px) {
   .chapter-index {
     transform: translateY(-28px);
   }
