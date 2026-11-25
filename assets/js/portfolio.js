@@ -2715,6 +2715,56 @@
     }
   });
 
+  /* Keep the certificate rail bottom aligned with the left profile column. */
+  const certificateRail = $(".about-credentials");
+  const certificateLeftItems = [
+    $(".about-profile"),
+    $(".about-education"),
+    $(".about-skills"),
+  ].filter(Boolean);
+  let certificateAlignFrame = 0;
+  let certificateRailHeight = 0;
+
+  const alignCertificateRail = () => {
+    certificateAlignFrame = 0;
+    if (!certificateRail || !certificateLeftItems.length) return;
+    if (window.innerWidth <= 900) {
+      if (certificateRailHeight) {
+        certificateRail.style.removeProperty("height");
+        certificateRailHeight = 0;
+      }
+      return;
+    }
+    const railTop = certificateRail.getBoundingClientRect().top;
+    const leftBottom = Math.max(
+      ...certificateLeftItems.map((item) => item.getBoundingClientRect().bottom)
+    );
+    const height = Math.max(0, Math.ceil(leftBottom - railTop));
+    if (!height) return;
+    if (Math.abs(height - certificateRailHeight) > 1) {
+      certificateRailHeight = height;
+      certificateRail.style.height = `${height}px`;
+    }
+  };
+
+  const scheduleCertificateAlign = () => {
+    if (certificateAlignFrame) return;
+    certificateAlignFrame = window.requestAnimationFrame(alignCertificateRail);
+  };
+
+  if (certificateRail) {
+    scheduleCertificateAlign();
+    window.addEventListener("load", scheduleCertificateAlign, { passive: true });
+    window.addEventListener("resize", scheduleCertificateAlign, { passive: true });
+    document.fonts?.ready.then(scheduleCertificateAlign);
+    window.setTimeout(scheduleCertificateAlign, 450);
+    window.setTimeout(scheduleCertificateAlign, 1200);
+    if ("ResizeObserver" in window) {
+      const certificateResizeObserver = new ResizeObserver(scheduleCertificateAlign);
+      certificateLeftItems.forEach((item) => certificateResizeObserver.observe(item));
+    }
+  }
+
   /* ---------------------------------------------------------------------
      Copy email
      --------------------------------------------------------------------- */
