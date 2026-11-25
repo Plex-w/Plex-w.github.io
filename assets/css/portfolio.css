@@ -7933,3 +7933,139 @@ body {
     font-size: 1.04rem;
   }
 }
+
+/* About closing band ------------------------------------------------ */
+
+.about {
+  padding-bottom: clamp(36px, 4vw, 56px);
+}
+
+.about-outro {
+  position: relative;
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 18px;
+  overflow: hidden;
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.about-outro__mark {
+  flex: none;
+  color: var(--about-gold);
+  font-size: 12px;
+  animation: about-outro-spark 5s ease-in-out infinite;
+}
+
+.about-outro__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.about-outro__track {
+  display: flex;
+  width: max-content;
+  animation: about-outro-marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.about-outro__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 26px;
+  padding-right: 26px;
+}
+
+.about-outro__group span {
+  color: var(--about-soft);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+.about-outro__group i {
+  color: var(--about-gold);
+  font-size: 7px;
+  font-style: normal;
+  opacity: 0.55;
+}
+
+.about-outro__end {
+  flex: none;
+  color: var(--about-soft);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+}
+
+.about-outro__orbit {
+  position: absolute;
+  right: 9%;
+  top: -34px;
+  width: 150px;
+  height: 74px;
+  border: 1px solid rgba(184, 230, 210, 0.13);
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+
+.about-outro + .section-jump {
+  margin-top: clamp(18px, 2.4vw, 28px);
+}
+
+@keyframes about-outro-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes about-outro-spark {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: rotate(0deg) scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(25deg) scale(1.08);
+  }
+}
+
+@media (max-width: 700px) {
+  .about-outro {
+    gap: 12px;
+    min-height: 40px;
+  }
+
+  .about-outro__end {
+    display: none;
+  }
+
+  .about-outro__group {
+    gap: 18px;
+    padding-right: 18px;
+  }
+
+  .about-outro__group span {
+    font-size: 7px;
+  }
+
+  .about-outro__orbit {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-outro__track,
+  .about-outro__mark {
+    animation: none;
+  }
+}
