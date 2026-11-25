@@ -194,5 +194,5 @@
       if (rafId) window.cancelAnimationFrame(rafId);
       finish();
     }
-  }, 6000);
+  }, duration + 450);
 })();
