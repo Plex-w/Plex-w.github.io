@@ -203,7 +203,7 @@
         activateAboutVideo();
         observer.disconnect();
       },
-      { rootMargin: "600px 0px" }
+      { rootMargin: "800px 0px" }
     );
     aboutVideoObserver.observe(aboutStage);
   } else {
@@ -266,7 +266,7 @@
           warmEvidenceVideo();
           observer.disconnect();
         },
-        { rootMargin: "600px 0px" }
+        { rootMargin: "800px 0px" }
       );
       evidenceObserver.observe(evidenceStage);
     } else {
@@ -337,7 +337,7 @@
           activateWorkBackgroundVideo();
           observer.disconnect();
         },
-        { rootMargin: "800px 0px" }
+        { rootMargin: "1200px 0px" }
       );
       workVideoObserver.observe(videoScope);
       pauseWhenHidden(workBackgroundVideo, videoScope, playWorkBackgroundVideo);
@@ -442,7 +442,7 @@
           activateContactVideo();
           observer.disconnect();
         },
-        { rootMargin: "600px 0px", threshold: 0.01 }
+        { rootMargin: "1200px 0px", threshold: 0.01 }
       );
       contactVideoObserver.observe(contactSection);
       pauseWhenHidden(contactBackgroundVideo, contactSection, playContactBackgroundVideo);
