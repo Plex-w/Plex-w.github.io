@@ -6115,6 +6115,54 @@ body.menu-open .site-menu__nav a:nth-child(4) {
   line-height: 1.2;
 }
 
+.about-method {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--about-line);
+}
+
+.about-method .about-label {
+  margin-bottom: 9px;
+  font-size: 6.5px;
+}
+
+.about-method__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.about-method__item {
+  min-width: 0;
+  padding: 8px 9px;
+  border: 1px solid rgba(199, 218, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.about-method__item > span {
+  color: var(--about-gold);
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  letter-spacing: 0.08em;
+}
+
+.about-method__item strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--about-text);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.about-method__item p {
+  margin-top: 3px;
+  color: var(--about-soft);
+  font-size: 0.6rem;
+  line-height: 1.55;
+}
+
 .about-awards {
   margin-top: 16px;
   padding-top: 14px;
