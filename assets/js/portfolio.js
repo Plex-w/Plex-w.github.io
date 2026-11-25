@@ -46,7 +46,7 @@
           video.pause();
         }
       },
-      { rootMargin: "120px 0px", threshold: 0.01 }
+      { rootMargin: "0px 0px", threshold: 0.01 }
     );
     observer.observe(target);
   }
@@ -354,14 +354,9 @@
   let contactActive = false;
 
   if (contactBackgroundVideo) {
-    const useCompactContactVideo = window.matchMedia(
-      "(max-width: 900px), (pointer: coarse)"
-    ).matches;
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = useCompactContactVideo
-      ? "assets/video/contact-background-mobile.mp4"
-      : "assets/video/contact-background-desktop.mp4";
+    contactVideoSource.src = "assets/video/contact-background-mobile.mp4";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;
@@ -455,6 +450,19 @@
       activateContactVideo();
     }
   }
+
+  // Warm the small, compressed background files after first paint. Playback
+  // still waits for the section observers, so nothing decodes offscreen.
+  window.setTimeout(() => {
+    $$(".about-stage:not(.about-stage--evidence) .about-stage__video, #work-background-video, #contact-background-video").forEach(
+      (video) => {
+        if (video.readyState < 1) {
+          video.preload = "auto";
+          video.load();
+        }
+      }
+    );
+  }, 1600);
 
   /* ---------------------------------------------------------------------
      Folder-based work archive
