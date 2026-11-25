@@ -8069,3 +8069,42 @@ body {
     animation: none;
   }
 }
+
+/* CSS-only three-column alignment, independent of script timing. */
+@media (max-width: 1120px) {
+  .about-center,
+  .about-side {
+    display: contents;
+  }
+}
+
+@media (min-width: 1121px) {
+  .about-center {
+    position: relative;
+    align-self: stretch;
+    grid-area: experience;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .about-side {
+    position: relative;
+    align-self: stretch;
+    grid-area: portrait;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .about-center > .about-experience,
+  .about-side > .about-credentials {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+  }
+
+  .about-side > .about-credentials {
+    overflow: hidden;
+  }
+}
