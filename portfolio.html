@@ -525,6 +525,35 @@ em {
   }
 }
 
+/* Keep the large video layers on a stable compositor layer and remove the
+   expensive pan/zoom animation on top of the already-moving video. */
+.hero__video,
+.cosmos__motion,
+.about-stage__motion {
+  animation: none !important;
+  will-change: auto !important;
+}
+
+/* Decorative pointer/canvas effects are optional; the video is the priority. */
+.entry-cursor,
+.cursor,
+.cosmos__dust {
+  display: none !important;
+}
+
+/* Large glass surfaces over video are costly to re-composite while scrolling. */
+.site-header,
+.site-nav a,
+.header-contact,
+.menu-toggle,
+.primary-enter,
+.about-card,
+.about-experience,
+.about-credentials {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Lighten compositing while the page is actively scrolling. */
 html.is-scrolling .site-header,
 html.is-scrolling .site-nav a,
@@ -12945,7 +12974,7 @@ body {
 
 
 </style>
-    <link rel="preload" href="assets/video/hero-portfolio-loop.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="assets/video/hero-portfolio.mp4" as="video" type="video/mp4" />
     <link rel="preload" href="assets/video/hero-portfolio-poster.webp" as="image" />
     <link rel="preload" href="assets/img/avatar-top.webp" as="image" />
   </head>
@@ -13054,7 +13083,7 @@ body {
             playsinline
             preload="auto"
             poster="assets/video/hero-portfolio-poster.webp"
-            src="assets/video/hero-portfolio-loop.mp4"
+            src="assets/video/hero-portfolio.mp4"
           ></video>
         </div>
         <div class="hero__veil" aria-hidden="true"></div>
@@ -13126,7 +13155,7 @@ body {
                 poster="assets/video/about-background-poster.webp"
                 tabindex="-1"
               >
-                <source src="assets/video/about-background-loop.mp4" type="video/mp4" />
+                <source src="assets/video/about-background.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="about-stage__veil" aria-hidden="true"></div>
@@ -13575,7 +13604,7 @@ body {
             tabindex="-1"
             disablepictureinpicture
           >
-            <source src="assets/video/work-background-loop.mp4" type="video/mp4" />
+            <source src="assets/video/work-background.mp4" type="video/mp4" />
           </video>
           <div class="work-bg__veil"></div>
         </div>
@@ -15463,7 +15492,7 @@ window.MEDIA_DATA = {
   if (contactBackgroundVideo) {
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = "assets/video/contact-background-desktop-loop.mp4";
+    contactVideoSource.src = "assets/video/contact-background-desktop.mp4";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;
