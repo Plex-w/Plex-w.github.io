@@ -492,6 +492,35 @@ em {
   }
 }
 
+/* Keep the large video layers on a stable compositor layer and remove the
+   expensive pan/zoom animation on top of the already-moving video. */
+.hero__video,
+.cosmos__motion,
+.about-stage__motion {
+  animation: none !important;
+  will-change: auto !important;
+}
+
+/* Decorative pointer/canvas effects are optional; the video is the priority. */
+.entry-cursor,
+.cursor,
+.cosmos__dust {
+  display: none !important;
+}
+
+/* Large glass surfaces over video are costly to re-composite while scrolling. */
+.site-header,
+.site-nav a,
+.header-contact,
+.menu-toggle,
+.primary-enter,
+.about-card,
+.about-experience,
+.about-credentials {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Lighten compositing while the page is actively scrolling. */
 html.is-scrolling .site-header,
 html.is-scrolling .site-nav a,
@@ -3236,7 +3265,7 @@ body {
           preload="none"
           poster="assets/video/home-loop-poster.webp"
         >
-          <source src="assets/video/home-loop-loop.mp4" type="video/mp4" />
+          <source src="assets/video/home-loop.mp4" type="video/mp4" />
         </video>
       </div>
       <canvas class="cosmos__dust" id="cosmos-canvas"></canvas>
@@ -4047,6 +4076,9 @@ body {
     }
 
     function startDust() {
+      if (!canvas) return;
+      canvas.style.display = "none";
+      return;
       resizeCanvas();
       if (reduceMotion.matches) {
         drawDust(0);
