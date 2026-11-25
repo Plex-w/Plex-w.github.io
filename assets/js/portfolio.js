@@ -2715,53 +2715,73 @@
     }
   });
 
-  /* Keep the certificate rail bottom aligned with the left profile column. */
+  /* Keep the three About columns on one bottom line. */
   const certificateRail = $(".about-credentials");
+  const projectRail = $(".about-experience");
   const certificateLeftItems = [
     $(".about-profile"),
     $(".about-education"),
     $(".about-skills"),
   ].filter(Boolean);
-  let certificateAlignFrame = 0;
+  let aboutAlignFrame = 0;
   let certificateRailHeight = 0;
+  let projectRailHeight = 0;
 
-  const alignCertificateRail = () => {
-    certificateAlignFrame = 0;
-    if (!certificateRail || !certificateLeftItems.length) return;
-    if (window.innerWidth <= 900) {
-      if (certificateRailHeight) {
-        certificateRail.style.removeProperty("height");
-        certificateRailHeight = 0;
-      }
-      return;
-    }
-    const railTop = certificateRail.getBoundingClientRect().top;
+  const alignAboutColumns = () => {
+    aboutAlignFrame = 0;
+    if (!certificateLeftItems.length) return;
     const leftBottom = Math.max(
       ...certificateLeftItems.map((item) => item.getBoundingClientRect().bottom)
     );
-    const height = Math.max(0, Math.ceil(leftBottom - railTop));
-    if (!height) return;
-    if (Math.abs(height - certificateRailHeight) > 1) {
-      certificateRailHeight = height;
-      certificateRail.style.height = `${height}px`;
+
+    if (certificateRail) {
+      if (window.innerWidth <= 900) {
+        if (certificateRailHeight) {
+          certificateRail.style.removeProperty("height");
+          certificateRailHeight = 0;
+        }
+      } else {
+        const railTop = certificateRail.getBoundingClientRect().top;
+        const height = Math.max(0, Math.ceil(leftBottom - railTop));
+        if (height && Math.abs(height - certificateRailHeight) > 1) {
+          certificateRailHeight = height;
+          certificateRail.style.height = `${height}px`;
+        }
+      }
+    }
+
+    if (projectRail) {
+      if (window.innerWidth <= 1120) {
+        if (projectRailHeight) {
+          projectRail.style.removeProperty("height");
+          projectRailHeight = 0;
+        }
+      } else {
+        const projectTop = projectRail.getBoundingClientRect().top;
+        const height = Math.max(0, Math.ceil(leftBottom - projectTop));
+        if (height && Math.abs(height - projectRailHeight) > 1) {
+          projectRailHeight = height;
+          projectRail.style.height = `${height}px`;
+        }
+      }
     }
   };
 
-  const scheduleCertificateAlign = () => {
-    if (certificateAlignFrame) return;
-    certificateAlignFrame = window.requestAnimationFrame(alignCertificateRail);
+  const scheduleAboutAlign = () => {
+    if (aboutAlignFrame) return;
+    aboutAlignFrame = window.requestAnimationFrame(alignAboutColumns);
   };
 
   if (certificateRail) {
-    scheduleCertificateAlign();
-    window.addEventListener("load", scheduleCertificateAlign, { passive: true });
-    window.addEventListener("resize", scheduleCertificateAlign, { passive: true });
-    document.fonts?.ready.then(scheduleCertificateAlign);
-    window.setTimeout(scheduleCertificateAlign, 450);
-    window.setTimeout(scheduleCertificateAlign, 1200);
+    scheduleAboutAlign();
+    window.addEventListener("load", scheduleAboutAlign, { passive: true });
+    window.addEventListener("resize", scheduleAboutAlign, { passive: true });
+    document.fonts?.ready.then(scheduleAboutAlign);
+    window.setTimeout(scheduleAboutAlign, 450);
+    window.setTimeout(scheduleAboutAlign, 1200);
     if ("ResizeObserver" in window) {
-      const certificateResizeObserver = new ResizeObserver(scheduleCertificateAlign);
-      certificateLeftItems.forEach((item) => certificateResizeObserver.observe(item));
+      const aboutResizeObserver = new ResizeObserver(scheduleAboutAlign);
+      certificateLeftItems.forEach((item) => aboutResizeObserver.observe(item));
     }
   }
 
