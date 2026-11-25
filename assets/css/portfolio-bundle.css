@@ -498,7 +498,7 @@ body.portfolio {
   background: var(--paper);
   color: var(--ink);
   pointer-events: none;
-  animation: veil-out 0.82s 0.08s var(--ease-in-out) forwards;
+  animation: veil-out 0.38s 0.02s var(--ease-in-out) forwards;
 }
 
 .page-veil__mark {
