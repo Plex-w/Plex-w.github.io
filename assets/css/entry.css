@@ -1437,3 +1437,10 @@
     transition-delay: 0ms !important;
   }
 }
+
+/* Short desktop viewports: reserve breathing room above the lower copy. */
+@media (min-width: 901px) and (max-height: 880px) {
+  .chapter-index {
+    transform: translateY(-28px);
+  }
+}
