@@ -15247,9 +15247,6 @@ window.MEDIA_DATA = {
       return map[character];
     });
 
-  const thumbSource = (src) =>
-    String(src).replace("assets/img/work/", "assets/img/work-thumbs/");
-
   let toastTimer;
   function showToast(message) {
     const toast = $(".toast");
@@ -15704,7 +15701,7 @@ window.MEDIA_DATA = {
           aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${total}）"
         >
           <img
-            src="${escapeHTML(thumbSource(image.src))}"
+            src="${escapeHTML(image.src)}"
             alt="${escapeHTML(image.alt)}"
             width="${image.width}"
             height="${image.height}"
@@ -15735,7 +15732,7 @@ window.MEDIA_DATA = {
             aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${project.images.length}）"
           >
             <img
-              src="${escapeHTML(thumbSource(image.src))}"
+              src="${escapeHTML(image.src)}"
               alt="${escapeHTML(image.alt)}"
               width="${image.width}"
               height="${image.height}"
@@ -15774,7 +15771,7 @@ window.MEDIA_DATA = {
             aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${project.images.length}）"
           >
             <img
-              src="${escapeHTML(thumbSource(image.src))}"
+              src="${escapeHTML(image.src)}"
               alt="${escapeHTML(image.alt)}"
               width="${image.width}"
               height="${image.height}"
@@ -15810,7 +15807,7 @@ window.MEDIA_DATA = {
                 <img
                   class="ui-phone__image"
                   data-ui-phone-image
-                  src="${escapeHTML(thumbSource(first.src))}"
+                  src="${escapeHTML(first.src)}"
                   alt="${escapeHTML(first.alt)}"
                   width="${first.width}"
                   height="${first.height}"
@@ -16751,7 +16748,7 @@ window.MEDIA_DATA = {
       phoneImage.alt = image.alt;
       phoneImage.classList.add("is-changing");
       const token = ++swapToken;
-      phoneImage.src = thumbSource(image.src);
+      phoneImage.src = image.src;
       window.setTimeout(() => {
         if (token === swapToken) phoneImage.classList.remove("is-changing");
       }, 120);
