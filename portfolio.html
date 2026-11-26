@@ -8658,6 +8658,87 @@ body {
   }
 }
 
+/* Typographic rhythm: balanced headings, comfortable Chinese reading widths. */
+body {
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+.hero__title,
+.section-title,
+.about-display,
+.chapter-head__heading h3,
+.archive-project__heading h4,
+.toolkit__head > p,
+.about-panel__intro p {
+  text-wrap: balance;
+}
+
+p,
+.about-intro,
+.chapter-head__intro,
+.archive-project__copy p,
+.hero__lede,
+.h5-card__desc,
+.video-card__desc {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.about-intro {
+  line-height: 1.78;
+  letter-spacing: 0.006em;
+}
+
+.about-panel__intro p,
+.about-signature {
+  line-height: 1.55;
+}
+
+.hero__lede {
+  letter-spacing: 0.012em;
+}
+
+.work__head .section-title {
+  line-height: 1.1;
+}
+
+.chapter-head__intro {
+  max-width: 370px;
+  font-size: 0.84rem;
+  line-height: 1.75;
+  letter-spacing: 0.008em;
+}
+
+.archive-project__copy p {
+  max-width: 520px;
+  line-height: 1.82;
+  letter-spacing: 0.008em;
+}
+
+.toolkit__head > p {
+  font-size: clamp(1rem, 1.28vw, 1.22rem);
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+}
+
+@media (min-width: 1281px) {
+  .toolkit {
+    grid-template-columns: minmax(245px, 0.54fr) minmax(300px, 1fr) minmax(220px, 0.66fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .chapter-head__intro,
+  .archive-project__copy p {
+    max-width: none;
+    line-height: 1.75;
+  }
+}
+
 @media (min-width: 1121px) {
   .about-center {
     position: relative;
@@ -13617,7 +13698,8 @@ body {
             <div class="section-head__main">
               <h2 class="section-title" id="work-title">
                 以下是我大学期间<br />
-                做过的作品，<span class="serif">按类别分组</span>
+                做过的作品，<br />
+                <span class="serif">按类别分组</span>
               </h2>
               <div class="section-head__motion" aria-hidden="true">
                 <span class="section-head__orbit">
@@ -15165,6 +15247,9 @@ window.MEDIA_DATA = {
       return map[character];
     });
 
+  const thumbSource = (src) =>
+    String(src).replace("assets/img/work/", "assets/img/work-thumbs/");
+
   let toastTimer;
   function showToast(message) {
     const toast = $(".toast");
@@ -15619,12 +15704,13 @@ window.MEDIA_DATA = {
           aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${total}）"
         >
           <img
-            src="${escapeHTML(image.src)}"
+            src="${escapeHTML(thumbSource(image.src))}"
             alt="${escapeHTML(image.alt)}"
             width="${image.width}"
             height="${image.height}"
             loading="lazy"
             decoding="async"
+            fetchpriority="low"
           />
           <span class="archive-image__zoom" aria-hidden="true">↗</span>
         </button>
@@ -15650,12 +15736,13 @@ window.MEDIA_DATA = {
             aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${project.images.length}）"
           >
             <img
-              src="${escapeHTML(image.src)}"
+              src="${escapeHTML(thumbSource(image.src))}"
               alt="${escapeHTML(image.alt)}"
               width="${image.width}"
               height="${image.height}"
               loading="lazy"
               decoding="async"
+              fetchpriority="low"
               draggable="false"
             />
           </button>`
@@ -15689,12 +15776,13 @@ window.MEDIA_DATA = {
             aria-label="查看大图：${escapeHTML(image.title)}（${index + 1} / ${project.images.length}）"
           >
             <img
-              src="${escapeHTML(image.src)}"
+              src="${escapeHTML(thumbSource(image.src))}"
               alt="${escapeHTML(image.alt)}"
               width="${image.width}"
               height="${image.height}"
               loading="lazy"
               decoding="async"
+              fetchpriority="low"
               draggable="false"
             />
           </button>`
@@ -15725,11 +15813,13 @@ window.MEDIA_DATA = {
                 <img
                   class="ui-phone__image"
                   data-ui-phone-image
-                  src="${escapeHTML(first.src)}"
+                  src="${escapeHTML(thumbSource(first.src))}"
                   alt="${escapeHTML(first.alt)}"
                   width="${first.width}"
                   height="${first.height}"
+                  loading="lazy"
                   decoding="async"
+                  fetchpriority="low"
                   draggable="false"
                 />
               </div>
@@ -16665,7 +16755,7 @@ window.MEDIA_DATA = {
       phoneImage.alt = image.alt;
       phoneImage.classList.add("is-changing");
       const token = ++swapToken;
-      phoneImage.src = image.src;
+      phoneImage.src = thumbSource(image.src);
       window.setTimeout(() => {
         if (token === swapToken) phoneImage.classList.remove("is-changing");
       }, 120);
