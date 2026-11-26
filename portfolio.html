@@ -8783,6 +8783,37 @@ p,
   content: none !important;
 }
 
+/* Tighten the large sectional breathing room without changing the layout. */
+:root {
+  --section-y: clamp(72px, 8vw, 120px);
+}
+
+.section-jump {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 16px;
+}
+
+#work,
+#approach {
+  padding-bottom: clamp(48px, 5vw, 72px);
+}
+
+.contact.contact--reference {
+  padding-top: clamp(64px, 6vw, 96px);
+}
+
+.contact-shell {
+  padding-bottom: clamp(48px, 5vw, 72px);
+}
+
+.contact-signoff {
+  margin-top: clamp(36px, 4vw, 56px);
+}
+
+.site-footer {
+  margin-top: clamp(36px, 4vw, 56px);
+}
+
 /* ==== work-archive.css ==== */
 /* ==========================================================================
    WORK ARCHIVE
