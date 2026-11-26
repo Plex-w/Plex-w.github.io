@@ -8770,6 +8770,19 @@ p,
   }
 }
 
+/* Work archive heading: keep the statement on two balanced lines. */
+.work__head .section-title {
+  font-size: clamp(1.8rem, 3.9vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+/* Remove only the diagonal guide stroke; keep the horizontal line and dots. */
+.work-overview__motion::after {
+  display: none !important;
+  content: none !important;
+}
+
 /* ==== work-archive.css ==== */
 /* ==========================================================================
    WORK ARCHIVE
@@ -13698,8 +13711,7 @@ body {
             <div class="section-head__main">
               <h2 class="section-title" id="work-title">
                 以下是我大学期间<br />
-                做过的作品，<br />
-                <span class="serif">按类别分组</span>
+                做过的作品，<span class="serif">按类别分组</span>
               </h2>
               <div class="section-head__motion" aria-hidden="true">
                 <span class="section-head__orbit">
