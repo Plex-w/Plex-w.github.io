@@ -11954,6 +11954,203 @@ p,
     font-size: 0.7rem;
   }
 }
+/* UI sheet — lighter blue accent pass */
+.ui-thinking {
+  --ui-purple: #c9ebfa;
+  --ui-purple-strong: #a9d8ef;
+  --ui-line: rgba(203, 235, 250, 0.22);
+  background:
+    radial-gradient(circle at 78% 6%, rgba(187, 228, 247, 0.1), transparent 36%),
+    linear-gradient(180deg, rgba(4, 10, 14, 0.36), rgba(4, 8, 11, 0.11) 42%, rgba(4, 10, 14, 0.4));
+}
+
+.ui-thinking::before {
+  background-image:
+    linear-gradient(90deg, rgba(218, 240, 251, 0.024) 1px, transparent 1px),
+    linear-gradient(rgba(218, 240, 251, 0.02) 1px, transparent 1px);
+}
+
+.ui-browser {
+  border-color: rgba(207, 237, 250, 0.3);
+  background:
+    linear-gradient(145deg, rgba(122, 169, 193, 0.24), rgba(28, 45, 56, 0.28) 55%, rgba(201, 235, 250, 0.11));
+}
+
+.ui-browser b,
+.ui-browser--back b {
+  color: rgba(220, 242, 252, 0.38);
+}
+
+.ui-browser--back b {
+  color: rgba(220, 242, 252, 0.25);
+}
+
+.ui-browser__bar i {
+  background: rgba(220, 242, 252, 0.54);
+}
+
+.ui-browser__lines i {
+  background: rgba(220, 242, 252, 0.21);
+}
+
+.ui-thinking__orbit {
+  border-color: rgba(201, 235, 250, 0.38);
+  box-shadow: 0 0 24px rgba(156, 211, 238, 0.1);
+}
+
+.ui-thinking__orbit::before,
+.ui-thinking__orbit::after {
+  border-color: rgba(201, 235, 250, 0.16);
+}
+
+.ui-spark {
+  color: rgba(218, 242, 252, 0.55);
+}
+
+.ui-process__base {
+  stroke: rgba(201, 235, 250, 0.22);
+}
+
+.ui-process__draw {
+  stroke: rgba(201, 235, 250, 0.78);
+}
+
+.ui-process__icon {
+  border-color: rgba(201, 235, 250, 0.3);
+  color: #e1f3fc;
+}
+
+.ui-process__dot {
+  border-color: rgba(201, 235, 250, 0.55);
+}
+
+.ui-process__step strong b {
+  color: rgba(201, 235, 250, 0.76);
+}
+
+.ui-process__step:hover .ui-process__icon,
+.ui-process__step:focus-visible .ui-process__icon {
+  border-color: rgba(214, 241, 252, 0.66);
+  color: #f6fcff;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  background: linear-gradient(145deg, #f3fbff, #b9dff2);
+  color: #071821;
+  box-shadow:
+    0 8px 22px rgba(147, 204, 230, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.ui-process__step.is-active .ui-process__dot {
+  background: #c9ebfa;
+  box-shadow:
+    0 0 0 4px rgba(4, 9, 12, 0.78),
+    0 0 13px rgba(201, 235, 250, 0.72);
+}
+
+.ui-process__step.is-active strong b {
+  color: #c9ebfa;
+}
+
+.ui-card {
+  border-color: rgba(203, 235, 250, 0.17);
+}
+
+.ui-card:hover {
+  border-color: rgba(203, 235, 250, 0.34);
+}
+
+.ui-card__icon {
+  background: rgba(201, 235, 250, 0.13);
+  color: #c9ebfa;
+}
+
+.ui-principles__icon {
+  color: #cbe7f6;
+}
+
+.ui-ref-phone__frame {
+  border-color: rgba(190, 228, 245, 0.62);
+}
+
+.ui-ref-phone__screen {
+  background:
+    radial-gradient(circle at 32% 34%, rgba(233, 247, 255, 0.75), transparent 19%),
+    radial-gradient(circle at 70% 40%, rgba(157, 207, 232, 0.62), transparent 30%),
+    linear-gradient(160deg, #1c3140, #6797ae 52%, #d2c6ad 74%, #274252);
+}
+
+.ui-ref-phone__screen::before {
+  background: linear-gradient(180deg, #d3eaf6, #72a4bc 62%, #355668);
+}
+
+.ui-ref-phone__screen::after {
+  background: #f6eedf;
+  box-shadow: 0 0 14px rgba(246, 238, 223, 0.52);
+}
+
+.ui-ref-phone__float {
+  border-color: rgba(201, 235, 250, 0.25);
+  background: rgba(114, 164, 190, 0.14);
+}
+
+.ui-ref-phone__glow {
+  background: rgba(230, 246, 255, 0.21);
+}
+
+.ui-loop__ring {
+  border-color: rgba(201, 235, 250, 0.28);
+}
+
+.ui-loop__ring--inner {
+  border-color: rgba(201, 235, 250, 0.15);
+}
+
+.ui-loop__core {
+  border-color: rgba(201, 235, 250, 0.3);
+  background: radial-gradient(circle at 38% 32%, rgba(125, 180, 207, 0.42), rgba(24, 43, 54, 0.94));
+  color: #e0f3fd;
+}
+
+.ui-loop__node-icon {
+  background: rgba(117, 165, 190, 0.34);
+  color: #e0f3fd;
+}
+
+.ui-loop__node:hover .ui-loop__node-icon,
+.ui-loop__node:focus-visible .ui-loop__node-icon,
+.ui-loop__node.is-active .ui-loop__node-icon {
+  background: rgba(201, 235, 250, 0.72);
+  color: #071821;
+  box-shadow: 0 0 15px rgba(201, 235, 250, 0.42);
+}
+
+.ui-strategy {
+  border-color: rgba(203, 235, 250, 0.15);
+}
+
+.ui-strategy li i {
+  color: #c9ebfa;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  animation: ui-step-live-pale-blue 3.8s ease-in-out infinite;
+}
+
+@keyframes ui-step-live-pale-blue {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 22px rgba(147, 204, 230, 0.26),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+  50% {
+    box-shadow:
+      0 10px 28px rgba(174, 219, 241, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
