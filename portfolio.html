@@ -11423,6 +11423,537 @@ p,
     font-size: 0.76rem;
   }
 }
+/* ==========================================================================
+   UI sheet — compact light-blue treatment blended into the film backdrop
+   ========================================================================== */
+
+.ui-thinking {
+  --ui-text: #eff5f8;
+  --ui-muted: #b3c0c9;
+  --ui-dim: #85939d;
+  --ui-purple: #a8d5ef;
+  --ui-purple-strong: #6ca9cc;
+  --ui-surface: rgba(7, 15, 21, 0.78);
+  --ui-line: rgba(180, 218, 239, 0.2);
+  margin-bottom: clamp(22px, 2.8vw, 32px);
+  padding: 16px clamp(6px, 1vw, 12px);
+  border-top-color: rgba(196, 225, 241, 0.2);
+  border-bottom-color: rgba(196, 225, 241, 0.12);
+  background:
+    radial-gradient(circle at 78% 6%, rgba(154, 209, 240, 0.12), transparent 35%),
+    linear-gradient(180deg, rgba(4, 10, 14, 0.38), rgba(4, 8, 11, 0.12) 42%, rgba(4, 10, 14, 0.42));
+}
+
+.ui-thinking::before {
+  background-image:
+    linear-gradient(90deg, rgba(211, 234, 247, 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(211, 234, 247, 0.024) 1px, transparent 1px);
+  opacity: 0.25;
+}
+
+.ui-thinking__hero {
+  min-height: 190px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.92fr);
+}
+
+.ui-thinking__kicker {
+  font-size: 0.8rem;
+}
+
+.ui-thinking__intro h4 {
+  margin-top: 9px;
+  font-size: clamp(1.8rem, 2.45vw, 2.4rem);
+  line-height: 1.18;
+}
+
+.ui-thinking__lead {
+  margin-top: 11px;
+  font-size: 0.88rem;
+  line-height: 1.78;
+}
+
+.ui-thinking__visual {
+  min-height: 190px;
+}
+
+.ui-browser {
+  width: min(220px, 62%);
+  border-color: rgba(189, 222, 240, 0.28);
+  background:
+    linear-gradient(145deg, rgba(107, 153, 177, 0.26), rgba(23, 38, 47, 0.3) 55%, rgba(168, 213, 239, 0.1));
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.ui-browser--back {
+  opacity: 0.6;
+}
+
+.ui-browser b {
+  color: rgba(211, 234, 247, 0.34);
+  font-size: clamp(38px, 3.8vw, 56px);
+}
+
+.ui-browser--back b {
+  color: rgba(211, 234, 247, 0.22);
+}
+
+.ui-browser__bar {
+  border-bottom-color: rgba(211, 234, 247, 0.1);
+}
+
+.ui-browser__bar i {
+  background: rgba(211, 234, 247, 0.48);
+}
+
+.ui-browser__lines i {
+  background: rgba(211, 234, 247, 0.18);
+}
+
+.ui-thinking__orbit {
+  border-color: rgba(168, 213, 239, 0.35);
+  box-shadow: 0 0 24px rgba(102, 164, 196, 0.09);
+}
+
+.ui-thinking__orbit::before,
+.ui-thinking__orbit::after {
+  border-color: rgba(168, 213, 239, 0.14);
+}
+
+.ui-spark {
+  color: rgba(205, 231, 245, 0.5);
+}
+
+.ui-process {
+  margin-top: 17px;
+}
+
+.ui-process__curve {
+  top: 42px;
+  height: 18px;
+}
+
+.ui-process__base {
+  stroke: rgba(168, 213, 239, 0.2);
+}
+
+.ui-process__draw {
+  stroke: rgba(168, 213, 239, 0.72);
+}
+
+.ui-process__icon {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(168, 213, 239, 0.26);
+  background: rgba(6, 14, 19, 0.6);
+  color: #d8ebf6;
+}
+
+.ui-process__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ui-process__dot {
+  width: 6px;
+  height: 6px;
+  margin-top: 5px;
+  border-color: rgba(168, 213, 239, 0.5);
+  background: #0b1419;
+  box-shadow: 0 0 0 4px rgba(4, 9, 12, 0.78);
+}
+
+.ui-process__step strong {
+  margin-top: 8px;
+  font-size: 0.92rem;
+}
+
+.ui-process__step strong b {
+  color: rgba(183, 219, 240, 0.72);
+  font-size: 0.66rem;
+}
+
+.ui-process__step small {
+  margin-top: 4px;
+  color: #b3c0c9;
+  font-size: 0.72rem;
+  line-height: 1.58;
+}
+
+.ui-process__step:hover .ui-process__icon,
+.ui-process__step:focus-visible .ui-process__icon {
+  border-color: rgba(168, 213, 239, 0.6);
+  color: #f1f8fc;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  border-color: transparent;
+  background: linear-gradient(145deg, #d9eefb, #8dc5e2);
+  color: #07151e;
+  box-shadow:
+    0 8px 22px rgba(63, 119, 150, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.ui-process__step.is-active .ui-process__dot {
+  background: #a8d5ef;
+  box-shadow:
+    0 0 0 4px rgba(4, 9, 12, 0.78),
+    0 0 12px rgba(168, 213, 239, 0.65);
+}
+
+.ui-process__step.is-active strong b {
+  color: #a8d5ef;
+}
+
+.ui-thinking__cards {
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.ui-card {
+  padding: 14px;
+  border-color: rgba(180, 218, 239, 0.15);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, rgba(6, 14, 19, 0.86), rgba(4, 10, 14, 0.8));
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+.ui-card:hover {
+  border-color: rgba(168, 213, 239, 0.3);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+}
+
+.ui-card__head {
+  gap: 9px;
+}
+
+.ui-card__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(168, 213, 239, 0.11);
+  color: #a8d5ef;
+}
+
+.ui-card__icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.ui-card__head h5 {
+  font-size: 1.4rem;
+}
+
+.ui-card__head small.ui-card__sub {
+  color: #85939d;
+  font-size: 0.58rem;
+}
+
+.ui-card__intro {
+  margin-top: 9px;
+  font-size: 0.86rem;
+  line-height: 1.72;
+}
+
+.ui-card__content {
+  grid-template-columns: minmax(0, 1fr) 130px;
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.ui-principles {
+  gap: 7px;
+  padding-top: 2px;
+}
+
+.ui-principles li {
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 8px;
+  margin: -2px -4px;
+  padding: 2px 4px;
+}
+
+.ui-principles__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #bddcec;
+}
+
+.ui-principles__icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ui-principles strong {
+  font-size: 0.86rem;
+}
+
+.ui-principles p {
+  margin-top: 1px;
+  font-size: 0.73rem;
+  line-height: 1.55;
+}
+
+.ui-ref-phone {
+  width: 114px;
+  height: 214px;
+  margin-top: 3px;
+}
+
+.ui-ref-phone__frame {
+  padding: 4px;
+  border-color: rgba(148, 191, 214, 0.55);
+  border-radius: 20px;
+}
+
+.ui-ref-phone__notch {
+  top: 6px;
+  width: 32px;
+  height: 7px;
+}
+
+.ui-ref-phone__screen {
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 32% 34%, rgba(218, 238, 249, 0.65), transparent 19%),
+    radial-gradient(circle at 70% 40%, rgba(120, 170, 195, 0.56), transparent 30%),
+    linear-gradient(160deg, #14242e, #4f7f97 52%, #c2b7a3 74%, #20343f);
+}
+
+.ui-ref-phone__screen::before {
+  background: linear-gradient(180deg, #b9d8e8, #5f879e 62%, #2c4552);
+}
+
+.ui-ref-phone__screen::after {
+  background: #f1e9d8;
+}
+
+.ui-ref-phone__float {
+  border-color: rgba(168, 213, 239, 0.22);
+  background: rgba(100, 150, 177, 0.14);
+}
+
+.ui-ref-phone__glow {
+  background: rgba(220, 240, 250, 0.18);
+}
+
+.ui-ref-phone__panel {
+  height: 48px;
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(12, 22, 28, 0.52);
+}
+
+.ui-ref-phone__row {
+  right: 17px;
+  bottom: 23px;
+  left: 17px;
+}
+
+.ui-ref-phone__row--short {
+  right: 40px;
+  bottom: 17px;
+}
+
+.ui-interaction {
+  grid-template-columns: minmax(185px, 1.08fr) minmax(135px, 0.92fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ui-loop {
+  min-height: 190px;
+}
+
+.ui-loop__ring {
+  width: 160px;
+  height: 160px;
+  border-color: rgba(168, 213, 239, 0.24);
+}
+
+.ui-loop__ring--inner {
+  width: 124px;
+  height: 124px;
+  border-color: rgba(168, 213, 239, 0.13);
+}
+
+.ui-loop__core {
+  width: 50px;
+  height: 50px;
+  border-color: rgba(168, 213, 239, 0.27);
+  background: radial-gradient(circle at 38% 32%, rgba(104, 157, 183, 0.4), rgba(21, 37, 46, 0.94));
+  color: #d8edf8;
+}
+
+.ui-loop__core svg {
+  width: 21px;
+  height: 21px;
+}
+
+.ui-loop__node-icon {
+  width: 21px;
+  height: 21px;
+  background: rgba(100, 146, 170, 0.32);
+  color: #d2e9f5;
+}
+
+.ui-loop__node-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.ui-loop__node b {
+  font-size: 0.78rem;
+}
+
+.ui-loop__node small {
+  font-size: 0.62rem;
+}
+
+.ui-loop__node--guide {
+  top: 20%;
+  left: 4%;
+}
+
+.ui-loop__node--feedback {
+  right: 0;
+}
+
+.ui-loop__node--flow {
+  bottom: 10%;
+  left: 11%;
+}
+
+.ui-loop__node:hover .ui-loop__node-icon,
+.ui-loop__node:focus-visible .ui-loop__node-icon,
+.ui-loop__node.is-active .ui-loop__node-icon {
+  background: rgba(168, 213, 239, 0.65);
+  color: #07151e;
+  box-shadow: 0 0 14px rgba(168, 213, 239, 0.4);
+}
+
+.ui-strategy {
+  padding: 9px;
+  border-color: rgba(180, 218, 239, 0.14);
+  border-radius: 9px;
+  background: rgba(11, 21, 27, 0.78);
+}
+
+.ui-strategy__title {
+  padding-bottom: 6px;
+  border-bottom-color: rgba(180, 218, 239, 0.12);
+  font-size: 0.8rem;
+}
+
+.ui-strategy ul {
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.ui-strategy li {
+  grid-template-columns: 11px minmax(0, 1fr);
+  gap: 4px;
+  color: #d0dbe2;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.ui-strategy li i {
+  color: #a8d5ef;
+  font-size: 7px;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  animation: ui-step-live-blue 3.8s ease-in-out infinite;
+}
+
+@keyframes ui-step-live-blue {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 22px rgba(63, 119, 150, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 10px 28px rgba(105, 164, 195, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (max-width: 760px) {
+  .ui-thinking {
+    padding: 15px 12px;
+    margin-bottom: 22px;
+  }
+
+  .ui-thinking__intro h4 {
+    font-size: clamp(1.4rem, 7.1vw, 1.9rem);
+  }
+
+  .ui-thinking__lead {
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  .ui-thinking__visual {
+    min-height: 176px;
+  }
+
+  .ui-thinking__cards {
+    margin-top: 16px;
+  }
+
+  .ui-card {
+    padding: 13px 12px;
+  }
+
+  .ui-card__head h5 {
+    font-size: 1.16rem;
+  }
+
+  .ui-card__intro {
+    font-size: 0.8rem;
+  }
+
+  .ui-card__content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ui-ref-phone {
+    width: 106px;
+    height: 202px;
+  }
+
+  .ui-loop {
+    min-height: 214px;
+  }
+
+  .ui-process__curve,
+  .ui-process__steps {
+    width: 600px;
+  }
+
+  .ui-process__step strong {
+    font-size: 0.86rem;
+  }
+
+  .ui-process__step small {
+    font-size: 0.68rem;
+  }
+
+  .ui-principles strong {
+    font-size: 0.83rem;
+  }
+
+  .ui-principles p {
+    font-size: 0.7rem;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
