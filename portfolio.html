@@ -18836,6 +18836,58 @@ body {
     }
   }
 </style>
+
+<style id="td-orbit-centering">
+  /* Keep the 3D orbit centered on the glass object while it breathes */
+  .td-visual__orbit {
+    top: 48%;
+    right: auto;
+    left: 50%;
+    width: 84%;
+    height: 40%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  @keyframes td-orbit {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: translate(-50%, -50%) rotate(-20deg) scale(0.98);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-16deg) scale(1.02);
+    }
+  }
+</style>
+
+<style id="ui-orbit-centering">
+  /* Keep the UI orbit around the two browser windows */
+  .ui-thinking__orbit {
+    top: 50%;
+    right: auto;
+    left: 38%;
+    width: 78%;
+    height: 48%;
+    transform: translate(-50%, -50%) rotate(-14deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  @keyframes ui-orbit-pulse {
+    0%,
+    100% {
+      opacity: 0.65;
+      transform: translate(-50%, -50%) rotate(-14deg) scale(0.98);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-11deg) scale(1.02);
+    }
+  }
+</style>
 </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
