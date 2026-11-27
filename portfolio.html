@@ -8814,6 +8814,808 @@ p,
   margin-top: clamp(32px, 3.5vw, 48px);
 }
 
+/* ==========================================================================
+   Design thinking atlas
+   ========================================================================== */
+
+.thinking-head {
+  padding-bottom: clamp(34px, 4.6vw, 62px);
+}
+
+.thinking-atlas {
+  --thinking-accent: #b9e4d0;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 16%, rgba(185, 228, 208, 0.06), transparent 34%),
+    linear-gradient(118deg, rgba(11, 19, 16, 0.94), rgba(6, 11, 9, 0.84));
+}
+
+.thinking-atlas::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(238, 233, 222, 0.042) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 233, 222, 0.042) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
+  pointer-events: none;
+}
+
+.thinking-atlas__spotlight {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: radial-gradient(
+    430px circle at var(--pointer-x) var(--pointer-y),
+    rgba(185, 228, 208, 0.085),
+    transparent 65%
+  );
+  opacity: 0.8;
+  pointer-events: none;
+  transition: background 0.2s linear;
+}
+
+.thinking-atlas__shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(286px, 0.78fr) minmax(0, 1.72fr);
+  min-height: 560px;
+}
+
+/* Index ------------------------------------------------------------------ */
+
+.thinking-index {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 30px 34px 24px 0;
+  border-right: 1px solid var(--line);
+}
+
+.thinking-index__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.thinking-tabs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.thinking-tab {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 2px 15px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: none;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    padding 0.4s var(--ease-out),
+    background-color 0.35s ease;
+}
+
+.thinking-tab::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 11px;
+  bottom: 11px;
+  width: 1px;
+  background: var(--thinking-accent);
+  opacity: 0.9;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.42s var(--ease-out);
+}
+
+.thinking-tab::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(185, 228, 208, 0.08), transparent 78%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.thinking-tab:hover,
+.thinking-tab:focus-visible,
+.thinking-tab.is-active {
+  color: var(--paper);
+}
+
+.thinking-tab:hover::after,
+.thinking-tab:focus-visible::after,
+.thinking-tab.is-active::after {
+  opacity: 1;
+}
+
+.thinking-tab:hover,
+.thinking-tab:focus-visible {
+  padding-left: 8px;
+}
+
+.thinking-tab.is-active {
+  padding-left: 12px;
+}
+
+.thinking-tab.is-active::before {
+  transform: scaleY(1);
+}
+
+.thinking-tab:focus-visible {
+  outline: 1px solid var(--thinking-accent);
+  outline-offset: 3px;
+}
+
+.thinking-tab__no {
+  align-self: start;
+  padding-top: 2px;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  transition: color 0.35s ease;
+}
+
+.thinking-tab.is-active .thinking-tab__no {
+  color: var(--thinking-accent);
+}
+
+.thinking-tab__body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.thinking-tab__body strong {
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thinking-tab__body small {
+  overflow: hidden;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 5.6px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thinking-tab__meta {
+  align-self: center;
+  color: var(--muted-soft);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  transition: color 0.35s ease;
+}
+
+.thinking-tab.is-active .thinking-tab__meta {
+  color: var(--thinking-accent);
+}
+
+.thinking-index__foot {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 18px;
+  margin-top: auto;
+  padding-top: 28px;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.thinking-index__hint {
+  text-align: right;
+}
+
+.thinking-progress {
+  position: relative;
+  grid-column: 1 / -1;
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  background: var(--line-soft);
+}
+
+.thinking-progress i {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--thinking-accent);
+}
+
+.thinking-progress.is-running i {
+  animation: thinking-progress 7s linear forwards;
+}
+
+@keyframes thinking-progress {
+  to {
+    width: 100%;
+  }
+}
+
+/* Stage ------------------------------------------------------------------ */
+
+.thinking-stage {
+  position: relative;
+  min-width: 0;
+  padding: clamp(30px, 3.4vw, 48px) 0 clamp(28px, 3.4vw, 44px) clamp(30px, 4vw, 60px);
+}
+
+.thinking-visual {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate(var(--visual-x, 0px), var(--visual-y, 0px));
+}
+
+.thinking-visual__axis {
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(transparent, var(--line-soft) 22%, var(--line-soft) 76%, transparent);
+}
+
+.thinking-visual__word {
+  position: absolute;
+  right: 1%;
+  bottom: -12%;
+  color: var(--thinking-accent);
+  font-family: var(--font-serif);
+  font-size: clamp(190px, 22vw, 340px);
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+  opacity: 0.055;
+  transform: translate3d(0, 0, 0);
+  transition:
+    color 0.55s ease,
+    opacity 0.55s ease,
+    transform 0.7s var(--ease-out);
+}
+
+.thinking-visual__word.is-shifting {
+  animation: thinking-word 0.6s var(--ease-out);
+}
+
+@keyframes thinking-word {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  100% {
+    opacity: 0.055;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.thinking-orbit {
+  position: absolute;
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  animation: thinking-spin 56s linear infinite;
+}
+
+.thinking-orbit::before,
+.thinking-orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+}
+
+.thinking-orbit::before {
+  inset: 12%;
+}
+
+.thinking-orbit::after {
+  inset: 29%;
+  border-style: dashed;
+  opacity: 0.55;
+}
+
+.thinking-orbit i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--thinking-accent);
+  box-shadow: 0 0 14px rgba(185, 228, 208, 0.55);
+}
+
+.thinking-orbit--outer {
+  top: 4%;
+  right: -14%;
+  width: min(560px, 66%);
+  aspect-ratio: 1;
+}
+
+.thinking-orbit--outer i {
+  top: 17%;
+  left: 13%;
+}
+
+.thinking-orbit--inner {
+  top: 24%;
+  right: 1%;
+  width: min(360px, 43%);
+  aspect-ratio: 1;
+  animation-direction: reverse;
+  animation-duration: 38s;
+}
+
+.thinking-orbit--inner i {
+  right: 8%;
+  bottom: 23%;
+}
+
+@keyframes thinking-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.thinking-visual__label {
+  position: absolute;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 5.8px;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.thinking-visual__label--top {
+  top: 8%;
+  right: 2%;
+}
+
+.thinking-visual__label--side {
+  display: none;
+}
+
+/* Panel ------------------------------------------------------------------ */
+
+.thinking-panel {
+  position: relative;
+  z-index: 2;
+  max-width: 790px;
+  min-width: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s var(--ease-out),
+    filter 0.3s ease;
+}
+
+.thinking-panel.is-switching {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(14px);
+}
+
+.thinking-panel.is-arriving {
+  animation: thinking-arrive 0.5s var(--ease-out);
+}
+
+@keyframes thinking-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thinking-panel__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+}
+
+.thinking-panel__meta b {
+  color: var(--thinking-accent);
+  font-weight: 500;
+}
+
+.thinking-panel__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.thinking-panel__tag::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.thinking-label {
+  display: block;
+  color: var(--muted-soft);
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.thinking-question {
+  max-width: 770px;
+  margin-top: 18px;
+  color: var(--bone);
+  font-family: var(--font-sans);
+  font-size: clamp(1.85rem, 3vw, 3.05rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.24;
+}
+
+.thinking-question > span {
+  display: block;
+}
+
+.thinking-question em {
+  display: block;
+  margin-top: 2px;
+  color: var(--thinking-accent);
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  transition: color 0.45s ease;
+}
+
+.thinking-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(28px, 3.2vw, 44px);
+  border-top: 1px solid var(--line);
+}
+
+.thinking-steps li {
+  position: relative;
+  min-width: 0;
+  padding: 22px 22px 0 0;
+  border-right: 1px solid var(--line-soft);
+}
+
+.thinking-steps li + li {
+  padding-left: 22px;
+}
+
+.thinking-steps li:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.thinking-steps li::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--thinking-accent);
+  background: #0a100d;
+  transform: rotate(45deg);
+  transition: background-color 0.4s ease;
+}
+
+.thinking-steps li + li::before {
+  left: 22px;
+}
+
+.thinking-step__no {
+  color: var(--thinking-accent);
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.thinking-steps h4 {
+  margin-top: 12px;
+  color: var(--paper);
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.thinking-steps p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.thinking-panel__foot {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(26px, 5vw, 70px);
+  margin-top: clamp(28px, 3.4vw, 46px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.thinking-panel__foot > div:first-child {
+  max-width: 520px;
+}
+
+.thinking-principle {
+  margin-top: 9px;
+  color: var(--paper);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.65;
+}
+
+.thinking-output {
+  flex: none;
+  min-width: 136px;
+  text-align: right;
+}
+
+.thinking-output p {
+  margin-top: 9px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+
+/* Thinking atlas responsive ---------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .thinking-atlas__shell {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .thinking-index {
+    padding: 26px 0 22px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .thinking-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    margin-top: 16px;
+  }
+
+  .thinking-tab {
+    padding-block: 13px;
+  }
+
+  .thinking-index__foot {
+    padding-top: 20px;
+  }
+
+  .thinking-stage {
+    padding: 34px 0 34px;
+  }
+
+  .thinking-visual__axis {
+    display: none;
+  }
+
+  .thinking-orbit--outer {
+    right: -10%;
+    width: min(500px, 64%);
+  }
+
+  .thinking-orbit--inner {
+    right: 4%;
+    width: min(320px, 42%);
+  }
+
+  .thinking-visual__word {
+    right: 4%;
+    font-size: clamp(180px, 30vw, 300px);
+  }
+}
+
+@media (max-width: 700px) {
+  .thinking-tabs {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .thinking-tab {
+    grid-template-columns: 24px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .thinking-tab:hover,
+  .thinking-tab:focus-visible,
+  .thinking-tab.is-active {
+    padding-left: 10px;
+  }
+
+  .thinking-tab__body strong {
+    font-size: 0.84rem;
+  }
+
+  .thinking-index__foot {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .thinking-index__hint {
+    display: none;
+  }
+
+  .thinking-stage {
+    padding-block: 28px 30px;
+  }
+
+  .thinking-panel__meta {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+  }
+
+  .thinking-panel__tag {
+    font-size: 0.6rem;
+  }
+
+  .thinking-question {
+    margin-top: 14px;
+    font-size: clamp(1.55rem, 8.2vw, 2.2rem);
+    line-height: 1.32;
+  }
+
+  .thinking-steps {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 26px;
+  }
+
+  .thinking-steps li,
+  .thinking-steps li + li {
+    padding: 17px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .thinking-steps li::before,
+  .thinking-steps li + li::before {
+    left: 0;
+  }
+
+  .thinking-steps li:last-child {
+    border-bottom: 0;
+  }
+
+  .thinking-steps h4 {
+    margin-top: 8px;
+  }
+
+  .thinking-steps p {
+    margin-top: 5px;
+    font-size: 0.76rem;
+    line-height: 1.75;
+  }
+
+  .thinking-panel__foot {
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 26px;
+    padding-top: 16px;
+  }
+
+  .thinking-output {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .thinking-visual__word {
+    right: 0;
+    bottom: -4%;
+    font-size: clamp(130px, 42vw, 210px);
+  }
+
+  .thinking-orbit--outer {
+    top: 8%;
+    right: -25%;
+    width: 90%;
+  }
+
+  .thinking-orbit--inner {
+    top: 27%;
+    right: 0;
+    width: 58%;
+  }
+
+  .thinking-visual__label--top {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thinking-orbit,
+  .thinking-progress.is-running i,
+  .thinking-panel.is-arriving,
+  .thinking-visual__word.is-shifting {
+    animation: none;
+  }
+
+  .thinking-panel,
+  .thinking-visual__word,
+  .thinking-tab {
+    transition: none;
+  }
+}
+
 /* ==== work-archive.css ==== */
 /* ==========================================================================
    WORK ARCHIVE
@@ -11289,25 +12091,27 @@ p,
 
 /* Home index: bigger click rows, no glass background */
 .chapter-index {
-  top: 27%;
+  top: 21.5%;
   gap: 3px;
 }
 
 .chapter-index a {
-  min-height: 36px;
+  min-height: 40px;
   padding: 7px 11px;
 }
 
 .chapter-index__label {
-  font-size: 12px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .chapter-index__num {
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .chapter-index__title {
   margin-bottom: 9px;
+  font-size: 9px;
 }
 
 /* ==========================================================================
@@ -11347,7 +12151,7 @@ p,
   }
 
   .chapter-index a {
-    min-height: 34px;
+    min-height: 38px;
     padding-block: 6px;
   }
 
@@ -13140,7 +13944,7 @@ body {
         <nav class="site-nav" aria-label="主导航">
           <a href="#about" data-nav><span>01</span>关于</a>
           <a href="#work" data-nav><span>02</span>作品</a>
-          <a href="#approach" data-nav><span>03</span>方法</a>
+          <a href="#approach" data-nav><span>03</span>思路</a>
           <a href="#contact" data-nav><span>04</span>联系</a>
         </nav>
 
@@ -13173,7 +13977,7 @@ body {
       <nav class="site-menu__nav container" aria-label="移动端导航">
         <a href="#about"><span>01</span><strong>关于我</strong><small>PROFILE</small></a>
         <a href="#work"><span>02</span><strong>作品档案</strong><small>WORK ARCHIVE</small></a>
-        <a href="#approach"><span>03</span><strong>工作方法</strong><small>APPROACH</small></a>
+        <a href="#approach"><span>03</span><strong>设计思路</strong><small>DESIGN THINKING</small></a>
         <a href="#contact"><span>04</span><strong>取得联系</strong><small>CONTACT</small></a>
       </nav>
       <div class="site-menu__bottom container">
@@ -13796,7 +14600,7 @@ body {
             <a class="section-jump__link section-jump__link--next" href="#approach">
               <span class="section-jump__copy">
                 <small>NEXT / 03</small>
-                <strong>工作方法</strong>
+                <strong>设计思路</strong>
               </span>
               <span class="section-jump__arrow" aria-hidden="true">→</span>
             </a>
@@ -13805,120 +14609,158 @@ body {
       </section>
 
       <!-- APPROACH ======================================================== -->
-      <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <section class="section approach approach--thinking" id="approach" aria-labelledby="approach-title">
         <div class="approach__glow" aria-hidden="true"></div>
         <div class="container">
-          <header class="section-head" data-reveal>
+          <header class="section-head thinking-head" data-reveal>
             <div class="section-head__meta">
-              <span class="section-index"><span>03</span> / APPROACH</span>
-              <span class="section-head__cn">工作方法</span>
+              <span class="section-index"><span>03</span> / DESIGN THINKING</span>
+              <span class="section-head__cn">设计思路</span>
             </div>
             <div class="section-head__main">
               <h2 class="section-title" id="approach-title">
-                不是把页面做满，<br />
-                <span class="serif">而是把问题想透。</span>
+                每个作品，<br />
+                <span class="serif">都有一条思考路径。</span>
               </h2>
               <p class="section-lede section-head__lede">
-                我的工作从理解开始，以可用、耐看、能落地结束。四个关键词，也是我处理问题的方式。
+                从界面到影像，六组作品共用一套判断方式：先找到问题，再决定形式。
               </p>
             </div>
           </header>
 
-          <div class="approach__grid">
-            <article class="strength" data-reveal>
-              <div class="strength__top">
-                <span class="strength__index">01</span>
-                <span class="strength__glyph" aria-hidden="true">◎</span>
-              </div>
-              <div class="strength__main">
-                <p class="strength__en">UNDERSTAND</p>
-                <h3>先把问题想清楚</h3>
-                <p>
-                  从业务目标、用户场景与竞品中，把模糊的需求翻译成可以推进的设计问题。先问对问题，再开始画。
-                </p>
-              </div>
-              <div class="strength__solve">
-                <span>解决</span>
-                <p>信息很多，但重点不清</p>
-              </div>
-            </article>
+          <div class="thinking-atlas" data-thinking-atlas data-reveal>
+            <div class="thinking-atlas__spotlight" aria-hidden="true"></div>
+            <div class="thinking-atlas__shell">
+              <aside class="thinking-index">
+                <div class="thinking-index__head">
+                  <span>SIX PATHS</span>
+                  <span>ONE METHOD</span>
+                </div>
 
-            <article class="strength" data-reveal style="--reveal-delay: 80ms">
-              <div class="strength__top">
-                <span class="strength__index">02</span>
-                <span class="strength__glyph strength__glyph--grid" aria-hidden="true">
-                  <i></i><i></i><i></i><i></i>
-                </span>
-              </div>
-              <div class="strength__main">
-                <p class="strength__en">STRUCTURE</p>
-                <h3>让界面长成系统</h3>
-                <p>
-                  用信息架构、组件与规范建立秩序，让不同页面说同一种语言，也为下一次迭代留好接口。
-                </p>
-              </div>
-              <div class="strength__solve">
-                <span>解决</span>
-                <p>页面各自为政，风格难以延续</p>
-              </div>
-            </article>
+                <div class="thinking-tabs" role="tablist" aria-label="作品设计思路">
+                  <button class="thinking-tab is-active" type="button" role="tab" id="thinking-tab-ui"
+                    aria-selected="true" aria-controls="thinking-panel" tabindex="0" data-thinking-index="0">
+                    <span class="thinking-tab__no">01</span>
+                    <span class="thinking-tab__body">
+                      <strong>UI 界面与交互</strong>
+                      <small>INTERFACE / SYSTEM</small>
+                    </span>
+                    <span class="thinking-tab__meta">秩序</span>
+                  </button>
+                  <button class="thinking-tab" type="button" role="tab" id="thinking-tab-aigc"
+                    aria-selected="false" aria-controls="thinking-panel" tabindex="-1" data-thinking-index="1">
+                    <span class="thinking-tab__no">02</span>
+                    <span class="thinking-tab__body">
+                      <strong>AIGC 应用</strong>
+                      <small>GENERATIVE / NARRATIVE</small>
+                    </span>
+                    <span class="thinking-tab__meta">筛选</span>
+                  </button>
+                  <button class="thinking-tab" type="button" role="tab" id="thinking-tab-3d"
+                    aria-selected="false" aria-controls="thinking-panel" tabindex="-1" data-thinking-index="2">
+                    <span class="thinking-tab__no">03</span>
+                    <span class="thinking-tab__body">
+                      <strong>三维视觉创意</strong>
+                      <small>FORM / MATERIAL</small>
+                    </span>
+                    <span class="thinking-tab__meta">体积</span>
+                  </button>
+                  <button class="thinking-tab" type="button" role="tab" id="thinking-tab-poster"
+                    aria-selected="false" aria-controls="thinking-panel" tabindex="-1" data-thinking-index="3">
+                    <span class="thinking-tab__no">04</span>
+                    <span class="thinking-tab__body">
+                      <strong>海报设计</strong>
+                      <small>TYPE / IMAGE</small>
+                    </span>
+                    <span class="thinking-tab__meta">层级</span>
+                  </button>
+                  <button class="thinking-tab" type="button" role="tab" id="thinking-tab-h5"
+                    aria-selected="false" aria-controls="thinking-panel" tabindex="-1" data-thinking-index="4">
+                    <span class="thinking-tab__no">05</span>
+                    <span class="thinking-tab__body">
+                      <strong>融媒体 / H5</strong>
+                      <small>TOUCH / STORY</small>
+                    </span>
+                    <span class="thinking-tab__meta">触控</span>
+                  </button>
+                  <button class="thinking-tab" type="button" role="tab" id="thinking-tab-video"
+                    aria-selected="false" aria-controls="thinking-panel" tabindex="-1" data-thinking-index="5">
+                    <span class="thinking-tab__no">06</span>
+                    <span class="thinking-tab__body">
+                      <strong>视频剪辑</strong>
+                      <small>EDIT / RHYTHM</small>
+                    </span>
+                    <span class="thinking-tab__meta">节奏</span>
+                  </button>
+                </div>
 
-            <article class="strength strength--paper" data-reveal>
-              <div class="strength__top">
-                <span class="strength__index">03</span>
-                <span class="strength__glyph" aria-hidden="true">≈</span>
-              </div>
-              <div class="strength__main">
-                <p class="strength__en">FEEL</p>
-                <h3>给体验留一点感受</h3>
-                <p>
-                  在克制的框架里处理字体、色彩、节奏与微动效，让功能被理解，也被记住。
-                </p>
-              </div>
-              <div class="strength__solve">
-                <span>解决</span>
-                <p>功能可用，却没有记忆点</p>
-              </div>
-            </article>
+                <div class="thinking-index__foot">
+                  <span class="thinking-index__state" data-thinking-state>AUTO · 06 PATHS</span>
+                  <span class="thinking-index__hint">HOVER · CLICK</span>
+                  <span class="thinking-progress" aria-hidden="true"><i data-thinking-progress></i></span>
+                </div>
+              </aside>
 
-            <article class="strength" data-reveal style="--reveal-delay: 80ms">
-              <div class="strength__top">
-                <span class="strength__index">04</span>
-                <span class="strength__glyph" aria-hidden="true">↗</span>
-              </div>
-              <div class="strength__main">
-                <p class="strength__en">SHIP</p>
-                <h3>把设计送到终点</h3>
-                <p>
-                  理解开发与业务约束，按节点推进、对齐反馈、持续打磨，直到设计真正发生，而不是停在稿子里。
-                </p>
-              </div>
-              <div class="strength__solve">
-                <span>解决</span>
-                <p>设计很美，但落地就走样</p>
-              </div>
-            </article>
-          </div>
+              <div class="thinking-stage">
+                <div class="thinking-visual" aria-hidden="true">
+                  <span class="thinking-visual__axis"></span>
+                  <span class="thinking-visual__word" data-thinking-word>序</span>
+                  <span class="thinking-orbit thinking-orbit--outer"><i></i></span>
+                  <span class="thinking-orbit thinking-orbit--inner"><i></i></span>
+                  <span class="thinking-visual__label thinking-visual__label--top">ASK / FRAME / MAKE</span>
+                  <span class="thinking-visual__label thinking-visual__label--side">DESIGN THINKING · 03</span>
+                </div>
 
-          <div class="toolkit" data-reveal>
-            <div class="toolkit__head">
-              <span class="eyebrow">TOOLKIT</span>
-              <p>
-                熟练掌握主流设计与剪辑软件，<br />
-                并以统一的设计标准审视最终成稿。
-              </p>
+                <article class="thinking-panel" id="thinking-panel" role="tabpanel"
+                  aria-labelledby="thinking-tab-ui" tabindex="0">
+                  <header class="thinking-panel__meta">
+                    <span><b data-thinking-count>01</b> / 06</span>
+                    <span class="thinking-panel__tag" data-thinking-tag>界面 · 系统 · 交互</span>
+                  </header>
+
+                  <p class="thinking-label">THE DESIGN QUESTION</p>
+                  <h3 class="thinking-question">
+                    <span data-thinking-question>怎样让复杂的助眠流程，</span>
+                    <em data-thinking-accent>变成一口气能走完的体验？</em>
+                  </h3>
+
+                  <ol class="thinking-steps" aria-label="设计路径">
+                    <li>
+                      <span class="thinking-step__no">01</span>
+                      <div>
+                        <h4 data-step-title>定义节奏</h4>
+                        <p data-step-copy>先排清入睡前的决策顺序，再确定每张界面要解决的问题。</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="thinking-step__no">02</span>
+                      <div>
+                        <h4 data-step-title>建立系统</h4>
+                        <p data-step-copy>用统一的色彩、图标与组件，让 25 张界面说同一种语言。</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="thinking-step__no">03</span>
+                      <div>
+                        <h4 data-step-title>校准感受</h4>
+                        <p data-step-copy>再用转场、反馈与微动效，让操作被理解，也被记住。</p>
+                      </div>
+                    </li>
+                  </ol>
+
+                  <footer class="thinking-panel__foot">
+                    <div>
+                      <span class="thinking-label">DESIGN PRINCIPLE</span>
+                      <p class="thinking-principle" data-thinking-principle>先减少选择，再建立秩序。</p>
+                    </div>
+                    <div class="thinking-output">
+                      <span class="thinking-label">OUTPUT</span>
+                      <p data-thinking-output>25 张界面 / 01 套组件</p>
+                    </div>
+                  </footer>
+                </article>
+              </div>
             </div>
-            <ul class="toolkit__list">
-              <li><span>01</span>Photoshop</li>
-              <li><span>02</span>Illustrator</li>
-              <li><span>03</span>Adobe XD</li>
-              <li><span>04</span>After Effects</li>
-              <li><span>05</span>Premiere Pro</li>
-              <li><span>06</span>AIGC 工作流</li>
-            </ul>
-            <p class="toolkit__note">
-              具备信息架构、组件规范、海报与版式设计经验；持续探索 AIGC、三维视觉与动态表达，让设计的语言更完整。
-            </p>
           </div>
 
           <nav class="section-jump" aria-label="章节顺序导航" data-reveal>
@@ -14079,7 +14921,7 @@ body {
             <nav class="site-footer__nav" aria-label="页脚导航">
               <a href="#about">关于</a>
               <a href="#work">作品</a>
-              <a href="#approach">方法</a>
+              <a href="#approach">思路</a>
               <a href="#contact">联系</a>
               <a href="index.html">回到开场 ↗</a>
             </nav>
@@ -18187,6 +19029,310 @@ window.MEDIA_DATA = {
   }
   updateClock();
   window.setInterval(updateClock, 30_000);
+
+  /* ---------------------------------------------------------------------
+     Design thinking atlas
+     --------------------------------------------------------------------- */
+  function initThinkingAtlas() {
+    const atlas = $("[data-thinking-atlas]");
+    if (!atlas) return;
+
+    const tabs = $$("[data-thinking-index]", atlas);
+    const panel = $(".thinking-panel", atlas);
+    const progress = $("[data-thinking-progress]", atlas);
+    const stateLabel = $("[data-thinking-state]", atlas);
+    const word = $("[data-thinking-word]", atlas);
+    if (!tabs.length || !panel) return;
+
+    const fields = {
+      count: $("[data-thinking-count]", panel),
+      tag: $("[data-thinking-tag]", panel),
+      question: $("[data-thinking-question]", panel),
+      accent: $("[data-thinking-accent]", panel),
+      principle: $("[data-thinking-principle]", panel),
+      output: $("[data-thinking-output]", panel),
+      stepTitles: $$("[data-step-title]", panel),
+      stepCopies: $$("[data-step-copy]", panel),
+    };
+
+    const paths = [
+      {
+        color: "#b9e4d0",
+        tag: "界面 · 系统 · 交互",
+        question: "怎样让复杂的助眠流程，",
+        accent: "变成一口气能走完的体验？",
+        principle: "先减少选择，再建立秩序。",
+        output: "25 张界面 / 01 套组件",
+        word: "序",
+        steps: [
+          ["定义节奏", "先排清入睡前的决策顺序，再确定每张界面要解决的问题。"],
+          ["建立系统", "用统一的色彩、图标与组件，让 25 张界面说同一种语言。"],
+          ["校准感受", "再用转场、反馈与微动效，让操作被理解，也被记住。"],
+        ],
+      },
+      {
+        color: "#e3b58f",
+        tag: "生成 · 筛选 · 叙事",
+        question: "怎样让 AI 生成的画面，",
+        accent: "保持角色与叙事的一致？",
+        principle: "先定规则，再让 AI 发挥。",
+        output: "34 张画面 / 02 本绘本",
+        word: "生",
+        steps: [
+          ["锚定角色", "先锁定角色轮廓、配色与画风，建立可复用的生成锚点。"],
+          ["筛选再生成", "批量出图后反复筛选，用人工判断修正比例与细节。"],
+          ["排版成书", "把设定、场景与绘本串成完整叙事，而不是单张好看的图。"],
+        ],
+      },
+      {
+        color: "#c8b7e6",
+        tag: "形体 · 材质 · 光",
+        question: "怎样让材质、灯光与体积，",
+        accent: "服务于同一种气质？",
+        principle: "体积感来自明暗关系，而不是细节堆叠。",
+        output: "13 组练习 / 03 类建模",
+        word: "体",
+        steps: [
+          ["搭起形体", "用低面数搭建比例与轮廓，先保证远看时形体成立。"],
+          ["试出材质", "在粗糙与光滑之间反复比较，让表面质感服务主题。"],
+          ["布光构图", "用主光、轮廓光与景深组织观看顺序，完成画面。"],
+        ],
+      },
+      {
+        color: "#e0cc98",
+        tag: "层级 · 图像 · 阅读",
+        question: "怎样在 3 秒内，",
+        accent: "让人先看见最重要的信息？",
+        principle: "先决定看什么，再决定怎么好看。",
+        output: "06 组海报 / 多尺寸输出",
+        word: "声",
+        steps: [
+          ["排出层级", "先确定标题、副标题与图像的主次，让重点第一眼成立。"],
+          ["定下图像", "用配色、字体与图形处理建立情绪，而不是堆满装饰。"],
+          ["远距校对", "按远距离与手机尺寸检查，保证任何尺度都清楚。"],
+        ],
+      },
+      {
+        color: "#9fd6d2",
+        tag: "触控 · 叙事 · 传播",
+        question: "怎样让手机上的主题内容，",
+        accent: "愿意被点开、继续滑下去？",
+        principle: "每一次滑动，都要给下一步一个理由。",
+        output: "02 个线上项目 / 双主题",
+        word: "流",
+        steps: [
+          ["做入口", "用一个明确的钩子，让主题在首屏就被理解。"],
+          ["单屏叙事", "把内容拆成单屏，用点击与滑动控制阅读的节奏。"],
+          ["补上反馈", "为每次触控留下回应，让线上传播也保留体验感。"],
+        ],
+      },
+      {
+        color: "#d9a6a2",
+        tag: "镜头 · 节奏 · 声音",
+        question: "怎样让镜头顺序，",
+        accent: "带着信息一步步往前走？",
+        principle: "剪辑不是拼接画面，而是安排注意力。",
+        output: "06 支视频 / 全片呈现",
+        word: "帧",
+        steps: [
+          ["挑出镜头", "先留下能推进信息的画面，而不是只挑好看的空镜。"],
+          ["组好节奏", "按主题安排顺序与呼吸，让画面在合适的时间换气。"],
+          ["校对声画", "最后统一声音、字幕与调色，让成片到哪里都清楚。"],
+        ],
+      },
+    ];
+
+    const CYCLE = 7000;
+    let active = 0;
+    let visible = false;
+    let userEngaged = false;
+    let cycleTimer = null;
+    let switchTimer = null;
+    let arrivalTimer = null;
+    let pointerFrame = null;
+    let pointerX = 0.5;
+    let pointerY = 0.5;
+
+    function syncTabs(index) {
+      tabs.forEach((tab, tabIndex) => {
+        const selected = tabIndex === index;
+        tab.classList.toggle("is-active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      panel.setAttribute("aria-labelledby", tabs[index].id);
+    }
+
+    function paint(index, { animate = true } = {}) {
+      const path = paths[index];
+      atlas.style.setProperty("--thinking-accent", path.color);
+      if (fields.count) fields.count.textContent = String(index + 1).padStart(2, "0");
+      if (fields.tag) fields.tag.textContent = path.tag;
+      if (fields.question) fields.question.textContent = path.question;
+      if (fields.accent) fields.accent.textContent = path.accent;
+      if (fields.principle) fields.principle.textContent = path.principle;
+      if (fields.output) fields.output.textContent = path.output;
+      fields.stepTitles.forEach((element, stepIndex) => {
+        const step = path.steps[stepIndex];
+        if (step) element.textContent = step[0];
+      });
+      fields.stepCopies.forEach((element, stepIndex) => {
+        const step = path.steps[stepIndex];
+        if (step) element.textContent = step[1];
+      });
+
+      if (word) {
+        word.textContent = path.word;
+        if (animate && !reduceMotion.matches) {
+          word.classList.remove("is-shifting");
+          void word.offsetWidth;
+          word.classList.add("is-shifting");
+        }
+      }
+    }
+
+    function select(index, { focus = false } = {}) {
+      const next = (index + paths.length) % paths.length;
+      if (focus) tabs[next].focus({ preventScroll: true });
+      syncTabs(next);
+      if (next === active) return;
+      active = next;
+
+      window.clearTimeout(switchTimer);
+      window.clearTimeout(arrivalTimer);
+      panel.classList.remove("is-arriving");
+      panel.classList.add("is-switching");
+      switchTimer = window.setTimeout(
+        () => {
+          paint(next);
+          panel.classList.remove("is-switching");
+          panel.classList.add("is-arriving");
+          arrivalTimer = window.setTimeout(() => panel.classList.remove("is-arriving"), 560);
+        },
+        reduceMotion.matches ? 0 : 170
+      );
+    }
+
+    function stopCycle() {
+      window.clearTimeout(cycleTimer);
+      cycleTimer = null;
+      progress?.classList.remove("is-running");
+    }
+
+    function startCycle() {
+      stopCycle();
+      if (!visible) return;
+      if (reduceMotion.matches) {
+        if (stateLabel) stateLabel.textContent = "EXPLORE · 06 PATHS";
+        return;
+      }
+      if (userEngaged) {
+        if (stateLabel) stateLabel.textContent = "MANUAL · 06 PATHS";
+        return;
+      }
+      if (stateLabel) stateLabel.textContent = "AUTO · 06 PATHS";
+      if (progress) {
+        void progress.offsetWidth;
+        progress.classList.add("is-running");
+      }
+      cycleTimer = window.setTimeout(() => {
+        select((active + 1) % paths.length);
+        startCycle();
+      }, CYCLE);
+    }
+
+    function markManual() {
+      userEngaged = true;
+      stopCycle();
+      if (stateLabel) stateLabel.textContent = "MANUAL · 06 PATHS";
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "mouse" || active === index) return;
+        markManual();
+        select(index);
+      });
+      tab.addEventListener("focus", () => {
+        if (active !== index) {
+          markManual();
+          select(index);
+        }
+      });
+      tab.addEventListener("click", () => {
+        markManual();
+        select(index);
+      });
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex = null;
+        if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % paths.length;
+        if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + paths.length) % paths.length;
+        if (event.key === "Home") nextIndex = 0;
+        if (event.key === "End") nextIndex = paths.length - 1;
+        if (nextIndex === null) return;
+        event.preventDefault();
+        markManual();
+        select(nextIndex, { focus: true });
+      });
+    });
+
+    atlas.addEventListener("pointerenter", () => {
+      if (!userEngaged) {
+        stopCycle();
+        if (stateLabel) stateLabel.textContent = "PAUSED · 06 PATHS";
+      }
+    });
+
+    atlas.addEventListener("pointerleave", () => {
+      pointerX = 0.5;
+      pointerY = 0.5;
+      atlas.style.setProperty("--pointer-x", "50%");
+      atlas.style.setProperty("--pointer-y", "50%");
+      atlas.style.setProperty("--visual-x", "0px");
+      atlas.style.setProperty("--visual-y", "0px");
+      if (!userEngaged) startCycle();
+    });
+
+    atlas.addEventListener("pointermove", (event) => {
+      if (reduceMotion.matches || event.pointerType !== "mouse") return;
+      const rect = atlas.getBoundingClientRect();
+      pointerX = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+      pointerY = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+      if (pointerFrame) return;
+      pointerFrame = window.requestAnimationFrame(() => {
+        pointerFrame = null;
+        atlas.style.setProperty("--pointer-x", `${(pointerX * 100).toFixed(2)}%`);
+        atlas.style.setProperty("--pointer-y", `${(pointerY * 100).toFixed(2)}%`);
+        atlas.style.setProperty("--visual-x", `${((pointerX - 0.5) * 16).toFixed(2)}px`);
+        atlas.style.setProperty("--visual-y", `${((pointerY - 0.5) * 12).toFixed(2)}px`);
+      });
+    });
+
+    atlas.addEventListener("focusin", () => {
+      if (!userEngaged) markManual();
+    });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          visible = entries[0].isIntersecting;
+          if (visible) startCycle();
+          else stopCycle();
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(atlas);
+    } else {
+      visible = true;
+      startCycle();
+    }
+
+    syncTabs(0);
+    paint(0, { animate: false });
+    if (reduceMotion.matches && stateLabel) stateLabel.textContent = "EXPLORE · 06 PATHS";
+  }
+
+  initThinkingAtlas();
 
   /* ---------------------------------------------------------------------
      Tiny niceties
