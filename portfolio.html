@@ -13292,6 +13292,97 @@ p,
     text-align: left;
   }
 }
+/* AIGC: both picture books in one design-thinking sheet */
+.aigc-book__volume {
+  position: absolute;
+  z-index: 4;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 5px 7px;
+  border: 1px solid rgba(244, 219, 185, 0.2);
+  border-radius: 4px;
+  background: rgba(10, 15, 11, 0.6);
+  color: #f2e4d1;
+  font-size: 0.52rem;
+  letter-spacing: 0.025em;
+  line-height: 1.35;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.aigc-book__volume small {
+  color: var(--aigc);
+  font-size: 0.4rem;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+}
+
+.aigc-book__volume--left {
+  left: 3%;
+  align-items: flex-start;
+}
+
+.aigc-book__volume--right {
+  right: 3%;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.aigc-foot__row {
+  grid-template-columns: repeat(4, 64px) minmax(142px, 1fr);
+}
+
+.aigc-foot__thumb {
+  height: 58px;
+}
+
+.aigc-foot__note {
+  padding: 8px 9px;
+}
+
+.aigc-foot__note p {
+  font-size: 0.69rem;
+}
+
+@media (max-width: 1120px) {
+  .aigc-foot__row {
+    grid-template-columns: repeat(4, 78px) minmax(0, 1fr);
+  }
+
+  .aigc-foot__thumb {
+    height: 66px;
+  }
+}
+
+@media (max-width: 760px) {
+  .aigc-book__volume {
+    bottom: 9%;
+    padding: 4px 5px;
+    font-size: 0.44rem;
+  }
+
+  .aigc-book__volume small {
+    font-size: 0.36rem;
+  }
+
+  .aigc-foot__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aigc-foot__thumb {
+    height: 69px;
+  }
+
+  .aigc-foot__note {
+    grid-column: 1 / -1;
+  }
+
+  .aigc-foot__note p {
+    font-size: 0.72rem;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -20659,14 +20750,16 @@ window.MEDIA_DATA = {
               </figure>
               <figure class="aigc-book__page aigc-book__page--right">
                 <img
-                  src="assets/img/work/aigc/qingqiu-book-page-04.webp"
+                  src="assets/img/work/aigc/arui-cover.webp"
                   alt=""
-                  width="1600"
-                  height="533"
+                  width="1500"
+                  height="1125"
                   loading="lazy"
                   decoding="async"
                 />
               </figure>
+              <span class="aigc-book__volume aigc-book__volume--left"><small>VOL.01</small>青丘诡梦录</span>
+              <span class="aigc-book__volume aigc-book__volume--right"><small>VOL.02</small>阿瑞的奇妙旅程</span>
               <span class="aigc-book__spine"></span>
               <span class="aigc-book__star">✦</span>
               <span class="aigc-book__float"><i></i><i></i><i></i></span>
@@ -20675,21 +20768,25 @@ window.MEDIA_DATA = {
 
             <footer class="aigc-foot">
               <div class="aigc-foot__top">
-                <span class="aigc-foot__label">SELECTED PAGES / 绘本内页</span>
-                <span class="aigc-foot__meta">10 页绘本 · 角色设定 · 东方志怪世界观</span>
+                <span class="aigc-foot__label">SELECTED PAGES / 两本绘本内页</span>
+                <span class="aigc-foot__meta">2 本绘本 · 34 张画面 · 统一视觉语言</span>
               </div>
               <div class="aigc-foot__row">
                 <figure class="aigc-foot__thumb">
                   <img src="assets/img/work/aigc/qingqiu-book-cover.webp" alt="《青丘诡梦录》绘本封面" width="1600" height="900" loading="lazy" decoding="async" />
-                  <figcaption>封面</figcaption>
+                  <figcaption>青丘·封面</figcaption>
                 </figure>
                 <figure class="aigc-foot__thumb">
-                  <img src="assets/img/work/aigc/qingqiu-book-page-01.webp" alt="《青丘诡梦录》绘本内页一" width="1600" height="521" loading="lazy" decoding="async" />
-                  <figcaption>内页 01</figcaption>
+                  <img src="assets/img/work/aigc/qingqiu-book-page-01.webp" alt="《青丘诡梦录》绘本内页" width="1600" height="521" loading="lazy" decoding="async" />
+                  <figcaption>青丘·内页</figcaption>
                 </figure>
                 <figure class="aigc-foot__thumb">
-                  <img src="assets/img/work/aigc/qingqiu-book-page-04.webp" alt="《青丘诡梦录》绘本内页四" width="1600" height="533" loading="lazy" decoding="async" />
-                  <figcaption>内页 04</figcaption>
+                  <img src="assets/img/work/aigc/arui-cover.webp" alt="《阿瑞的奇妙旅程》绘本封面" width="1500" height="1125" loading="lazy" decoding="async" />
+                  <figcaption>阿瑞·封面</figcaption>
+                </figure>
+                <figure class="aigc-foot__thumb">
+                  <img src="assets/img/work/aigc/arui-01.webp" alt="《阿瑞的奇妙旅程》绘本内页" width="1500" height="844" loading="lazy" decoding="async" />
+                  <figcaption>阿瑞·内页</figcaption>
                 </figure>
                 <div class="aigc-foot__note">
                   <span>STORY NOTE</span>
@@ -20697,10 +20794,10 @@ window.MEDIA_DATA = {
                 </div>
               </div>
               <div class="aigc-foot__facts">
-                <div class="aigc-foot__stat"><strong>10</strong><span>页绘本</span></div>
-                <div class="aigc-foot__stat"><strong>02</strong><span>角色设定</span></div>
-                <div class="aigc-foot__stat"><strong>01</strong><span>东方志怪世界观</span></div>
-                <p class="aigc-foot__quote">从角色设定到连续画面，<br />保持同一条情感线。</p>
+                <div class="aigc-foot__stat"><strong>02</strong><span>本绘本</span></div>
+                <div class="aigc-foot__stat"><strong>34</strong><span>张画面</span></div>
+                <div class="aigc-foot__stat"><strong>02</strong><span>套世界观</span></div>
+                <p class="aigc-foot__quote">从青丘到阿瑞，<br />让每本绘本保持自己的视觉一致性。</p>
               </div>
             </footer>
           </div>
