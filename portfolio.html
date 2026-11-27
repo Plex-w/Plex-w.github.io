@@ -13383,6 +13383,911 @@ p,
     font-size: 0.72rem;
   }
 }
+/* ==========================================================================
+   3D chapter — reference-led spatial design sheet
+   ========================================================================== */
+
+.td-thinking {
+  --td-accent: #c9b7e6;
+  --td-blue: #a8c9e8;
+  --td-text: #f2eff7;
+  --td-muted: #b9b5c2;
+  --td-dim: #878290;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(22px, 2.6vw, 32px) clamp(8px, 1.2vw, 16px);
+  border-top: 1px solid rgba(205, 190, 235, 0.16);
+  border-bottom: 1px solid rgba(205, 190, 235, 0.1);
+  background:
+    radial-gradient(circle at 74% 14%, rgba(163, 134, 217, 0.13), transparent 36%),
+    radial-gradient(circle at 24% 82%, rgba(116, 151, 185, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(5, 8, 12, 0.34), rgba(4, 7, 10, 0.12) 52%, rgba(5, 8, 12, 0.36));
+  color: var(--td-text);
+}
+
+.td-thinking::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(228, 220, 242, 0.022) 1px, transparent 1px),
+    linear-gradient(rgba(228, 220, 242, 0.018) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: radial-gradient(ellipse at 55% 42%, #000 10%, transparent 78%);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.td-thinking,
+.td-thinking * {
+  font-family: var(--font-sans);
+}
+
+.td-thinking > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero ------------------------------------------------------------------- */
+
+.td-top {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(320px, 1.04fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+  min-width: 0;
+}
+
+.td-top__left {
+  min-width: 0;
+}
+
+.td-heading__kicker {
+  color: var(--td-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.td-heading h4 {
+  margin-top: 12px;
+  color: var(--td-text);
+  font-size: clamp(2.05rem, 3.1vw, 3.05rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.18;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+}
+
+.td-heading h4 em {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.td-heading__intro {
+  max-width: 610px;
+  margin-top: 15px;
+  color: var(--td-muted);
+  font-size: 0.94rem;
+  letter-spacing: 0.006em;
+  line-height: 1.85;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.25);
+}
+
+.td-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px clamp(18px, 2.6vw, 34px);
+  margin-top: 22px;
+}
+
+.td-values li {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.td-values__icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  place-items: center;
+  color: #d3c7e8;
+}
+
+.td-values__icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.td-values strong {
+  display: block;
+  color: var(--td-text);
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.td-values small {
+  display: block;
+  margin-top: 3px;
+  color: var(--td-muted);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+/* 3D composition --------------------------------------------------------- */
+
+.td-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 350px;
+  perspective: 900px;
+  transition: transform 0.55s var(--ease-out);
+  transform: translate3d(var(--td-px, 0px), var(--td-py, 0px), 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.td-visual__glow {
+  position: absolute;
+  top: 18%;
+  left: 18%;
+  width: 66%;
+  height: 62%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(188, 157, 255, 0.24), rgba(111, 155, 201, 0.07) 48%, transparent 72%);
+  filter: blur(34px);
+}
+
+.td-visual__ground {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  left: 4%;
+  height: 27%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(154, 134, 200, 0.19), rgba(10, 14, 19, 0.14) 54%, transparent 75%);
+  filter: blur(6px);
+  transform: rotate(-5deg);
+}
+
+.td-visual__orbit {
+  position: absolute;
+  top: 25%;
+  right: 3%;
+  width: 70%;
+  height: 31%;
+  border: 1px solid rgba(192, 174, 233, 0.2);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  animation: td-orbit 9s ease-in-out infinite;
+}
+
+@keyframes td-orbit {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: rotate(-20deg) scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-16deg) scale(1.02);
+  }
+}
+
+.td-torus {
+  position: absolute;
+  z-index: 1;
+  inset: 1% 0 0;
+  width: 100%;
+  height: 94%;
+  overflow: visible;
+  filter: drop-shadow(0 18px 35px rgba(88, 60, 149, 0.2));
+  animation: td-torus-float 9s ease-in-out infinite;
+}
+
+@keyframes td-torus-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg) scale(0.99);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg) scale(1.01);
+  }
+}
+
+.td-cube-wrap {
+  position: absolute;
+  z-index: 3;
+  top: 46%;
+  left: 49%;
+  width: 92px;
+  height: 92px;
+  perspective: 700px;
+  transform: translate(-50%, -50%);
+}
+
+.td-cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: td-cube-turn 16s linear infinite;
+}
+
+@keyframes td-cube-turn {
+  from {
+    transform: rotateX(-18deg) rotateY(0deg) rotateZ(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(-12deg) rotateY(180deg) rotateZ(4deg) translateY(-7px);
+  }
+  to {
+    transform: rotateX(-18deg) rotateY(360deg) rotateZ(-4deg) translateY(0);
+  }
+}
+
+.td-cube__face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(218, 203, 247, 0.46);
+  border-radius: 5px;
+  background:
+    linear-gradient(145deg, rgba(212, 193, 255, 0.42), rgba(115, 151, 197, 0.18) 55%, rgba(250, 228, 202, 0.1));
+  box-shadow: inset 0 0 22px rgba(215, 199, 255, 0.16);
+  backdrop-filter: blur(1px);
+}
+
+.td-cube__face--front { transform: translateZ(46px); }
+.td-cube__face--back { transform: rotateY(180deg) translateZ(46px); }
+.td-cube__face--right { transform: rotateY(90deg) translateZ(46px); }
+.td-cube__face--left { transform: rotateY(-90deg) translateZ(46px); }
+.td-cube__face--top { transform: rotateX(90deg) translateZ(46px); }
+.td-cube__face--bottom { transform: rotateX(-90deg) translateZ(46px); }
+
+.td-orb {
+  position: absolute;
+  z-index: 4;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 27%, rgba(250, 246, 255, 0.9), rgba(174, 190, 235, 0.45) 26%, rgba(84, 97, 135, 0.2) 58%, rgba(13, 17, 24, 0.55) 75%);
+  border: 1px solid rgba(211, 222, 248, 0.28);
+  box-shadow:
+    inset -5px -7px 12px rgba(8, 13, 20, 0.4),
+    0 0 18px rgba(168, 194, 238, 0.15);
+  animation: td-orb-float 8s ease-in-out infinite;
+}
+
+.td-orb--one {
+  top: 13%;
+  left: 10%;
+  width: 22px;
+  height: 22px;
+}
+
+.td-orb--two {
+  right: 7%;
+  bottom: 27%;
+  width: 15px;
+  height: 15px;
+  animation-delay: -2.8s;
+}
+
+.td-orb--three {
+  left: 22%;
+  bottom: 14%;
+  width: 9px;
+  height: 9px;
+  opacity: 0.75;
+  animation-delay: -4.6s;
+}
+
+@keyframes td-orb-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+.td-glint {
+  position: absolute;
+  z-index: 4;
+  top: 7%;
+  right: 18%;
+  color: #f4e3c8;
+  font-size: 16px;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(246, 218, 173, 0.6);
+  animation: td-glint 4.5s ease-in-out infinite;
+}
+
+@keyframes td-glint {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85) rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) rotate(12deg);
+  }
+}
+
+.td-visual__label {
+  position: absolute;
+  z-index: 4;
+  right: 2%;
+  bottom: 1%;
+  color: rgba(197, 184, 219, 0.5);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Process band ----------------------------------------------------------- */
+
+.td-process {
+  margin-top: clamp(22px, 2.8vw, 32px);
+  padding-top: 18px;
+  border-top: 1px solid rgba(214, 201, 236, 0.14);
+}
+
+.td-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px 30px;
+}
+
+.td-section-head > div,
+.td-methods__head > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.td-section-head h5,
+.td-methods__head h5 {
+  color: var(--td-text);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.td-section-head i,
+.td-methods__head i {
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--td-accent), transparent);
+  border-radius: 2px;
+}
+
+.td-section-head > p,
+.td-methods__head > p {
+  max-width: 630px;
+  color: var(--td-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.005em;
+  line-height: 1.7;
+}
+
+.td-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.td-step {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 17px 14px 15px;
+  border: 1px solid rgba(211, 196, 238, 0.15);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, rgba(24, 22, 33, 0.72), rgba(12, 15, 21, 0.62));
+  color: var(--td-text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.32s ease,
+    background-color 0.32s ease,
+    box-shadow 0.32s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.td-step::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  z-index: 2;
+  color: rgba(208, 194, 230, 0.4);
+  font-size: 13px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.td-steps li:last-child .td-step::after {
+  display: none;
+}
+
+.td-step__icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(207, 190, 238, 0.24);
+  border-radius: 11px;
+  background: rgba(93, 79, 130, 0.18);
+  color: #e2d7f3;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.td-step__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+}
+
+.td-step strong {
+  margin-top: 14px;
+  color: var(--td-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+
+.td-step strong b {
+  margin-right: 5px;
+  color: rgba(205, 185, 233, 0.66);
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+
+.td-step p {
+  margin-top: 5px;
+  color: var(--td-muted);
+  font-size: 0.72rem;
+  line-height: 1.65;
+}
+
+.td-step:hover,
+.td-step:focus-visible,
+.td-step.is-active {
+  border-color: rgba(201, 183, 230, 0.45);
+  background-color: rgba(150, 121, 202, 0.05);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+}
+
+.td-step:hover .td-step__icon,
+.td-step:focus-visible .td-step__icon,
+.td-step.is-active .td-step__icon {
+  border-color: rgba(226, 211, 249, 0.55);
+  background: rgba(163, 134, 217, 0.26);
+  color: #f6efff;
+  box-shadow: 0 0 18px rgba(167, 139, 225, 0.2);
+}
+
+.td-step:focus-visible {
+  outline: 1px solid var(--td-accent);
+  outline-offset: 3px;
+}
+
+/* Core methods ----------------------------------------------------------- */
+
+.td-methods {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.48fr) minmax(0, 1.52fr);
+  gap: 18px clamp(26px, 4vw, 68px);
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(214, 201, 236, 0.14);
+}
+
+.td-methods__head {
+  min-width: 0;
+}
+
+.td-methods__head > p {
+  margin-top: 8px;
+  font-size: 0.76rem;
+}
+
+.td-methods ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 32px);
+}
+
+.td-methods li {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.td-methods__icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: none;
+  place-items: center;
+  color: #d6c6ee;
+}
+
+.td-methods__icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+}
+
+.td-methods strong {
+  display: block;
+  color: var(--td-text);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.td-methods li p {
+  margin-top: 3px;
+  color: var(--td-muted);
+  font-size: 0.68rem;
+  line-height: 1.6;
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .td-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .td-visual {
+    min-height: 320px;
+    max-width: 660px;
+  }
+
+  .td-steps {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 7px;
+    scrollbar-width: none;
+  }
+
+  .td-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .td-steps li {
+    flex: 0 0 196px;
+  }
+
+  .td-step {
+    min-height: 155px;
+  }
+
+  .td-methods {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 760px) {
+  .td-thinking {
+    padding: 17px 13px;
+    margin-bottom: 26px;
+  }
+
+  .td-heading h4 {
+    font-size: clamp(1.55rem, 7.7vw, 2.2rem);
+  }
+
+  .td-heading__intro {
+    font-size: 0.85rem;
+    line-height: 1.78;
+  }
+
+  .td-heading__intro br,
+  .td-step p br {
+    display: none;
+  }
+
+  .td-values {
+    gap: 12px;
+  }
+
+  .td-values li {
+    flex: 1 1 44%;
+  }
+
+  .td-values strong {
+    font-size: 0.8rem;
+  }
+
+  .td-values small {
+    font-size: 0.65rem;
+  }
+
+  .td-visual {
+    min-height: 255px;
+  }
+
+  .td-cube-wrap {
+    width: 70px;
+    height: 70px;
+  }
+
+  .td-cube__face--front { transform: translateZ(35px); }
+  .td-cube__face--back { transform: rotateY(180deg) translateZ(35px); }
+  .td-cube__face--right { transform: rotateY(90deg) translateZ(35px); }
+  .td-cube__face--left { transform: rotateY(-90deg) translateZ(35px); }
+  .td-cube__face--top { transform: rotateX(90deg) translateZ(35px); }
+  .td-cube__face--bottom { transform: rotateX(-90deg) translateZ(35px); }
+
+  .td-process {
+    margin-top: 20px;
+  }
+
+  .td-section-head h5,
+  .td-methods__head h5 {
+    font-size: 1.2rem;
+  }
+
+  .td-section-head > p,
+  .td-methods__head > p {
+    font-size: 0.73rem;
+  }
+
+  .td-steps {
+    margin-top: 12px;
+  }
+
+  .td-steps li {
+    flex-basis: 178px;
+  }
+
+  .td-step {
+    min-height: 150px;
+    padding: 14px 12px;
+  }
+
+  .td-step strong {
+    font-size: 0.84rem;
+  }
+
+  .td-step p {
+    font-size: 0.68rem;
+  }
+
+  .td-methods ul {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .td-methods strong {
+    font-size: 0.8rem;
+  }
+
+  .td-methods li p {
+    font-size: 0.66rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .td-visual,
+  .td-torus,
+  .td-cube,
+  .td-orb,
+  .td-glint,
+  .td-visual__orbit {
+    animation: none;
+    transition: none;
+  }
+}
+/* 3D sheet — stronger glass rendering and reference-scale text */
+.td-heading__intro {
+  font-size: 0.97rem;
+}
+
+.td-values strong {
+  font-size: 0.9rem;
+}
+
+.td-values small {
+  font-size: 0.72rem;
+}
+
+.td-section-head > p {
+  font-size: 0.81rem;
+}
+
+.td-step {
+  min-height: 162px;
+}
+
+.td-step strong {
+  font-size: 0.96rem;
+}
+
+.td-step p {
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.td-methods strong {
+  font-size: 0.9rem;
+}
+
+.td-methods li p {
+  font-size: 0.72rem;
+}
+
+.td-torus {
+  filter:
+    drop-shadow(0 18px 32px rgba(116, 82, 191, 0.26))
+    saturate(1.25)
+    brightness(1.16);
+  mix-blend-mode: screen;
+}
+
+.td-visual__glow {
+  background: radial-gradient(ellipse, rgba(193, 164, 255, 0.3), rgba(111, 155, 201, 0.09) 48%, transparent 72%);
+  opacity: 0.9;
+}
+
+.td-visual__orbit {
+  border-color: rgba(205, 187, 243, 0.3);
+}
+
+.td-cube-wrap::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -42%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(191, 166, 255, 0.24), transparent 68%);
+  filter: blur(14px);
+}
+
+.td-cube__face {
+  border-color: rgba(228, 216, 250, 0.6);
+  background:
+    linear-gradient(145deg, rgba(224, 209, 255, 0.56), rgba(129, 167, 214, 0.25) 54%, rgba(250, 228, 202, 0.13));
+  box-shadow:
+    inset 0 0 22px rgba(228, 214, 255, 0.24),
+    0 0 14px rgba(181, 159, 240, 0.08);
+}
+
+.td-orb {
+  border-color: rgba(219, 231, 252, 0.38);
+  box-shadow:
+    inset -5px -7px 12px rgba(8, 13, 20, 0.4),
+    0 0 22px rgba(186, 210, 250, 0.24);
+}
+
+@media (max-width: 760px) {
+  .td-heading__intro {
+    font-size: 0.87rem;
+  }
+
+  .td-step strong {
+    font-size: 0.88rem;
+  }
+
+  .td-step p {
+    font-size: 0.72rem;
+  }
+
+  .td-methods li p {
+    font-size: 0.68rem;
+  }
+}
+/* 3D visual: richer glass accent */
+.td-torus {
+  mix-blend-mode: normal;
+  filter:
+    drop-shadow(0 16px 30px rgba(117, 82, 197, 0.32))
+    saturate(1.55)
+    brightness(1.18);
+}
+
+.td-visual__glow {
+  background: radial-gradient(ellipse, rgba(190, 154, 255, 0.34), rgba(111, 166, 210, 0.12) 48%, transparent 73%);
+}
+
+.td-cube {
+  animation-name: td-cube-turn-rich;
+}
+
+@keyframes td-cube-turn-rich {
+  from {
+    transform: rotateX(-22deg) rotateY(32deg) rotateZ(-3deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(-15deg) rotateY(212deg) rotateZ(3deg) translateY(-7px);
+  }
+  to {
+    transform: rotateX(-22deg) rotateY(392deg) rotateZ(-3deg) translateY(0);
+  }
+}
+
+.td-cube__face--front {
+  background: linear-gradient(140deg, rgba(233, 219, 255, 0.62), rgba(139, 163, 226, 0.28));
+}
+
+.td-cube__face--back {
+  background: linear-gradient(140deg, rgba(109, 128, 181, 0.2), rgba(186, 160, 246, 0.22));
+}
+
+.td-cube__face--right {
+  background: linear-gradient(160deg, rgba(171, 145, 238, 0.48), rgba(79, 103, 156, 0.24));
+}
+
+.td-cube__face--left {
+  background: linear-gradient(160deg, rgba(143, 171, 225, 0.4), rgba(93, 108, 166, 0.2));
+}
+
+.td-cube__face--top {
+  background: linear-gradient(145deg, rgba(246, 234, 255, 0.7), rgba(164, 191, 238, 0.34));
+}
+
+.td-cube__face--bottom {
+  background: rgba(64, 76, 123, 0.18);
+}
+
+.td-methods li p {
+  font-size: 0.74rem;
+}
+
+@media (max-width: 760px) {
+  .td-methods li p {
+    font-size: 0.7rem;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -20895,9 +21800,153 @@ window.MEDIA_DATA = {
     `;
   }
 
+  function renderThreeDDesignThinking() {
+    return `
+      <section class="td-thinking" data-td-thinking data-reveal aria-label="三维创意视觉设计思路">
+        <div class="td-top">
+          <div class="td-top__left">
+            <header class="td-heading">
+              <p class="td-heading__kicker">3D Creative Visual</p>
+              <h4>三维创意视觉 <em>· 设计思路</em></h4>
+              <p class="td-heading__intro">
+                以创意为驱动，融合三维表达与视觉叙事，打造更具沉浸感、<br />
+                空间感与品牌识别度的数字视觉体验。
+              </p>
+            </header>
+
+            <ul class="td-values">
+              <li>
+                <span class="td-values__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="m4 7.5 8 4.5 8-4.5M12 12v9" /></svg></span>
+                <div><strong>立体表达</strong><small>增强视觉层次与真实感</small></div>
+              </li>
+              <li>
+                <span class="td-values__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 16 9 5 9-5" /></svg></span>
+                <div><strong>创意叙事</strong><small>用空间与动态讲述内容</small></div>
+              </li>
+              <li>
+                <span class="td-values__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z" /></svg></span>
+                <div><strong>品牌赋能</strong><small>塑造独特的视觉记忆</small></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="td-visual" data-td-visual aria-hidden="true">
+            <span class="td-visual__glow"></span>
+            <span class="td-visual__ground"></span>
+            <span class="td-visual__orbit"></span>
+            <span class="td-visual__label">3D / MATERIAL / LIGHT</span>
+            <svg class="td-torus" viewBox="0 0 620 520">
+              <defs>
+                <linearGradient id="td-glass-a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f2e5ff" stop-opacity="0.96" />
+                  <stop offset="0.34" stop-color="#b58fff" stop-opacity="0.82" />
+                  <stop offset="0.68" stop-color="#71b8eb" stop-opacity="0.64" />
+                  <stop offset="1" stop-color="#f8d8b2" stop-opacity="0.18" />
+                </linearGradient>
+                <linearGradient id="td-glass-b" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7fc8f5" stop-opacity="0.82" />
+                  <stop offset="0.45" stop-color="#bb95ff" stop-opacity="0.62" />
+                  <stop offset="1" stop-color="#f6e7d8" stop-opacity="0.16" />
+                </linearGradient>
+                <filter id="td-soft"><feGaussianBlur stdDeviation="1.3" /></filter>
+              </defs>
+              <g filter="url(#td-soft)">
+                <ellipse cx="315" cy="264" rx="216" ry="120" transform="rotate(-27 315 264)" fill="none" stroke="url(#td-glass-a)" stroke-width="42" opacity="0.62" />
+                <ellipse cx="305" cy="248" rx="194" ry="104" transform="rotate(29 305 248)" fill="none" stroke="url(#td-glass-b)" stroke-width="25" opacity="0.65" />
+                <ellipse cx="320" cy="260" rx="148" ry="86" transform="rotate(4 320 260)" fill="none" stroke="url(#td-glass-a)" stroke-width="11" opacity="0.42" />
+              </g>
+            </svg>
+
+            <div class="td-cube-wrap">
+              <div class="td-cube">
+                <span class="td-cube__face td-cube__face--front"></span>
+                <span class="td-cube__face td-cube__face--back"></span>
+                <span class="td-cube__face td-cube__face--right"></span>
+                <span class="td-cube__face td-cube__face--left"></span>
+                <span class="td-cube__face td-cube__face--top"></span>
+                <span class="td-cube__face td-cube__face--bottom"></span>
+              </div>
+            </div>
+
+            <span class="td-orb td-orb--one"></span>
+            <span class="td-orb td-orb--two"></span>
+            <span class="td-orb td-orb--three"></span>
+            <span class="td-glint">✦</span>
+          </div>
+        </div>
+
+        <section class="td-process" aria-label="三维设计流程">
+          <header class="td-section-head">
+            <div><h5>设计思路与流程</h5><i aria-hidden="true"></i></div>
+            <p>从概念到落地，结合创意、技术与视觉表现，构建完整的三维创意视觉方案。</p>
+          </header>
+          <ol class="td-steps">
+            <li>
+              <button class="td-step" type="button" data-td-step="0" aria-pressed="false">
+                <span class="td-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4" /><path d="M8.2 14.8a6 6 0 1 1 7.6 0c-.7.6-1 1.4-1 2.2H9.2c0-.8-.3-1.6-1-2.2Z" /></svg></span>
+                <strong><b>01</b> 灵感洞察</strong>
+                <p>挖掘主题与核心诉求，<br />提炼视觉创意方向。</p>
+              </button>
+            </li>
+            <li>
+              <button class="td-step" type="button" data-td-step="1" aria-pressed="false">
+                <span class="td-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 16 9 5 9-5" /></svg></span>
+                <strong><b>02</b> 概念构建</strong>
+                <p>明确视觉风格、场景设定<br />与整体叙事逻辑。</p>
+              </button>
+            </li>
+            <li>
+              <button class="td-step" type="button" data-td-step="2" aria-pressed="false">
+                <span class="td-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="m4 7.5 8 4.5 8-4.5M12 12v9" /></svg></span>
+                <strong><b>03</b> 三维创作</strong>
+                <p>进行建模、材质、灯光、<br />构图与动态设计。</p>
+              </button>
+            </li>
+            <li>
+              <button class="td-step" type="button" data-td-step="3" aria-pressed="false">
+                <span class="td-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z" /></svg></span>
+                <strong><b>04</b> 视觉呈现</strong>
+                <p>输出高质量的渲染图、<br />动画或交互效果。</p>
+              </button>
+            </li>
+            <li>
+              <button class="td-step" type="button" data-td-step="4" aria-pressed="false">
+                <span class="td-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="10" r="4" /><circle cx="16" cy="10" r="4" /><circle cx="12" cy="16" r="4" /><circle cx="12" cy="8" r="4" /></svg></span>
+                <strong><b>05</b> 优化落地</strong>
+                <p>根据反馈迭代完善，适配<br />不同平台与使用场景。</p>
+              </button>
+            </li>
+          </ol>
+        </section>
+
+        <section class="td-methods" aria-label="三维核心方法">
+          <header class="td-methods__head">
+            <div><h5>核心方法</h5><i aria-hidden="true"></i></div>
+            <p>让三维创意更高效、更具表现力。</p>
+          </header>
+          <ul>
+            <li>
+              <span class="td-methods__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="m4 7.5 8 4.5 8-4.5M12 12v9" /></svg></span>
+              <div><strong>空间构成</strong><p>通过结构与比例营造更强的空间层次。</p></div>
+            </li>
+            <li>
+              <span class="td-methods__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14c2.5-6 5-6 7.5 0s5 6 7.5 0 3-4 3-4" /></svg></span>
+              <div><strong>材质与光影</strong><p>用材质质感与光影塑造情绪与氛围。</p></div>
+            </li>
+            <li>
+              <span class="td-methods__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="12" r="4" /><circle cx="16" cy="12" r="4" /></svg></span>
+              <div><strong>动态与交互</strong><p>结合运动与交互增强沉浸感与参与感。</p></div>
+            </li>
+          </ul>
+        </section>
+      </section>
+    `;
+  }
+
   function renderChapterThinking(category) {
     if (category.id === "ui") return renderUiDesignThinking();
     if (category.id === "aigc") return renderAigcDesignThinking();
+    if (category.id === "three-d") return renderThreeDDesignThinking();
     const data = designThinkingData[category.id];
     if (!data) return "";
 
@@ -21185,6 +22234,46 @@ window.MEDIA_DATA = {
     });
   }
 
+  function initThreeDThinking() {
+    const root = $("[data-td-thinking]");
+    if (!root) return;
+
+    const steps = $$("[data-td-step]", root);
+    const visual = $("[data-td-visual]", root);
+
+    function setStep(index) {
+      steps.forEach((step, stepIndex) => {
+        const active = stepIndex === index;
+        step.classList.toggle("is-active", active);
+        step.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    steps.forEach((step, index) => {
+      step.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") setStep(index);
+      });
+      step.addEventListener("focus", () => setStep(index));
+      step.addEventListener("click", () => setStep(index));
+    });
+
+    if (!visual || reduceMotion.matches) return;
+
+    visual.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      visual.style.setProperty("--td-px", `${(x * 14).toFixed(2)}px`);
+      visual.style.setProperty("--td-py", `${(y * 10).toFixed(2)}px`);
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      visual.style.setProperty("--td-px", "0px");
+      visual.style.setProperty("--td-py", "0px");
+    });
+  }
+
   function initUiThinking() {
     const root = $("[data-ui-thinking]");
     if (!root) return;
@@ -21280,6 +22369,7 @@ window.MEDIA_DATA = {
 
   initUiThinking();
   initAigcThinking();
+  initThreeDThinking();
 
   /* ---------------------------------------------------------------------
      Circular 3D class gallery
