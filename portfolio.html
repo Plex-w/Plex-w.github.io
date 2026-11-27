@@ -10740,6 +10740,689 @@ p,
     font-size: 0.82rem;
   }
 }
+/* ==========================================================================
+   UI sheet — compact, de-purpled, blended into the shared film backdrop
+   ========================================================================== */
+
+.ui-thinking {
+  --ui-text: #f0eee6;
+  --ui-muted: #b6b6ad;
+  --ui-dim: #8b8c84;
+  --ui-purple: #b9e4d0;
+  --ui-purple-strong: #7fae99;
+  --ui-surface: rgba(8, 15, 12, 0.76);
+  --ui-line: rgba(192, 220, 204, 0.17);
+  margin-bottom: clamp(28px, 3.4vw, 44px);
+  padding: clamp(20px, 2.4vw, 30px) clamp(8px, 1.2vw, 16px);
+  border: 0;
+  border-top: 1px solid rgba(238, 233, 222, 0.14);
+  border-bottom: 1px solid rgba(238, 233, 222, 0.1);
+  background:
+    radial-gradient(circle at 78% 6%, rgba(185, 228, 208, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(4, 9, 7, 0.36), rgba(4, 9, 7, 0.12) 42%, rgba(4, 9, 7, 0.4));
+  box-shadow: none;
+}
+
+.ui-thinking::before {
+  background-image:
+    linear-gradient(90deg, rgba(238, 233, 222, 0.026) 1px, transparent 1px),
+    linear-gradient(rgba(238, 233, 222, 0.022) 1px, transparent 1px);
+  opacity: 0.28;
+}
+
+.ui-thinking__intro {
+  position: relative;
+  z-index: 1;
+}
+
+.ui-thinking__intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -18px -26px;
+  background: radial-gradient(ellipse at 42% 48%, rgba(3, 7, 5, 0.58), transparent 72%);
+  pointer-events: none;
+}
+
+.ui-thinking__hero {
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  min-height: 218px;
+}
+
+.ui-thinking__kicker {
+  font-size: 0.82rem;
+}
+
+.ui-thinking__intro h4 {
+  margin-top: 11px;
+  font-size: clamp(1.9rem, 2.65vw, 2.55rem);
+  line-height: 1.2;
+}
+
+.ui-thinking__lead {
+  max-width: 690px;
+  margin-top: 13px;
+  font-size: 0.9rem;
+  line-height: 1.82;
+}
+
+.ui-thinking__visual {
+  min-height: 218px;
+}
+
+.ui-browser {
+  border-color: rgba(203, 226, 214, 0.26);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(103, 142, 121, 0.25), rgba(26, 36, 31, 0.3) 55%, rgba(185, 228, 208, 0.11));
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.ui-browser--back {
+  opacity: 0.62;
+}
+
+.ui-browser b {
+  color: rgba(219, 237, 227, 0.34);
+  font-size: clamp(42px, 4.2vw, 62px);
+}
+
+.ui-browser--back b {
+  color: rgba(219, 237, 227, 0.22);
+}
+
+.ui-browser__bar {
+  border-bottom-color: rgba(210, 232, 220, 0.1);
+}
+
+.ui-browser__bar i {
+  background: rgba(220, 238, 228, 0.46);
+}
+
+.ui-browser__lines i {
+  background: rgba(210, 232, 220, 0.19);
+}
+
+.ui-thinking__orbit {
+  border-color: rgba(185, 228, 208, 0.34);
+  box-shadow: 0 0 26px rgba(141, 190, 167, 0.08);
+}
+
+.ui-thinking__orbit::before,
+.ui-thinking__orbit::after {
+  border-color: rgba(185, 228, 208, 0.13);
+}
+
+.ui-spark {
+  color: rgba(213, 235, 223, 0.48);
+}
+
+.ui-cursor {
+  color: #f3f0e7;
+}
+
+.ui-process {
+  margin-top: clamp(22px, 2.8vw, 32px);
+}
+
+.ui-process__curve {
+  top: 46px;
+  height: 20px;
+}
+
+.ui-process__base {
+  stroke: rgba(185, 228, 208, 0.18);
+}
+
+.ui-process__draw {
+  stroke: rgba(185, 228, 208, 0.7);
+}
+
+.ui-process__icon {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(185, 228, 208, 0.25);
+  border-radius: 11px;
+  background: rgba(10, 18, 14, 0.56);
+  color: #d7ebe0;
+}
+
+.ui-process__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ui-process__dot {
+  width: 6px;
+  height: 6px;
+  margin-top: 6px;
+  border-color: rgba(185, 228, 208, 0.48);
+  background: #0d1511;
+  box-shadow: 0 0 0 4px rgba(6, 12, 9, 0.75);
+}
+
+.ui-process__step strong {
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+.ui-process__step strong b {
+  color: rgba(199, 233, 215, 0.7);
+  font-size: 0.68rem;
+}
+
+.ui-process__step small {
+  margin-top: 4px;
+  color: #b7b8af;
+  font-size: 0.73rem;
+  line-height: 1.6;
+}
+
+.ui-process__step:hover .ui-process__icon,
+.ui-process__step:focus-visible .ui-process__icon {
+  border-color: rgba(185, 228, 208, 0.55);
+  color: #eff8f2;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  border-color: transparent;
+  background: linear-gradient(145deg, #d9eee4, #84b39e);
+  color: #0b1510;
+  box-shadow:
+    0 9px 24px rgba(56, 99, 81, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.ui-process__step.is-active .ui-process__dot {
+  background: #b9e4d0;
+  box-shadow:
+    0 0 0 4px rgba(6, 12, 9, 0.75),
+    0 0 14px rgba(185, 228, 208, 0.7);
+}
+
+.ui-process__step.is-active strong b {
+  color: #b9e4d0;
+}
+
+.ui-thinking__cards {
+  gap: 12px;
+  margin-top: clamp(22px, 2.8vw, 32px);
+}
+
+.ui-card {
+  padding: clamp(16px, 1.8vw, 22px);
+  border-color: rgba(192, 220, 204, 0.14);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(7, 14, 11, 0.84), rgba(5, 11, 8, 0.76));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+}
+
+.ui-card:hover {
+  border-color: rgba(185, 228, 208, 0.28);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.ui-card__head {
+  gap: 11px;
+}
+
+.ui-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: rgba(185, 228, 208, 0.1);
+  color: #b9e4d0;
+}
+
+.ui-card__icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.ui-card__head h5 {
+  font-size: 1.3rem;
+}
+
+.ui-card__head small.ui-card__sub {
+  color: #8b8c84;
+  font-size: 0.6rem;
+}
+
+.ui-card__intro {
+  margin-top: 11px;
+  font-size: 0.82rem;
+  line-height: 1.76;
+}
+
+.ui-card__content {
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ui-principles {
+  gap: 9px;
+}
+
+.ui-principles li {
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 9px;
+  margin: -3px -5px;
+  padding: 3px 5px;
+}
+
+.ui-principles__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #c6dfd2;
+}
+
+.ui-principles__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ui-principles strong {
+  font-size: 0.88rem;
+}
+
+.ui-principles p {
+  margin-top: 2px;
+  font-size: 0.74rem;
+  line-height: 1.58;
+}
+
+.ui-ref-phone {
+  width: 132px;
+  height: 250px;
+  transform: translate3d(var(--ui-phone-x, 0px), var(--ui-phone-y, 0px), 0) rotate(3deg);
+}
+
+.ui-ref-phone__frame {
+  padding: 5px;
+  border-color: rgba(160, 190, 173, 0.52);
+  border-radius: 23px;
+}
+
+.ui-ref-phone__notch {
+  top: 7px;
+  width: 38px;
+  height: 8px;
+}
+
+.ui-ref-phone__screen {
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 32% 34%, rgba(222, 239, 230, 0.65), transparent 19%),
+    radial-gradient(circle at 70% 40%, rgba(129, 174, 151, 0.55), transparent 30%),
+    linear-gradient(160deg, #1d2c25, #5d8b76 52%, #c6bda3 74%, #283a30);
+}
+
+.ui-ref-phone__screen::before {
+  background: linear-gradient(180deg, #b8d2c3, #688c7a 62%, #354c3f);
+}
+
+.ui-ref-phone__screen::after {
+  background: #f1e9d8;
+  box-shadow: 0 0 14px rgba(241, 233, 216, 0.45);
+}
+
+.ui-ref-phone__float {
+  border-color: rgba(185, 228, 208, 0.2);
+  background: rgba(108, 150, 128, 0.13);
+}
+
+.ui-ref-phone__glow {
+  background: rgba(225, 242, 233, 0.18);
+}
+
+.ui-ref-phone__panel {
+  height: 56px;
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(16, 24, 20, 0.5);
+}
+
+.ui-ref-phone__row {
+  bottom: 26px;
+  height: 2px;
+}
+
+.ui-ref-phone__row--short {
+  bottom: 19px;
+}
+
+.ui-interaction {
+  grid-template-columns: minmax(205px, 1.1fr) minmax(145px, 0.9fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.ui-loop {
+  min-height: 220px;
+}
+
+.ui-loop__ring {
+  width: 186px;
+  height: 186px;
+  border-color: rgba(185, 228, 208, 0.23);
+}
+
+.ui-loop__ring--inner {
+  width: 148px;
+  height: 148px;
+  border-color: rgba(185, 228, 208, 0.13);
+}
+
+.ui-loop__core {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(185, 228, 208, 0.26);
+  background: radial-gradient(circle at 38% 32%, rgba(111, 158, 136, 0.4), rgba(27, 39, 33, 0.94));
+  color: #d8eee2;
+}
+
+.ui-loop__core svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ui-loop__check {
+  display: none;
+}
+
+.ui-loop__node-icon {
+  width: 23px;
+  height: 23px;
+  background: rgba(107, 144, 126, 0.32);
+  color: #d2e9de;
+}
+
+.ui-loop__node-icon svg {
+  width: 11px;
+  height: 11px;
+}
+
+.ui-loop__node b {
+  font-size: 0.8rem;
+}
+
+.ui-loop__node small {
+  font-size: 0.64rem;
+}
+
+.ui-loop__node--guide {
+  top: 19%;
+  left: 5%;
+}
+
+.ui-loop__node--feedback {
+  right: 1%;
+}
+
+.ui-loop__node--flow {
+  bottom: 15%;
+  left: 13%;
+}
+
+.ui-loop__node:hover .ui-loop__node-icon,
+.ui-loop__node:focus-visible .ui-loop__node-icon,
+.ui-loop__node.is-active .ui-loop__node-icon {
+  background: rgba(185, 228, 208, 0.62);
+  color: #0b1510;
+  box-shadow: 0 0 15px rgba(185, 228, 208, 0.38);
+}
+
+.ui-strategy {
+  padding: 11px;
+  border-color: rgba(192, 220, 204, 0.13);
+  border-radius: 10px;
+  background: rgba(15, 23, 19, 0.76);
+}
+
+.ui-strategy__title {
+  padding-bottom: 7px;
+  border-bottom-color: rgba(192, 220, 204, 0.11);
+  font-size: 0.84rem;
+}
+
+.ui-strategy ul {
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.ui-strategy li {
+  grid-template-columns: 12px minmax(0, 1fr);
+  gap: 5px;
+  color: #d0d5cd;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.ui-strategy li i {
+  color: #b9e4d0;
+  font-size: 7px;
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  animation: ui-step-live-green 3.6s ease-in-out infinite;
+}
+
+@keyframes ui-step-live-green {
+  0%,
+  100% {
+    box-shadow:
+      0 9px 24px rgba(56, 99, 81, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 11px 30px rgba(96, 148, 124, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+}
+
+@media (max-width: 1100px) {
+  .ui-thinking__hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ui-card__content {
+    grid-template-columns: minmax(0, 1fr) 158px;
+  }
+
+  .ui-interaction {
+    grid-template-columns: minmax(230px, 1.05fr) minmax(170px, 0.95fr);
+  }
+
+  .ui-loop {
+    min-height: 236px;
+  }
+}
+
+@media (max-width: 760px) {
+  .ui-thinking {
+    padding: 17px 14px;
+    margin-bottom: 26px;
+  }
+
+  .ui-thinking__intro h4 {
+    font-size: clamp(1.5rem, 7.6vw, 2.05rem);
+  }
+
+  .ui-thinking__lead {
+    font-size: 0.84rem;
+    line-height: 1.75;
+  }
+
+  .ui-thinking__visual {
+    min-height: 198px;
+  }
+
+  .ui-browser {
+    width: 64%;
+  }
+
+  .ui-process {
+    margin-right: -14px;
+    margin-left: -14px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .ui-process__curve,
+  .ui-process__steps {
+    width: 640px;
+  }
+
+  .ui-card {
+    padding: 15px 14px;
+  }
+
+  .ui-card__head h5 {
+    font-size: 1.2rem;
+  }
+
+  .ui-card__head small.ui-card__sub {
+    font-size: 0.56rem;
+  }
+
+  .ui-card__intro {
+    font-size: 0.8rem;
+  }
+
+  .ui-card__content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ui-ref-phone {
+    width: 122px;
+    height: 232px;
+    justify-self: center;
+    margin-top: 8px;
+  }
+
+  .ui-interaction {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ui-loop {
+    min-height: 230px;
+  }
+
+  .ui-process__step strong {
+    font-size: 0.86rem;
+  }
+
+  .ui-process__step small {
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-process__step.is-active .ui-process__icon {
+    animation: none;
+  }
+}
+/* Compact UI sheet: keep type legible without restoring the oversized block */
+.ui-thinking__kicker {
+  font-size: 0.86rem;
+}
+
+.ui-thinking__lead {
+  font-size: 0.94rem;
+}
+
+.ui-process__step strong {
+  font-size: 0.96rem;
+}
+
+.ui-process__step small {
+  font-size: 0.77rem;
+}
+
+.ui-card__head h5 {
+  font-size: 1.5rem;
+}
+
+.ui-card__head small.ui-card__sub {
+  font-size: 0.62rem;
+}
+
+.ui-card__intro {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.ui-card__content {
+  align-items: start;
+}
+
+.ui-ref-phone {
+  margin-top: 6px;
+}
+
+.ui-principles {
+  padding-top: 4px;
+}
+
+.ui-principles strong {
+  font-size: 0.94rem;
+}
+
+.ui-principles p {
+  font-size: 0.8rem;
+}
+
+.ui-loop__node b {
+  font-size: 0.84rem;
+}
+
+.ui-loop__node small {
+  font-size: 0.68rem;
+}
+
+.ui-strategy__title {
+  font-size: 0.9rem;
+}
+
+.ui-strategy li {
+  font-size: 0.76rem;
+}
+
+@media (max-width: 760px) {
+  .ui-thinking__lead {
+    font-size: 0.88rem;
+  }
+
+  .ui-process__step strong {
+    font-size: 0.9rem;
+  }
+
+  .ui-process__step small {
+    font-size: 0.71rem;
+  }
+
+  .ui-card__head h5 {
+    font-size: 1.28rem;
+  }
+
+  .ui-card__intro {
+    font-size: 0.84rem;
+  }
+
+  .ui-principles strong {
+    font-size: 0.9rem;
+  }
+
+  .ui-principles p {
+    font-size: 0.76rem;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
