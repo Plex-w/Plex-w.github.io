@@ -13204,6 +13204,94 @@ p,
     display: none;
   }
 }
+/* AIGC footer fills the left column to the same baseline as the right */
+.aigc-foot {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.aigc-foot__facts {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: clamp(12px, 2vw, 26px);
+  min-height: 64px;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(238, 233, 222, 0.09);
+}
+
+.aigc-foot__stat {
+  display: flex;
+  flex: none;
+  align-items: baseline;
+  gap: 5px;
+  padding-right: clamp(12px, 2vw, 24px);
+  border-right: 1px solid rgba(238, 211, 178, 0.14);
+}
+
+.aigc-foot__stat strong {
+  color: var(--aigc-bright);
+  font-size: 1.16rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.aigc-foot__stat span {
+  color: var(--aigc-dim);
+  font-size: 0.55rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.aigc-foot__quote {
+  margin-left: auto;
+  color: #cfc7ba;
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  text-align: right;
+}
+
+@media (max-width: 1120px) {
+  .aigc-foot__facts {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 760px) {
+  .aigc-foot {
+    flex: none;
+  }
+
+  .aigc-foot__facts {
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 9px 12px;
+    min-height: 0;
+    padding-top: 10px;
+  }
+
+  .aigc-foot__stat {
+    padding-right: 11px;
+  }
+
+  .aigc-foot__stat:last-of-type {
+    border-right: 0;
+  }
+
+  .aigc-foot__quote {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 7px;
+    border-top: 1px solid rgba(238, 233, 222, 0.08);
+    font-size: 0.64rem;
+    text-align: left;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -20607,6 +20695,12 @@ window.MEDIA_DATA = {
                   <span>STORY NOTE</span>
                   <p>先让角色可信，<br />再让世界成立。</p>
                 </div>
+              </div>
+              <div class="aigc-foot__facts">
+                <div class="aigc-foot__stat"><strong>10</strong><span>页绘本</span></div>
+                <div class="aigc-foot__stat"><strong>02</strong><span>角色设定</span></div>
+                <div class="aigc-foot__stat"><strong>01</strong><span>东方志怪世界观</span></div>
+                <p class="aigc-foot__quote">从角色设定到连续画面，<br />保持同一条情感线。</p>
               </div>
             </footer>
           </div>
