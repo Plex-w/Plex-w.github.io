@@ -12151,6 +12151,895 @@ p,
       inset 0 1px 0 rgba(255, 255, 255, 0.62);
   }
 }
+/* ==========================================================================
+   AIGC chapter — reference-led picture-book thinking sheet
+   ========================================================================== */
+
+.aigc-thinking {
+  --aigc: #e3b58f;
+  --aigc-bright: #f6d9b8;
+  --aigc-lav: #c7b2dd;
+  --aigc-text: #f2eee6;
+  --aigc-muted: #b8b3aa;
+  --aigc-dim: #857f78;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(20px, 2.5vw, 30px) clamp(8px, 1.2vw, 16px);
+  border-top: 1px solid rgba(238, 233, 222, 0.15);
+  border-bottom: 1px solid rgba(238, 233, 222, 0.1);
+  background:
+    radial-gradient(circle at 15% 16%, rgba(227, 181, 143, 0.1), transparent 33%),
+    radial-gradient(circle at 86% 76%, rgba(131, 97, 160, 0.08), transparent 36%),
+    linear-gradient(135deg, rgba(4, 9, 7, 0.36), rgba(4, 8, 8, 0.15) 52%, rgba(4, 9, 7, 0.38));
+  color: var(--aigc-text);
+}
+
+.aigc-thinking::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(238, 233, 222, 0.024) 1px, transparent 1px),
+    linear-gradient(rgba(238, 233, 222, 0.02) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(ellipse at 52% 44%, #000 12%, transparent 76%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.aigc-thinking,
+.aigc-thinking * {
+  font-family: var(--font-sans);
+}
+
+.aigc-thinking > * {
+  position: relative;
+  z-index: 1;
+}
+
+.aigc-thinking__grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(28px, 3.6vw, 54px);
+  min-width: 0;
+}
+
+.aigc-thinking__left,
+.aigc-thinking__right {
+  min-width: 0;
+}
+
+/* Left intro + book ------------------------------------------------------ */
+
+.aigc-heading__kicker {
+  color: var(--aigc-dim);
+  font-family: inherit;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.aigc-heading h4 {
+  margin-top: 12px;
+  color: var(--aigc-text);
+  font-size: clamp(2rem, 2.8vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.18;
+  text-wrap: balance;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.3);
+}
+
+.aigc-heading__sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--aigc-bright);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+.aigc-heading__sub i {
+  width: 22px;
+  height: 1px;
+  background: rgba(227, 181, 143, 0.55);
+}
+
+.aigc-heading__intro {
+  max-width: 560px;
+  margin-top: 13px;
+  color: var(--aigc-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.004em;
+  line-height: 1.85;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.24);
+}
+
+.aigc-book {
+  position: relative;
+  height: 250px;
+  margin-top: 22px;
+  perspective: 950px;
+  transition: transform 0.55s var(--ease-out);
+  will-change: transform;
+  transform: translate3d(var(--aigc-x, 0px), var(--aigc-y, 0px), 0);
+}
+
+.aigc-book__glow {
+  position: absolute;
+  top: 13%;
+  left: 9%;
+  width: 80%;
+  height: 68%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(246, 204, 153, 0.18), transparent 68%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.aigc-book__page {
+  position: absolute;
+  top: 17%;
+  width: 46%;
+  height: 67%;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(238, 207, 171, 0.24);
+  border-radius: 8px;
+  background: #0e1712;
+  box-shadow:
+    0 20px 38px rgba(0, 0, 0, 0.32),
+    0 0 24px rgba(232, 180, 132, 0.09);
+  transition: transform 0.55s var(--ease-out);
+}
+
+.aigc-book__page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 7, 5, 0.35), transparent 18%, rgba(255, 244, 225, 0.08) 50%, transparent 82%),
+    linear-gradient(0deg, rgba(3, 7, 5, 0.32), transparent 28%);
+  pointer-events: none;
+}
+
+.aigc-book__page img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.94) brightness(0.98);
+}
+
+.aigc-book__page--left {
+  left: 1%;
+  border-radius: 9px 3px 3px 9px;
+  transform: rotateY(11deg) rotateZ(-2deg);
+  transform-origin: right center;
+}
+
+.aigc-book__page--right {
+  right: 1%;
+  border-radius: 3px 9px 9px 3px;
+  transform: rotateY(-11deg) rotateZ(2deg);
+  transform-origin: left center;
+}
+
+.aigc-book__spine {
+  position: absolute;
+  z-index: 2;
+  top: 19%;
+  left: 50%;
+  width: 1px;
+  height: 63%;
+  background: linear-gradient(transparent, rgba(243, 214, 180, 0.42), transparent);
+  box-shadow: 0 0 20px rgba(246, 210, 168, 0.18);
+  transform: translateX(-50%);
+}
+
+.aigc-book__star {
+  position: absolute;
+  z-index: 3;
+  top: 2%;
+  right: 9%;
+  color: #f6cf94;
+  font-size: 20px;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(246, 200, 135, 0.65);
+  animation: aigc-star 4.2s ease-in-out infinite;
+}
+
+@keyframes aigc-star {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.9) rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) rotate(10deg);
+  }
+}
+
+.aigc-book__float {
+  position: absolute;
+  z-index: 3;
+  top: 4%;
+  left: 9%;
+  display: flex;
+  width: 70px;
+  height: 47px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 9px;
+  border: 1px solid rgba(238, 207, 171, 0.2);
+  border-radius: 8px;
+  background: rgba(31, 25, 20, 0.53);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  transform: rotate(-5deg);
+  animation: aigc-float 7s ease-in-out infinite;
+}
+
+.aigc-book__float i {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(244, 219, 185, 0.45);
+}
+
+.aigc-book__float i:nth-child(2) {
+  width: 72%;
+}
+
+.aigc-book__float i:nth-child(3) {
+  width: 48%;
+}
+
+@keyframes aigc-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+.aigc-book__orbit {
+  position: absolute;
+  right: 4%;
+  bottom: 8%;
+  width: 77%;
+  height: 28%;
+  border: 1px solid rgba(227, 181, 143, 0.2);
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+/* Right blocks ----------------------------------------------------------- */
+
+.aigc-thinking__right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aigc-block {
+  min-width: 0;
+}
+
+.aigc-block__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(238, 233, 222, 0.13);
+}
+
+.aigc-spark {
+  color: var(--aigc);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.aigc-block__head h5 {
+  color: var(--aigc-text);
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.aigc-block__head small {
+  margin-left: auto;
+  color: var(--aigc-dim);
+  font-family: inherit;
+  font-size: 0.52rem;
+  letter-spacing: 0.11em;
+  line-height: 1.4;
+}
+
+/* Core cards ------------------------------------------------------------- */
+
+.aigc-core {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.aigc-core__item {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 12px;
+  border: 1px solid rgba(238, 233, 222, 0.12);
+  border-radius: 9px;
+  background: linear-gradient(145deg, rgba(16, 24, 19, 0.76), rgba(9, 15, 12, 0.65));
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.aigc-core__item:hover {
+  border-color: rgba(227, 181, 143, 0.35);
+  background-color: rgba(227, 181, 143, 0.06);
+  transform: translateY(-2px);
+}
+
+.aigc-core__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(227, 181, 143, 0.1);
+  color: var(--aigc-bright);
+}
+
+.aigc-core__icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.aigc-core__item strong {
+  display: block;
+  color: var(--aigc-text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.aigc-core__item p {
+  margin-top: 4px;
+  color: var(--aigc-muted);
+  font-size: 0.72rem;
+  line-height: 1.62;
+}
+
+/* Process ---------------------------------------------------------------- */
+
+.aigc-process {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.aigc-process li {
+  position: relative;
+  min-width: 0;
+}
+
+.aigc-process li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 23px;
+  right: -7px;
+  z-index: 1;
+  color: rgba(238, 233, 222, 0.42);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.aigc-process__step {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 9px;
+  border: 0;
+  background: transparent;
+  color: var(--aigc-text);
+  text-align: center;
+  cursor: pointer;
+}
+
+.aigc-process__icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(199, 178, 221, 0.28);
+  border-radius: 50%;
+  background: rgba(35, 28, 43, 0.6);
+  color: #d8c8e9;
+  transition:
+    color 0.32s ease,
+    border-color 0.32s ease,
+    background-color 0.32s ease,
+    box-shadow 0.32s ease,
+    transform 0.32s ease;
+}
+
+.aigc-process__icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.aigc-process__step strong {
+  margin-top: 9px;
+  color: var(--aigc-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.aigc-process__step small {
+  margin-top: 4px;
+  color: var(--aigc-muted);
+  font-size: 0.68rem;
+  line-height: 1.6;
+}
+
+.aigc-process__step:hover .aigc-process__icon,
+.aigc-process__step:focus-visible .aigc-process__icon,
+.aigc-process__step.is-active .aigc-process__icon {
+  border-color: rgba(246, 217, 184, 0.68);
+  background: rgba(227, 181, 143, 0.25);
+  color: #fff1dc;
+  box-shadow: 0 0 20px rgba(227, 181, 143, 0.24);
+  transform: translateY(-3px);
+}
+
+.aigc-process__step:focus-visible {
+  outline: 1px solid var(--aigc);
+  outline-offset: 3px;
+}
+
+/* Highlights ------------------------------------------------------------- */
+
+.aigc-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.aigc-highlights article {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 11px 10px;
+  border: 1px solid rgba(238, 233, 222, 0.11);
+  border-radius: 8px;
+  background: rgba(11, 18, 14, 0.56);
+  transition:
+    border-color 0.3s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.aigc-highlights article:hover {
+  border-color: rgba(227, 181, 143, 0.3);
+  transform: translateY(-2px);
+}
+
+.aigc-highlight__icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: none;
+  place-items: center;
+  border-radius: 7px;
+  background: rgba(227, 181, 143, 0.1);
+  color: var(--aigc-bright);
+}
+
+.aigc-highlight__icon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.aigc-highlights strong {
+  display: block;
+  color: var(--aigc-text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.aigc-highlights p {
+  margin-top: 2px;
+  color: var(--aigc-muted);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .aigc-thinking__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .aigc-book {
+    max-width: 620px;
+    height: 250px;
+  }
+
+  .aigc-core {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .aigc-thinking {
+    padding: 17px 13px;
+    margin-bottom: 26px;
+  }
+
+  .aigc-heading h4 {
+    font-size: clamp(1.6rem, 7.8vw, 2.2rem);
+  }
+
+  .aigc-heading__sub {
+    font-size: 0.84rem;
+  }
+
+  .aigc-heading__intro {
+    font-size: 0.84rem;
+    line-height: 1.78;
+  }
+
+  .aigc-heading__intro br,
+  .aigc-core__item p br,
+  .aigc-process__step small br {
+    display: none;
+  }
+
+  .aigc-book {
+    height: 210px;
+    margin-top: 16px;
+  }
+
+  .aigc-book__float {
+    display: none;
+  }
+
+  .aigc-thinking__right {
+    gap: 17px;
+  }
+
+  .aigc-core {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .aigc-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px 0;
+  }
+
+  .aigc-process li:not(:last-child)::after {
+    display: none;
+  }
+
+  .aigc-process__step {
+    padding: 0 6px;
+  }
+
+  .aigc-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aigc-block__head h5 {
+    font-size: 1.04rem;
+  }
+
+  .aigc-core__item p {
+    font-size: 0.7rem;
+  }
+
+  .aigc-process__step strong {
+    font-size: 0.77rem;
+  }
+
+  .aigc-process__step small {
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .aigc-book {
+    height: 188px;
+  }
+
+  .aigc-core__item {
+    padding: 11px;
+  }
+
+  .aigc-highlights {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aigc-book__star,
+  .aigc-book__float {
+    animation: none;
+  }
+
+  .aigc-book,
+  .aigc-core__item,
+  .aigc-process__icon,
+  .aigc-highlights article {
+    transition: none;
+  }
+}
+/* AIGC sheet — reference-scale type and book spread */
+.aigc-block__head h5 {
+  font-size: 1.18rem;
+}
+
+.aigc-heading__sub {
+  font-size: 0.96rem;
+}
+
+.aigc-heading__intro {
+  font-size: 0.94rem;
+  line-height: 1.82;
+}
+
+.aigc-core__item {
+  padding: 14px 13px;
+}
+
+.aigc-core__item strong {
+  font-size: 1rem;
+  line-height: 1.42;
+}
+
+.aigc-core__item p {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  line-height: 1.66;
+}
+
+.aigc-process__step strong {
+  font-size: 0.94rem;
+}
+
+.aigc-process__step small {
+  font-size: 0.75rem;
+  line-height: 1.62;
+}
+
+.aigc-highlights article {
+  padding: 12px 11px;
+}
+
+.aigc-highlights strong {
+  font-size: 0.87rem;
+}
+
+.aigc-highlights p {
+  font-size: 0.71rem;
+  line-height: 1.55;
+}
+
+.aigc-book__page {
+  top: 16%;
+  width: 47.8%;
+  height: 68%;
+}
+
+.aigc-book__page--left {
+  left: 0.2%;
+}
+
+.aigc-book__page--right {
+  right: 0.2%;
+}
+
+.aigc-book__spine {
+  top: 18%;
+  width: 2px;
+  height: 65%;
+  background: linear-gradient(transparent, rgba(253, 222, 181, 0.54), transparent);
+}
+
+@media (max-width: 760px) {
+  .aigc-heading__sub {
+    font-size: 0.88rem;
+  }
+
+  .aigc-heading__intro {
+    font-size: 0.9rem;
+  }
+
+  .aigc-core__item strong {
+    font-size: 0.94rem;
+  }
+
+  .aigc-core__item p {
+    font-size: 0.78rem;
+  }
+
+  .aigc-process__step strong {
+    font-size: 0.88rem;
+  }
+
+  .aigc-process__step small {
+    font-size: 0.7rem;
+  }
+
+  .aigc-highlights strong {
+    font-size: 0.82rem;
+  }
+
+  .aigc-highlights p {
+    font-size: 0.68rem;
+  }
+}
+/* AIGC sheet — final open-book framing and larger reference type */
+.aigc-book::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 4%;
+  bottom: 7%;
+  left: 4%;
+  height: 25%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(246, 218, 181, 0.18), rgba(20, 24, 20, 0.16) 56%, transparent 74%);
+  filter: blur(9px);
+  pointer-events: none;
+}
+
+.aigc-book__page {
+  z-index: 2;
+  width: 49%;
+  padding: 5px;
+  border-color: rgba(242, 215, 181, 0.38);
+  background: linear-gradient(145deg, #e8d4b8, #bfa88c);
+  border-radius: 12px 3px 3px 12px;
+}
+
+.aigc-book__page--left {
+  left: 0.2%;
+}
+
+.aigc-book__page--right {
+  right: 0.2%;
+  border-radius: 3px 12px 12px 3px;
+}
+
+.aigc-book__page img {
+  border-radius: 8px 2px 2px 8px;
+}
+
+.aigc-book__page--right img {
+  border-radius: 2px 8px 8px 2px;
+}
+
+.aigc-core__item strong {
+  font-size: 1.02rem;
+}
+
+.aigc-core__item p {
+  font-size: 0.84rem;
+  line-height: 1.62;
+}
+
+.aigc-process__step strong {
+  font-size: 0.97rem;
+}
+
+.aigc-process__step small {
+  font-size: 0.76rem;
+}
+
+.aigc-highlights strong {
+  font-size: 0.9rem;
+}
+
+.aigc-highlights p {
+  font-size: 0.73rem;
+}
+
+@media (max-width: 760px) {
+  .aigc-core__item strong {
+    font-size: 0.96rem;
+  }
+
+  .aigc-core__item p {
+    font-size: 0.8rem;
+  }
+
+  .aigc-process__step strong {
+    font-size: 0.9rem;
+  }
+
+  .aigc-process__step small {
+    font-size: 0.71rem;
+  }
+
+  .aigc-highlights strong {
+    font-size: 0.85rem;
+  }
+
+  .aigc-highlights p {
+    font-size: 0.7rem;
+  }
+}
+/* AIGC finish: vertical divider and a true book-spread join */
+.aigc-heading__sub {
+  gap: 9px;
+}
+
+.aigc-heading__sub i {
+  width: auto;
+  height: auto;
+  background: none;
+  color: rgba(239, 207, 171, 0.52);
+  font-style: normal;
+  line-height: 1;
+}
+
+.aigc-book__page {
+  width: 50.8%;
+}
+
+.aigc-book__page--left {
+  left: -1.2%;
+}
+
+.aigc-book__page--right {
+  right: -1.2%;
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -19487,8 +20376,148 @@ window.MEDIA_DATA = {
     `;
   }
 
+  function renderAigcDesignThinking() {
+    return `
+      <section class="aigc-thinking" data-aigc-thinking data-reveal aria-label="AIGC 绘本设计思路">
+        <div class="aigc-thinking__grid">
+          <div class="aigc-thinking__left">
+            <header class="aigc-heading">
+              <p class="aigc-heading__kicker">AI × PICTURE BOOK</p>
+              <h4>AIGC 绘本的设计思路</h4>
+              <p class="aigc-heading__sub">
+                <span>AI × 绘本</span><i aria-hidden="true">|</i><span>用智能创意，讲好一个温暖的故事</span>
+              </p>
+              <p class="aigc-heading__intro">
+                以 AIGC 为创作助力，融合故事叙事、视觉风格与情感表达，<br />
+                高效、灵活地完成从灵感到绘本的完整创作。
+              </p>
+            </header>
+
+            <div class="aigc-book" data-aigc-visual aria-hidden="true">
+              <span class="aigc-book__glow"></span>
+              <figure class="aigc-book__page aigc-book__page--left">
+                <img
+                  src="assets/img/work/aigc/qingqiu-book-cover.webp"
+                  alt=""
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure class="aigc-book__page aigc-book__page--right">
+                <img
+                  src="assets/img/work/aigc/qingqiu-book-page-04.webp"
+                  alt=""
+                  width="1600"
+                  height="533"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <span class="aigc-book__spine"></span>
+              <span class="aigc-book__star">✦</span>
+              <span class="aigc-book__float"><i></i><i></i><i></i></span>
+              <span class="aigc-book__orbit"></span>
+            </div>
+          </div>
+
+          <div class="aigc-thinking__right">
+            <section class="aigc-block">
+              <div class="aigc-block__head">
+                <span class="aigc-spark" aria-hidden="true">✦</span>
+                <h5>核心思路</h5>
+                <small>CORE THINKING</small>
+              </div>
+              <div class="aigc-core">
+                <article class="aigc-core__item">
+                  <span class="aigc-core__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C13 4 7 9 6 16l-2 4 4-2c7-1 12-7 12-14Z" /><path d="M6 18 15 9" /></svg>
+                  </span>
+                  <div><strong>故事为核</strong><p>以清晰的主题与情感线<br />构建有温度的故事</p></div>
+                </article>
+                <article class="aigc-core__item">
+                  <span class="aigc-core__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5" /><circle cx="18" cy="6" r="2.5" /><circle cx="12" cy="18" r="2.5" /><path d="m8.2 7.4 3.3 8.2M15.8 7.4l-3.3 8.2M8.5 6h7" /></svg>
+                  </span>
+                  <div><strong>AI 协同</strong><p>借助 AIGC 进行图像生成、<br />风格探索与内容迭代</p></div>
+                </article>
+                <article class="aigc-core__item">
+                  <span class="aigc-core__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h5v16H6a2.5 2.5 0 0 0-2.5 2.5v-16Z" /><path d="M20.5 5.5A2.5 2.5 0 0 0 18 3h-5v16h5a2.5 2.5 0 0 1 2.5 2.5v-16Z" /></svg>
+                  </span>
+                  <div><strong>绘本表达</strong><p>通过连续画面、色彩与构图，<br />传递故事的情绪与内涵</p></div>
+                </article>
+              </div>
+            </section>
+
+            <section class="aigc-block">
+              <div class="aigc-block__head">
+                <span class="aigc-spark" aria-hidden="true">✦</span>
+                <h5>设计流程</h5>
+                <small>PROCESS</small>
+              </div>
+              <ol class="aigc-process">
+                <li>
+                  <button class="aigc-process__step" type="button" data-aigc-step="0" aria-pressed="false">
+                    <span class="aigc-process__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4" /><path d="M8.2 14.8a6 6 0 1 1 7.6 0c-.7.6-1 1.4-1 2.2H9.2c0-.8-.3-1.6-1-2.2Z" /></svg></span>
+                    <strong>灵感与主题</strong>
+                    <small>确定故事主题、受众<br />与核心情感</small>
+                  </button>
+                </li>
+                <li>
+                  <button class="aigc-process__step" type="button" data-aigc-step="1" aria-pressed="false">
+                    <span class="aigc-process__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6V3Z" /><path d="M14 3v5h5M9 12h6M9 16h6" /></svg></span>
+                    <strong>剧情与分镜</strong>
+                    <small>梳理故事结构，<br />设计关键画面</small>
+                  </button>
+                </li>
+                <li>
+                  <button class="aigc-process__step" type="button" data-aigc-step="2" aria-pressed="false">
+                    <span class="aigc-process__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9" r="1.5" /><path d="m4 17 5-5 4 4 3-3 4 4" /></svg></span>
+                    <strong>AIGC 图像生成</strong>
+                    <small>通过提示词生成场景、<br />角色与插画</small>
+                  </button>
+                </li>
+                <li>
+                  <button class="aigc-process__step" type="button" data-aigc-step="3" aria-pressed="false">
+                    <span class="aigc-process__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M4 12h5M13 12h7" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="12" r="2" /><circle cx="8" cy="17" r="2" /></svg></span>
+                    <strong>风格与细化</strong>
+                    <small>统一视觉风格，<br />优化画面与细节</small>
+                  </button>
+                </li>
+                <li>
+                  <button class="aigc-process__step" type="button" data-aigc-step="4" aria-pressed="false">
+                    <span class="aigc-process__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h5v16H6a2.5 2.5 0 0 0-2.5 2.5v-16Z" /><path d="M20.5 5.5A2.5 2.5 0 0 0 18 3h-5v16h5a2.5 2.5 0 0 1 2.5 2.5v-16Z" /></svg></span>
+                    <strong>版式与成书</strong>
+                    <small>完成排版与文字，<br />形成完整绘本</small>
+                  </button>
+                </li>
+              </ol>
+            </section>
+
+            <section class="aigc-block aigc-block--highlights">
+              <div class="aigc-block__head">
+                <span class="aigc-spark" aria-hidden="true">✦</span>
+                <h5>创意亮点</h5>
+                <small>CREATIVE HIGHLIGHTS</small>
+              </div>
+              <div class="aigc-highlights">
+                <article><span class="aigc-highlight__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12 3Z" /></svg></span><div><strong>风格多元</strong><p>可快速探索不同的视觉语言</p></div></article>
+                <article><span class="aigc-highlight__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-8 12h6l-1 8 9-13h-6l1-7Z" /></svg></span><div><strong>高效迭代</strong><p>从想法到成图，灵活调整优化</p></div></article>
+                <article><span class="aigc-highlight__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8a5.2 5.2 0 0 0 0-7.4Z" /></svg></span><div><strong>情感表达</strong><p>用画面增强故事的感染力</p></div></article>
+                <article><span class="aigc-highlight__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C13 4 7 9 5 17c8 1 14-4 15-13Z" /><path d="M4 21c2-6 6-9 11-11" /></svg></span><div><strong>人机共创</strong><p>AI 提供可能性，创作者赋予温度</p></div></article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderChapterThinking(category) {
     if (category.id === "ui") return renderUiDesignThinking();
+    if (category.id === "aigc") return renderAigcDesignThinking();
     const data = designThinkingData[category.id];
     if (!data) return "";
 
@@ -19736,6 +20765,46 @@ window.MEDIA_DATA = {
   /* ---------------------------------------------------------------------
      UI design-thinking sheet interactions
      --------------------------------------------------------------------- */
+  function initAigcThinking() {
+    const root = $("[data-aigc-thinking]");
+    if (!root) return;
+
+    const steps = $$("[data-aigc-step]", root);
+    const visual = $("[data-aigc-visual]", root);
+
+    function setStep(index) {
+      steps.forEach((step, stepIndex) => {
+        const active = stepIndex === index;
+        step.classList.toggle("is-active", active);
+        step.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    steps.forEach((step, index) => {
+      step.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") setStep(index);
+      });
+      step.addEventListener("focus", () => setStep(index));
+      step.addEventListener("click", () => setStep(index));
+    });
+
+    if (!visual || reduceMotion.matches) return;
+
+    visual.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      visual.style.setProperty("--aigc-x", `${(x * 10).toFixed(2)}px`);
+      visual.style.setProperty("--aigc-y", `${(y * 8).toFixed(2)}px`);
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      visual.style.setProperty("--aigc-x", "0px");
+      visual.style.setProperty("--aigc-y", "0px");
+    });
+  }
+
   function initUiThinking() {
     const root = $("[data-ui-thinking]");
     if (!root) return;
@@ -19830,6 +20899,7 @@ window.MEDIA_DATA = {
   }
 
   initUiThinking();
+  initAigcThinking();
 
   /* ---------------------------------------------------------------------
      Circular 3D class gallery
