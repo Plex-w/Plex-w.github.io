@@ -9620,21 +9620,7 @@ p,
 }
 
 .ui-loop__check {
-  position: absolute;
-  z-index: 2;
-  top: 49%;
-  right: 9%;
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(189, 169, 255, 0.32);
-  border-radius: 50%;
-  background: #302845;
-  color: #c8b7ff;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  transform: translateY(-50%);
+  display: none;
 }
 
 .ui-loop__node {
@@ -10433,6 +10419,209 @@ p,
 
   .chapter-thinking__core {
     transition: none;
+  }
+}
+
+/* ==========================================================================
+   UI sheet: readable PuHuiTi type over the shared video backdrop
+   ========================================================================== */
+
+.ui-thinking {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 76% 8%, rgba(124, 92, 240, 0.22), transparent 35%),
+    radial-gradient(circle at 16% 58%, rgba(86, 66, 148, 0.15), transparent 41%),
+    linear-gradient(138deg, rgba(12, 12, 19, 0.72), rgba(8, 8, 13, 0.64));
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.26),
+    inset 0 0 90px rgba(0, 0, 0, 0.28);
+}
+
+.ui-thinking * {
+  font-family: inherit;
+}
+
+.ui-thinking__intro h4,
+.ui-thinking__lead,
+.ui-card__head h5,
+.ui-process__step strong {
+  text-wrap: balance;
+}
+
+.ui-thinking__intro h4 {
+  font-size: clamp(2.1rem, 3.15vw, 3.05rem);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.34);
+}
+
+.ui-thinking__kicker {
+  font-family: inherit;
+  font-size: 0.88rem;
+  letter-spacing: 0.015em;
+}
+
+.ui-thinking__lead {
+  max-width: 740px;
+  color: #bdb6c9;
+  font-size: 0.95rem;
+  letter-spacing: 0.008em;
+  line-height: 1.9;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.3);
+}
+
+.ui-process__step strong {
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.ui-process__step strong b {
+  font-size: 0.74rem;
+}
+
+.ui-process__step small {
+  color: #b6afc2;
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.ui-card {
+  background: linear-gradient(145deg, rgba(27, 27, 36, 0.97), rgba(19, 19, 27, 0.98));
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.ui-card:hover {
+  border-color: rgba(180, 153, 255, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+}
+
+.ui-card__head h5 {
+  font-size: 1.52rem;
+  line-height: 1.32;
+}
+
+.ui-card__head small {
+  margin-top: 3px;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+}
+
+.ui-card__intro {
+  max-width: 100%;
+  color: #bdb6c9;
+  font-size: 0.9rem;
+  letter-spacing: 0.006em;
+  line-height: 1.88;
+  text-wrap: pretty;
+}
+
+.ui-principles li {
+  margin: -5px -6px;
+  padding: 5px 6px;
+  border-radius: 9px;
+  transition: background-color 0.3s ease;
+}
+
+.ui-principles li:hover {
+  background: rgba(167, 139, 250, 0.06);
+}
+
+.ui-principles strong {
+  font-size: 0.98rem;
+}
+
+.ui-principles p {
+  color: #b6afc2;
+  font-size: 0.82rem;
+  line-height: 1.68;
+}
+
+.ui-loop__node b {
+  font-size: 0.88rem;
+}
+
+.ui-loop__node small {
+  color: #b6afc2;
+  font-size: 0.72rem;
+}
+
+.ui-strategy__title {
+  font-size: 0.98rem;
+}
+
+.ui-strategy li {
+  color: #d1cada;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  transition: color 0.3s ease;
+}
+
+.ui-strategy li:hover {
+  color: var(--ui-text);
+}
+
+.ui-process__step.is-active .ui-process__icon {
+  animation: ui-step-live 3.4s ease-in-out infinite;
+}
+
+@keyframes ui-step-live {
+  0%,
+  100% {
+    box-shadow:
+      0 12px 30px rgba(105, 73, 222, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 14px 38px rgba(122, 88, 245, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  }
+}
+
+@media (max-width: 760px) {
+  .ui-thinking__intro h4 {
+    font-size: clamp(1.7rem, 8.2vw, 2.35rem);
+  }
+
+  .ui-thinking__lead {
+    font-size: 0.88rem;
+    line-height: 1.82;
+  }
+
+  .ui-thinking__lead br,
+  .ui-card__intro br {
+    display: none;
+  }
+
+  .ui-card__head h5 {
+    font-size: 1.28rem;
+  }
+
+  .ui-card__intro {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .ui-principles strong {
+    font-size: 0.92rem;
+  }
+
+  .ui-principles p {
+    font-size: 0.78rem;
+  }
+
+  .ui-process__step strong {
+    font-size: 0.9rem;
+  }
+
+  .ui-process__step small {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-process__step.is-active .ui-process__icon {
+    animation: none;
   }
 }
 
@@ -17590,7 +17779,7 @@ window.MEDIA_DATA = {
         <div class="ui-thinking__hero">
           <div class="ui-thinking__intro">
             <p class="ui-thinking__kicker"><span>Design Thinking</span><i aria-hidden="true"></i></p>
-            <h4>UI 界面与交互设计 <em>· 设计思路</em></h4>
+            <h4>UI界面与交互设计 <em>· 设计思路</em></h4>
             <p class="ui-thinking__lead">
               以用户为中心，从需求、结构、界面到交互，构建高效、易用且有情感体验的产品，<br />
               在功能与美学之间找到平衡。
@@ -17679,7 +17868,8 @@ window.MEDIA_DATA = {
               </div>
             </header>
             <p class="ui-card__intro">
-              在保证清晰、易用的前提下，通过简洁的视觉语言传达产品调性，营造统一、舒适的使用氛围。
+              在保证清晰、易用的前提下，通过简洁的视觉语言传达产品调性，<br />
+              营造统一、舒适的使用氛围。
             </p>
             <div class="ui-card__content">
               <ul class="ui-principles">
@@ -17729,7 +17919,8 @@ window.MEDIA_DATA = {
               </div>
             </header>
             <p class="ui-card__intro">
-              围绕用户核心任务，设计自然、流畅的操作路径，通过合适的反馈与动效，增强可感知的交互体验。
+              围绕用户核心任务，设计自然、流畅的操作路径，<br />
+              通过合适的反馈与动效，增强可感知的交互体验。
             </p>
 
             <div class="ui-interaction">
@@ -17751,7 +17942,6 @@ window.MEDIA_DATA = {
                 <span class="ui-loop__core">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4" /><path d="M5 20c.8-4 3.4-6 7-6s6.2 2 7 6" /></svg>
                 </span>
-                <span class="ui-loop__check">✓</span>
               </div>
 
               <div class="ui-strategy">
