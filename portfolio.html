@@ -13040,6 +13040,170 @@ p,
 .aigc-book__page--right {
   right: -1.2%;
 }
+/* AIGC left lower editorial strip */
+.aigc-thinking__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.aigc-foot {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(238, 233, 222, 0.12);
+}
+
+.aigc-foot__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+}
+
+.aigc-foot__label {
+  color: var(--aigc);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+.aigc-foot__meta {
+  color: var(--aigc-dim);
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.aigc-foot__row {
+  display: grid;
+  grid-template-columns: repeat(3, 72px) minmax(154px, 1fr);
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 9px;
+}
+
+.aigc-foot__thumb {
+  position: relative;
+  height: 62px;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(238, 211, 178, 0.24);
+  border-radius: 5px;
+  background: #0c1511;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 0.3s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.aigc-foot__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.92) brightness(0.94);
+  transition: transform 0.45s var(--ease-out), filter 0.35s ease;
+}
+
+.aigc-foot__thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(3, 7, 5, 0.68), transparent 58%);
+  pointer-events: none;
+}
+
+.aigc-foot__thumb figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  bottom: 4px;
+  left: 5px;
+  overflow: hidden;
+  color: rgba(245, 236, 222, 0.8);
+  font-size: 0.48rem;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aigc-foot__thumb:hover {
+  border-color: rgba(246, 212, 172, 0.55);
+  transform: translateY(-2px);
+}
+
+.aigc-foot__thumb:hover img {
+  filter: saturate(1) brightness(1.02);
+  transform: scale(1.04);
+}
+
+.aigc-foot__note {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 10px;
+  border: 1px solid rgba(227, 181, 143, 0.16);
+  border-radius: 6px;
+  background: rgba(19, 25, 20, 0.62);
+}
+
+.aigc-foot__note span {
+  color: var(--aigc);
+  font-size: 0.47rem;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
+.aigc-foot__note p {
+  margin-top: 4px;
+  color: #d8d0c3;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+@media (max-width: 1120px) {
+  .aigc-foot {
+    margin-top: 20px;
+  }
+
+  .aigc-foot__row {
+    grid-template-columns: repeat(3, 86px) minmax(0, 1fr);
+  }
+
+  .aigc-foot__thumb {
+    height: 68px;
+  }
+}
+
+@media (max-width: 760px) {
+  .aigc-foot {
+    margin-top: 17px;
+    padding-top: 13px;
+  }
+
+  .aigc-foot__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .aigc-foot__thumb {
+    height: 63px;
+  }
+
+  .aigc-foot__note {
+    grid-column: 1 / -1;
+    min-height: 54px;
+    margin-top: 1px;
+  }
+
+  .aigc-foot__meta {
+    display: none;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -20420,6 +20584,31 @@ window.MEDIA_DATA = {
               <span class="aigc-book__float"><i></i><i></i><i></i></span>
               <span class="aigc-book__orbit"></span>
             </div>
+
+            <footer class="aigc-foot">
+              <div class="aigc-foot__top">
+                <span class="aigc-foot__label">SELECTED PAGES / 绘本内页</span>
+                <span class="aigc-foot__meta">10 页绘本 · 角色设定 · 东方志怪世界观</span>
+              </div>
+              <div class="aigc-foot__row">
+                <figure class="aigc-foot__thumb">
+                  <img src="assets/img/work/aigc/qingqiu-book-cover.webp" alt="《青丘诡梦录》绘本封面" width="1600" height="900" loading="lazy" decoding="async" />
+                  <figcaption>封面</figcaption>
+                </figure>
+                <figure class="aigc-foot__thumb">
+                  <img src="assets/img/work/aigc/qingqiu-book-page-01.webp" alt="《青丘诡梦录》绘本内页一" width="1600" height="521" loading="lazy" decoding="async" />
+                  <figcaption>内页 01</figcaption>
+                </figure>
+                <figure class="aigc-foot__thumb">
+                  <img src="assets/img/work/aigc/qingqiu-book-page-04.webp" alt="《青丘诡梦录》绘本内页四" width="1600" height="533" loading="lazy" decoding="async" />
+                  <figcaption>内页 04</figcaption>
+                </figure>
+                <div class="aigc-foot__note">
+                  <span>STORY NOTE</span>
+                  <p>先让角色可信，<br />再让世界成立。</p>
+                </div>
+              </div>
+            </footer>
           </div>
 
           <div class="aigc-thinking__right">
