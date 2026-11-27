@@ -14488,6 +14488,137 @@ p,
     font-size: 0.7rem;
   }
 }
+/* 3D decorative object: closer glass torus / cube silhouette */
+.td-cube-wrap {
+  top: 46%;
+  left: 50%;
+  width: 132px;
+  height: 132px;
+}
+
+.td-cube-wrap::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8%;
+  border-radius: 16px;
+  background: rgba(183, 157, 248, 0.18);
+  filter: blur(22px);
+}
+
+.td-cube {
+  animation: td-cube-sway 8.5s ease-in-out infinite;
+}
+
+@keyframes td-cube-sway {
+  0%,
+  100% {
+    transform: rotateX(-23deg) rotateY(30deg) rotateZ(-5deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(-17deg) rotateY(50deg) rotateZ(3deg) translateY(-8px);
+  }
+}
+
+.td-cube__face--front { transform: translateZ(66px); }
+.td-cube__face--back { transform: rotateY(180deg) translateZ(66px); }
+.td-cube__face--right { transform: rotateY(90deg) translateZ(66px); }
+.td-cube__face--left { transform: rotateY(-90deg) translateZ(66px); }
+.td-cube__face--top { transform: rotateX(90deg) translateZ(66px); }
+.td-cube__face--bottom { transform: rotateX(-90deg) translateZ(66px); }
+
+.td-cube__face {
+  border-color: rgba(237, 226, 255, 0.72);
+  box-shadow:
+    inset 0 0 24px rgba(232, 220, 255, 0.28),
+    inset 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.td-cube__face--front {
+  background: linear-gradient(145deg, rgba(232, 218, 255, 0.62), rgba(132, 158, 224, 0.3) 52%, rgba(250, 224, 192, 0.16));
+}
+
+.td-cube__face--right {
+  background: linear-gradient(155deg, rgba(176, 149, 243, 0.54), rgba(78, 105, 165, 0.3));
+}
+
+.td-cube__face--top {
+  background: linear-gradient(145deg, rgba(249, 238, 255, 0.78), rgba(167, 193, 240, 0.4));
+}
+
+.td-torus {
+  transform: rotate(-1.5deg);
+  filter:
+    drop-shadow(0 20px 38px rgba(109, 72, 190, 0.38))
+    saturate(1.6)
+    brightness(1.18);
+}
+
+.td-orb--one {
+  width: 34px;
+  height: 34px;
+  top: 10%;
+  left: 9%;
+}
+
+.td-orb--two {
+  width: 22px;
+  height: 22px;
+  right: 6%;
+  bottom: 25%;
+}
+
+.td-orb--three {
+  width: 12px;
+  height: 12px;
+}
+
+.td-visual__ground {
+  right: 0;
+  bottom: 1%;
+  left: 0;
+  height: 34%;
+  background:
+    radial-gradient(ellipse at 48% 50%, rgba(183, 151, 255, 0.26), rgba(11, 16, 23, 0.12) 52%, transparent 74%);
+}
+
+.td-visual__orbit {
+  top: 26%;
+  right: 1%;
+  width: 73%;
+  height: 33%;
+}
+
+@media (max-width: 760px) {
+  .td-cube-wrap {
+    width: 84px;
+    height: 84px;
+  }
+
+  .td-cube__face--front { transform: translateZ(42px); }
+  .td-cube__face--back { transform: rotateY(180deg) translateZ(42px); }
+  .td-cube__face--right { transform: rotateY(90deg) translateZ(42px); }
+  .td-cube__face--left { transform: rotateY(-90deg) translateZ(42px); }
+  .td-cube__face--top { transform: rotateX(90deg) translateZ(42px); }
+  .td-cube__face--bottom { transform: rotateX(-90deg) translateZ(42px); }
+
+  .td-orb--one {
+    width: 26px;
+    height: 26px;
+  }
+
+  .td-orb--two {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .td-cube {
+    animation: none;
+    transform: rotateX(-23deg) rotateY(30deg) rotateZ(-5deg);
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -22050,10 +22181,11 @@ window.MEDIA_DATA = {
                 </linearGradient>
                 <filter id="td-soft"><feGaussianBlur stdDeviation="1.3" /></filter>
               </defs>
-              <ellipse cx="312" cy="264" rx="218" ry="122" transform="rotate(-27 312 264)" fill="none" stroke="#9b7bd8" stroke-width="82" opacity="0.12" filter="url(#td-soft)" />\n              <g filter="url(#td-soft)">
-                <ellipse cx="315" cy="264" rx="216" ry="120" transform="rotate(-27 315 264)" fill="none" stroke="url(#td-glass-a)" stroke-width="62" opacity="0.6" />
-                <ellipse cx="305" cy="248" rx="194" ry="104" transform="rotate(29 305 248)" fill="none" stroke="url(#td-glass-b)" stroke-width="40" opacity="0.62" />
-                <ellipse cx="320" cy="260" rx="148" ry="86" transform="rotate(4 320 260)" fill="none" stroke="url(#td-glass-a)" stroke-width="18" opacity="0.45" />
+              <ellipse cx="312" cy="260" rx="218" ry="124" transform="rotate(-25 312 260)" fill="none" stroke="#9b7bd8" stroke-width="86" opacity="0.13" filter="url(#td-soft)" />
+              <g filter="url(#td-soft)">
+                <ellipse cx="315" cy="262" rx="216" ry="123" transform="rotate(-25 315 262)" fill="none" stroke="url(#td-glass-a)" stroke-width="76" opacity="0.58" />
+                <ellipse cx="308" cy="254" rx="203" ry="113" transform="rotate(-8 308 254)" fill="none" stroke="url(#td-glass-b)" stroke-width="30" opacity="0.54" />
+                <ellipse cx="315" cy="260" rx="216" ry="123" transform="rotate(-25 315 260)" fill="none" stroke="#f5eaff" stroke-width="5" opacity="0.5" />
               </g>
             </svg>
 
