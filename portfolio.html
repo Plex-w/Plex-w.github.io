@@ -14288,6 +14288,206 @@ p,
     font-size: 0.7rem;
   }
 }
+/* 3D reference pass — larger spatial stage, floating icons, card rhythm */
+.td-heading h4 {
+  font-size: clamp(2.2rem, 3.25vw, 3.15rem);
+}
+
+.td-heading__kicker {
+  font-size: 0.76rem;
+}
+
+.td-visual {
+  min-height: 400px;
+}
+
+.td-cube-wrap {
+  width: 112px;
+  height: 112px;
+}
+
+.td-cube__face--front { transform: translateZ(56px); }
+.td-cube__face--back { transform: rotateY(180deg) translateZ(56px); }
+.td-cube__face--right { transform: rotateY(90deg) translateZ(56px); }
+.td-cube__face--left { transform: rotateY(-90deg) translateZ(56px); }
+.td-cube__face--top { transform: rotateX(90deg) translateZ(56px); }
+.td-cube__face--bottom { transform: rotateX(-90deg) translateZ(56px); }
+
+.td-visual__ground {
+  right: 1%;
+  bottom: 3%;
+  left: 2%;
+  height: 31%;
+  background:
+    radial-gradient(ellipse at 46% 48%, rgba(189, 158, 255, 0.23), rgba(11, 16, 22, 0.1) 52%, transparent 73%);
+}
+
+.td-orb--one {
+  width: 27px;
+  height: 27px;
+}
+
+.td-orb--two {
+  width: 18px;
+  height: 18px;
+}
+
+.td-steps {
+  gap: clamp(18px, 2.5vw, 38px);
+}
+
+.td-step {
+  min-height: 168px;
+  padding: 19px 16px 17px;
+  border-radius: 13px;
+}
+
+.td-step::after {
+  right: -25px;
+  font-size: 15px;
+}
+
+.td-step__icon {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border: 0;
+  background: transparent;
+  color: #d7c8f1;
+  filter: drop-shadow(0 5px 12px rgba(113, 78, 180, 0.28));
+}
+
+.td-step__icon::before {
+  content: "";
+  position: absolute;
+  inset: 2%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167, 139, 225, 0.18), transparent 68%);
+  filter: blur(8px);
+}
+
+.td-step__icon svg {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.15;
+}
+
+.td-step strong {
+  margin-top: 16px;
+  font-size: 1.02rem;
+}
+
+.td-step strong b {
+  font-size: 0.74rem;
+}
+
+.td-step p {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  line-height: 1.62;
+}
+
+.td-step:hover .td-step__icon,
+.td-step:focus-visible .td-step__icon,
+.td-step.is-active .td-step__icon {
+  border-color: transparent;
+  background: transparent;
+  color: #f1e6ff;
+  filter:
+    drop-shadow(0 7px 16px rgba(150, 113, 226, 0.42))
+    drop-shadow(0 0 10px rgba(200, 175, 250, 0.25));
+}
+
+.td-section-head h5,
+.td-methods__head h5 {
+  font-size: 1.5rem;
+}
+
+.td-section-head > p {
+  font-size: 0.83rem;
+}
+
+.td-methods {
+  margin-top: 28px;
+}
+
+.td-methods__icon {
+  width: 31px;
+  height: 31px;
+}
+
+.td-methods__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.td-methods strong {
+  font-size: 0.94rem;
+}
+
+.td-methods li p {
+  font-size: 0.76rem;
+  line-height: 1.62;
+}
+
+@media (max-width: 1120px) {
+  .td-visual {
+    min-height: 320px;
+  }
+
+  .td-step::after {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .td-heading h4 {
+    font-size: clamp(1.7rem, 8.1vw, 2.35rem);
+  }
+
+  .td-visual {
+    min-height: 270px;
+  }
+
+  .td-cube-wrap {
+    width: 78px;
+    height: 78px;
+  }
+
+  .td-cube__face--front { transform: translateZ(39px); }
+  .td-cube__face--back { transform: rotateY(180deg) translateZ(39px); }
+  .td-cube__face--right { transform: rotateY(90deg) translateZ(39px); }
+  .td-cube__face--left { transform: rotateY(-90deg) translateZ(39px); }
+  .td-cube__face--top { transform: rotateX(90deg) translateZ(39px); }
+  .td-cube__face--bottom { transform: rotateX(-90deg) translateZ(39px); }
+
+  .td-step {
+    min-height: 160px;
+  }
+
+  .td-step__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .td-step__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .td-step strong {
+    font-size: 0.94rem;
+  }
+
+  .td-step p {
+    font-size: 0.74rem;
+  }
+
+  .td-methods li p {
+    font-size: 0.7rem;
+  }
+}
 
 /* ==== work-archive.css ==== */
 /* ==========================================================================
@@ -21850,10 +22050,10 @@ window.MEDIA_DATA = {
                 </linearGradient>
                 <filter id="td-soft"><feGaussianBlur stdDeviation="1.3" /></filter>
               </defs>
-              <g filter="url(#td-soft)">
-                <ellipse cx="315" cy="264" rx="216" ry="120" transform="rotate(-27 315 264)" fill="none" stroke="url(#td-glass-a)" stroke-width="42" opacity="0.62" />
-                <ellipse cx="305" cy="248" rx="194" ry="104" transform="rotate(29 305 248)" fill="none" stroke="url(#td-glass-b)" stroke-width="25" opacity="0.65" />
-                <ellipse cx="320" cy="260" rx="148" ry="86" transform="rotate(4 320 260)" fill="none" stroke="url(#td-glass-a)" stroke-width="11" opacity="0.42" />
+              <ellipse cx="312" cy="264" rx="218" ry="122" transform="rotate(-27 312 264)" fill="none" stroke="#9b7bd8" stroke-width="82" opacity="0.12" filter="url(#td-soft)" />\n              <g filter="url(#td-soft)">
+                <ellipse cx="315" cy="264" rx="216" ry="120" transform="rotate(-27 315 264)" fill="none" stroke="url(#td-glass-a)" stroke-width="62" opacity="0.6" />
+                <ellipse cx="305" cy="248" rx="194" ry="104" transform="rotate(29 305 248)" fill="none" stroke="url(#td-glass-b)" stroke-width="40" opacity="0.62" />
+                <ellipse cx="320" cy="260" rx="148" ry="86" transform="rotate(4 320 260)" fill="none" stroke="url(#td-glass-a)" stroke-width="18" opacity="0.45" />
               </g>
             </svg>
 
