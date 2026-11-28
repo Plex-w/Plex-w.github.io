@@ -3196,9 +3196,11 @@ body {
     </script>
   
 <style id="home-index-fixed">
-  /* Keep the home work index at the reference height: no scroll/load drift. */
+  /* Keep the home work index pinned at the reference viewport height. */
   .chapter-index {
-    top: 14% !important;
+    position: fixed !important;
+    top: 23.5vh !important;
+    left: clamp(20px, 4.2vw, 68px) !important;
     transform: none !important;
   }
 </style>
