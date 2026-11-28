@@ -18776,7 +18776,7 @@ body {
 
 
 </style>
-    <link rel="preload" href="assets/video/hero-portfolio-720-fast.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="assets/video/hero-portfolio-720-fast.mp4?v=2" as="video" type="video/mp4" />
     <link rel="preload" href="assets/video/hero-portfolio-poster.webp" as="image" fetchpriority="high" />
   
 <style id="td-spacing-tune">
@@ -22185,6 +22185,200 @@ body {
     font-size: 9px;
     font-weight: 700;
   }
+</style><style id="ios-layout-guard">
+  @media (max-width: 1080px) {
+    .site-header {
+      background: #050808 !important;
+      -webkit-backdrop-filter: blur(16px) saturate(1.1);
+      backdrop-filter: blur(16px) saturate(1.1);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .ui-thinking__hero {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 18px !important;
+    }
+
+    .ui-thinking__visual {
+      width: 100%;
+      max-width: none;
+      min-height: 230px;
+    }
+
+    .ui-thinking__intro h4 {
+      max-width: 100%;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    .ui-card__content,
+    .ui-interaction {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .ui-thinking__intro h4 {
+      font-size: clamp(1.5rem, 7.2vw, 2rem) !important;
+      line-height: 1.24 !important;
+    }
+
+    .ui-thinking__lead {
+      font-size: 0.86rem;
+      line-height: 1.78;
+    }
+
+    .ui-process {
+      overflow: visible !important;
+      margin: 20px 0 0 !important;
+      padding: 0 !important;
+    }
+
+    .ui-process__curve {
+      display: none !important;
+    }
+
+    .ui-process__steps {
+      display: grid !important;
+      width: 100% !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 10px;
+    }
+
+    .ui-process__step {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      column-gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(189, 222, 240, 0.16);
+      border-radius: 12px;
+      background: rgba(8, 18, 24, 0.5);
+      text-align: left;
+    }
+
+    .ui-process__icon {
+      grid-row: 1 / span 2;
+      width: 46px;
+      height: 46px;
+      margin: 0;
+    }
+
+    .ui-process__dot {
+      display: none;
+    }
+
+    .ui-process__step strong,
+    .ui-process__step small {
+      grid-column: 2;
+      min-width: 0;
+    }
+
+    .ui-process__step small br {
+      display: none;
+    }
+  }
+
+  @media (max-width: 760px) {
+    /* Poster flow: stack all five steps instead of a clipped horizontal rail */
+    .pst-steps {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 9px;
+      overflow: visible !important;
+      padding: 0 !important;
+    }
+
+    .pst-steps li {
+      width: 100% !important;
+      flex: none !important;
+    }
+
+    .pst-steps li:not(:last-child)::after {
+      display: none !important;
+    }
+
+    .pst-step {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      column-gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(203, 221, 236, 0.17);
+      border-radius: 12px;
+      background: rgba(8, 19, 26, 0.5);
+      text-align: left;
+    }
+
+    .pst-step__icon {
+      grid-row: 1 / span 2;
+      width: 46px;
+      height: 46px;
+      margin: 0;
+    }
+
+    .pst-step strong,
+    .pst-step p {
+      grid-column: 2;
+      min-width: 0;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    .pst-step p {
+      margin-top: 2px;
+    }
+
+    /* Video flow: stack all six steps so no copy is cut off */
+    .ve-steps {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 9px;
+      overflow: visible !important;
+      padding: 0 !important;
+    }
+
+    .ve-steps li {
+      width: 100% !important;
+      flex: none !important;
+    }
+
+    .ve-steps li:not(:last-child)::after {
+      display: none !important;
+    }
+
+    .ve-step {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
+      column-gap: 11px;
+      min-height: 0;
+      padding: 12px;
+      align-items: start;
+    }
+
+    .ve-step__icon {
+      grid-row: 1 / span 3;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+    }
+
+    .ve-step__no,
+    .ve-step strong,
+    .ve-step p {
+      grid-column: 2;
+      min-width: 0;
+      margin-top: 0;
+    }
+
+    .ve-step__no {
+      margin-bottom: 1px;
+    }
+  }
 </style></head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
@@ -22287,7 +22481,7 @@ body {
             playsinline webkit-playsinline
             preload="auto"
             poster="assets/video/hero-portfolio-poster.webp"
-            src="assets/video/hero-portfolio-720-fast.mp4"
+            src="assets/video/hero-portfolio-720-fast.mp4?v=2"
           ></video>
         </div>
         <div class="hero__veil" aria-hidden="true"></div>
@@ -24560,7 +24754,7 @@ window.MEDIA_DATA = {
   if (contactBackgroundVideo) {
     const contactVideoSource = document.createElement("source");
     contactVideoSource.type = "video/mp4";
-    contactVideoSource.src = "assets/video/contact-background-personal-720.mp4";
+    contactVideoSource.src = "assets/video/contact-background-personal-720.mp4?v=2";
     contactBackgroundVideo.appendChild(contactVideoSource);
 
     contactBackgroundVideo.muted = true;

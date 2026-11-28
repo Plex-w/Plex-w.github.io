@@ -3282,7 +3282,7 @@ body {
           preload="none"
           poster="assets/video/home-loop-poster.webp"
         >
-          <source src="assets/video/home-loop-2k-fast.mp4" type="video/mp4" />
+          <source src="assets/video/home-loop-2k-fast.mp4?v=2" type="video/mp4" />
         </video>
       </div>
       <canvas class="cosmos__dust" id="cosmos-canvas"></canvas>
@@ -4261,5 +4261,23 @@ body {
 
 
 </script>
-  </body>
+  
+<script>
+(() => {
+  let started = false;
+  const prefetchHero = () => {
+    if (started) return;
+    started = true;
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.href = "assets/video/hero-portfolio-720-fast.mp4?v=2";
+    document.head.appendChild(link);
+  };
+  document.querySelectorAll("[data-enter-link]").forEach((link) => {
+    link.addEventListener("pointerenter", prefetchHero, { once: true, passive: true });
+    link.addEventListener("touchstart", prefetchHero, { once: true, passive: true });
+  });
+})();
+</script>
+</body>
 </html>
