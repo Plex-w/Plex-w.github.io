@@ -3194,7 +3194,15 @@ body {
         if (document.body) document.body.classList.add("is-ready");
       }, 2200);
     </script>
-  </head>
+  
+<style id="home-index-fixed">
+  /* Keep the home work index at the reference height: no scroll/load drift. */
+  .chapter-index {
+    top: 14% !important;
+    transform: none !important;
+  }
+</style>
+</head>
   <body class="entry">
     <div
       class="site-loader"
