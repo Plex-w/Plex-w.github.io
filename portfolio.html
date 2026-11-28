@@ -19815,6 +19815,230 @@ body {
     background: rgba(105, 218, 255, 0.76);
   }
 </style>
+
+<style id="poster-fidelity-pass">
+  /* Match the reference composition more closely, still in technology colors. */
+  .pst-hero {
+    align-items: start;
+  }
+
+  .pst-heading h4 {
+    font-size: clamp(2.35rem, 3.52vw, 3.42rem);
+  }
+
+  .pst-heading__intro {
+    font-size: 0.99rem;
+    line-height: 1.88;
+  }
+
+  .pst-visual {
+    min-height: 350px;
+  }
+
+  .pst-poster-wrap {
+    top: 1%;
+    width: clamp(196px, 17.3vw, 255px);
+    aspect-ratio: 0.72;
+  }
+
+  .pst-poster {
+    justify-content: flex-start;
+    padding-top: clamp(30px, 3.2vw, 44px);
+  }
+
+  .pst-poster__label {
+    margin-top: 18px;
+  }
+
+  .pst-poster__line {
+    margin-top: 28px;
+  }
+
+  .pst-poster__line--short {
+    margin-top: 8px;
+  }
+
+  .pst-visual__ring {
+    border-color: rgba(82, 208, 255, 0.26);
+    box-shadow:
+      0 0 58px rgba(0, 158, 238, 0.24),
+      inset 0 0 36px rgba(135, 232, 255, 0.16);
+  }
+
+  .pst-visual__ring::before {
+    border-color: rgba(165, 242, 255, 0.48);
+  }
+
+  .pst-visual__ring::after {
+    border-color: rgba(96, 202, 255, 0.2);
+  }
+
+  .pst-visual__orbit {
+    border-color: rgba(130, 230, 255, 0.38);
+  }
+
+  .pst-visual__planet {
+    background:
+      radial-gradient(circle at 34% 28%, rgba(112, 203, 241, 0.28), rgba(32, 72, 96, 0.2) 42%, rgba(8, 19, 28, 0.08) 62%, transparent 72%);
+  }
+
+  .pst-spark {
+    top: 7%;
+  }
+
+  .pst-step strong {
+    font-size: 0.98rem;
+  }
+
+  .pst-step p {
+    font-size: 0.77rem;
+  }
+
+  .pst-card {
+    min-height: 266px;
+    padding: clamp(20px, 2.1vw, 25px);
+  }
+
+  .pst-card h5 {
+    font-size: 1.3rem;
+  }
+
+  .pst-card li {
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+
+  .pst-card ul {
+    gap: 11px;
+    margin-top: 23px;
+  }
+
+  .pst-card::after {
+    right: -15%;
+    bottom: -38%;
+    width: 65%;
+    background:
+      radial-gradient(circle at 36% 28%, rgba(83, 196, 240, 0.28), rgba(11, 29, 42, 0.55) 48%, rgba(5, 13, 20, 0.16) 64%, transparent 72%);
+    border: 1px solid rgba(108, 222, 255, 0.12);
+    filter: blur(1px);
+    opacity: 0.95;
+  }
+
+  .pst-card:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    right: 9%;
+    bottom: -9%;
+    width: 35%;
+    height: 47%;
+    border: 1px solid rgba(127, 229, 255, 0.25);
+    background: linear-gradient(145deg, rgba(39, 116, 158, 0.34), rgba(7, 23, 35, 0.14));
+    box-shadow: 0 0 30px rgba(48, 186, 238, 0.11);
+    transform: skewY(-16deg) rotate(-4deg);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .pst-card:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 1120px) {
+    .pst-visual {
+      min-height: 320px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .pst-heading h4 {
+      font-size: clamp(1.75rem, 8.2vw, 2.4rem);
+    }
+
+    .pst-heading__intro {
+      font-size: 0.9rem;
+    }
+
+    .pst-visual {
+      min-height: 250px;
+    }
+
+    .pst-poster-wrap {
+      width: 160px;
+      aspect-ratio: 0.7;
+    }
+
+    .pst-poster {
+      padding-top: 22px;
+    }
+
+    .pst-poster__line {
+      margin-top: 18px;
+    }
+
+    .pst-step strong {
+      font-size: 0.9rem;
+    }
+
+    .pst-step p {
+      font-size: 0.71rem;
+    }
+
+    .pst-card {
+      min-height: 0;
+    }
+
+    .pst-card h5 {
+      font-size: 1.14rem;
+    }
+
+    .pst-card li {
+      font-size: 0.82rem;
+    }
+  }
+</style>
+
+<style id="poster-readability-pass">
+  .pst-thinking {
+    --pst-muted: #b7cfdd;
+    --pst-dim: #819bab;
+  }
+
+  .pst-heading__intro {
+    color: #b8d0dd;
+  }
+
+  .pst-step strong {
+    font-size: 1rem;
+    color: #f4fdff;
+  }
+
+  .pst-step p {
+    font-size: 0.79rem;
+    color: #b6ceda;
+  }
+
+  .pst-step__icon {
+    color: #c2f2ff;
+  }
+
+  .pst-card li {
+    color: #b9d2df;
+  }
+
+  .pst-card__arrow {
+    color: rgba(152, 232, 255, 0.7);
+  }
+
+  @media (max-width: 760px) {
+    .pst-step strong {
+      font-size: 0.92rem;
+    }
+
+    .pst-step p {
+      font-size: 0.73rem;
+    }
+  }
+</style>
 </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
