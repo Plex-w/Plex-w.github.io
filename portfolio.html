@@ -19625,6 +19625,196 @@ body {
 }
 
 </style>
+
+<style id="poster-tech-palette">
+  /* Poster sheet — luminous cyan / electric blue technology palette */
+  .pst-thinking {
+    --pst-lav: #7ce7ff;
+    --pst-ice: #5aa7ff;
+    --pst-text: #f1fbff;
+    --pst-muted: #a4bdcc;
+    --pst-dim: #6b8697;
+    background:
+      radial-gradient(circle at 76% 12%, rgba(0, 174, 255, 0.15), transparent 36%),
+      radial-gradient(circle at 16% 88%, rgba(0, 104, 184, 0.1), transparent 34%),
+      linear-gradient(135deg, rgba(3, 9, 15, 0.42), rgba(3, 8, 14, 0.13) 52%, rgba(3, 10, 17, 0.4));
+  }
+
+  .pst-thinking::before {
+    background-image:
+      linear-gradient(90deg, rgba(177, 239, 255, 0.026) 1px, transparent 1px),
+      linear-gradient(rgba(177, 239, 255, 0.02) 1px, transparent 1px);
+  }
+
+  .pst-kicker {
+    color: var(--pst-dim);
+  }
+
+  .pst-kicker i {
+    background: rgba(111, 226, 255, 0.6);
+  }
+
+  .pst-heading h4 {
+    color: #f2fcff;
+    text-shadow: 0 2px 28px rgba(0, 136, 205, 0.18);
+  }
+
+  .pst-heading__intro {
+    color: var(--pst-muted);
+    text-shadow: 0 1px 14px rgba(0, 22, 36, 0.24);
+  }
+
+  .pst-visual__planet {
+    background:
+      radial-gradient(circle at 34% 28%, rgba(102, 192, 235, 0.24), rgba(30, 65, 88, 0.16) 42%, rgba(8, 17, 25, 0.08) 62%, transparent 72%);
+  }
+
+  .pst-visual__ring {
+    border-color: rgba(78, 204, 255, 0.17);
+    box-shadow:
+      0 0 50px rgba(0, 156, 232, 0.18),
+      inset 0 0 32px rgba(130, 228, 255, 0.13);
+  }
+
+  .pst-visual__ring::before {
+    border-color: rgba(151, 237, 255, 0.4);
+  }
+
+  .pst-visual__ring::after {
+    border-color: rgba(86, 191, 255, 0.15);
+  }
+
+  .pst-visual__orbit {
+    border-color: rgba(122, 225, 255, 0.31);
+  }
+
+  .pst-poster {
+    border-color: rgba(153, 238, 255, 0.36);
+    background:
+      linear-gradient(160deg, rgba(125, 216, 255, 0.2), rgba(30, 75, 108, 0.34) 46%, rgba(10, 26, 41, 0.44));
+    box-shadow:
+      0 30px 60px rgba(0, 8, 16, 0.34),
+      inset 0 1px 0 rgba(224, 252, 255, 0.25),
+      inset 0 0 50px rgba(75, 199, 255, 0.07);
+  }
+
+  .pst-poster::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(137, 233, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(137, 233, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(160deg, #000, transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .pst-poster__rule {
+    background: rgba(207, 248, 255, 0.44);
+  }
+
+  .pst-poster__label {
+    color: #eefdff;
+    text-shadow: 0 0 22px rgba(85, 217, 255, 0.12);
+  }
+
+  .pst-poster__line {
+    background: rgba(202, 244, 255, 0.24);
+  }
+
+  .pst-poster small {
+    color: rgba(180, 234, 255, 0.5);
+  }
+
+  .pst-spark {
+    color: #e6feff;
+    text-shadow: 0 0 20px rgba(100, 231, 255, 0.75);
+  }
+
+  .pst-flow {
+    border-top-color: rgba(95, 212, 255, 0.15);
+  }
+
+  .pst-flow__head i {
+    background: linear-gradient(90deg, #7ce7ff, transparent);
+  }
+
+  .pst-steps li:not(:last-child)::after {
+    background: linear-gradient(90deg, rgba(91, 211, 255, 0.32), rgba(91, 211, 255, 0.1));
+  }
+
+  .pst-step__icon {
+    border-color: rgba(121, 224, 255, 0.3);
+    background: radial-gradient(circle at 45% 38%, rgba(28, 118, 164, 0.2), rgba(5, 19, 29, 0.27));
+    color: #b7efff;
+  }
+
+  .pst-step:hover .pst-step__icon,
+  .pst-step:focus-visible .pst-step__icon,
+  .pst-step.is-active .pst-step__icon {
+    border-color: rgba(167, 243, 255, 0.62);
+    background: rgba(22, 141, 190, 0.24);
+    color: #f0feff;
+    box-shadow:
+      0 0 24px rgba(48, 198, 255, 0.24),
+      inset 0 0 18px rgba(137, 233, 255, 0.14);
+  }
+
+  .pst-step strong {
+    color: #eefbff;
+  }
+
+  .pst-step p {
+    color: #9fb9c8;
+  }
+
+  .pst-card {
+    border-color: rgba(93, 199, 240, 0.17);
+    background:
+      linear-gradient(150deg, rgba(9, 27, 39, 0.72), rgba(4, 13, 21, 0.61));
+    box-shadow:
+      0 18px 38px rgba(0, 8, 16, 0.2),
+      inset 0 1px 0 rgba(196, 247, 255, 0.045);
+  }
+
+  .pst-card::after {
+    background: radial-gradient(circle at 38% 30%, rgba(62, 168, 216, 0.19), rgba(13, 37, 53, 0.08) 52%, transparent 69%);
+  }
+
+  .pst-card:hover {
+    border-color: rgba(137, 232, 255, 0.36);
+    background-color: rgba(21, 126, 171, 0.055);
+    box-shadow:
+      0 24px 46px rgba(0, 8, 16, 0.24),
+      inset 0 1px 0 rgba(201, 249, 255, 0.06);
+  }
+
+  .pst-card__icon {
+    color: #a9e9ff;
+  }
+
+  .pst-card h5 {
+    color: #f1fcff;
+  }
+
+  .pst-card__arrow {
+    color: rgba(137, 225, 255, 0.6);
+  }
+
+  .pst-card:hover .pst-card__arrow {
+    color: #e7feff;
+  }
+
+  .pst-card li {
+    color: #a6becc;
+  }
+
+  .pst-card li::before {
+    background: rgba(105, 218, 255, 0.76);
+  }
+</style>
 </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
