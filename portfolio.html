@@ -21073,6 +21073,1076 @@ body {
     display: none;
   }
 </style>
+
+<style id="video-design-thinking-style">
+/* ==========================================================================
+   Video-editing chapter — monochrome editorial workflow sheet
+   ========================================================================== */
+
+.ve-thinking {
+  --ve-white: #f6f7f8;
+  --ve-silver: #c8cdd4;
+  --ve-muted: #a8afb8;
+  --ve-dim: #777f89;
+  --ve-line: rgba(232, 236, 241, 0.16);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(24px, 2.8vw, 34px) clamp(8px, 1.2vw, 16px);
+  border-top: 1px solid rgba(225, 230, 236, 0.16);
+  border-bottom: 1px solid rgba(225, 230, 236, 0.1);
+  background:
+    radial-gradient(circle at 77% 16%, rgba(226, 233, 241, 0.09), transparent 35%),
+    radial-gradient(circle at 20% 86%, rgba(173, 188, 205, 0.06), transparent 35%),
+    linear-gradient(135deg, rgba(5, 7, 10, 0.4), rgba(4, 6, 9, 0.14) 52%, rgba(5, 7, 11, 0.4));
+  color: var(--ve-white);
+}
+
+.ve-thinking::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(235, 240, 245, 0.022) 1px, transparent 1px),
+    linear-gradient(rgba(235, 240, 245, 0.017) 1px, transparent 1px);
+  background-size: 78px 78px;
+  mask-image: radial-gradient(ellipse at 54% 45%, #000 10%, transparent 78%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.ve-thinking,
+.ve-thinking * {
+  font-family: var(--font-sans);
+}
+
+.ve-thinking > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero ------------------------------------------------------------------- */
+
+.ve-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  gap: clamp(18px, 3vw, 44px);
+  align-items: center;
+}
+
+.ve-heading {
+  min-width: 0;
+}
+
+.ve-kicker {
+  color: var(--ve-dim);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.ve-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.ve-title-row h4 {
+  color: var(--ve-white);
+  font-size: clamp(2.25rem, 3.25vw, 3.12rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.18;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.26);
+}
+
+.ve-scissors {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  color: #eef1f4;
+  filter: drop-shadow(0 0 10px rgba(235, 241, 247, 0.18));
+}
+
+.ve-scissors svg {
+  width: 33px;
+  height: 33px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+}
+
+.ve-heading__sub {
+  max-width: 760px;
+  margin-top: 12px;
+  color: var(--ve-muted);
+  font-size: 0.94rem;
+  letter-spacing: 0.004em;
+  line-height: 1.75;
+}
+
+.ve-heading__rule {
+  width: 54px;
+  height: 2px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #f6f8fa, rgba(246, 248, 250, 0.16));
+  border-radius: 2px;
+}
+
+/* Film strip ------------------------------------------------------------- */
+
+.ve-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 300px;
+  perspective: 900px;
+  transition: transform 0.55s var(--ease-out);
+  transform: translate3d(var(--ve-px, 0px), var(--ve-py, 0px), 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.ve-visual__halo {
+  position: absolute;
+  top: 12%;
+  right: 2%;
+  width: 85%;
+  height: 65%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(216, 226, 236, 0.12), transparent 68%);
+  filter: blur(24px);
+}
+
+.ve-reel {
+  position: absolute;
+  z-index: 2;
+  bottom: 3%;
+  left: 0;
+  width: 132px;
+  height: 132px;
+  border: 8px solid #11141a;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 4deg, rgba(215, 224, 233, 0.2) 0deg 13deg, rgba(20, 24, 31, 0.08) 13deg 30deg),
+    radial-gradient(circle, #20252d 0 18%, #0d1015 19% 56%, #242a33 57% 60%, #0b0d12 61%);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(218, 227, 236, 0.14),
+    0 0 0 1px rgba(200, 211, 222, 0.1);
+  animation: ve-reel-spin 26s linear infinite;
+}
+
+.ve-reel::before,
+.ve-reel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ve-reel::before {
+  inset: 36%;
+  border: 5px solid #141820;
+  background: #05070a;
+}
+
+.ve-reel::after {
+  inset: 11%;
+  border: 1px solid rgba(220, 230, 238, 0.15);
+}
+
+@keyframes ve-reel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ve-strip {
+  position: absolute;
+  z-index: 3;
+  top: 12%;
+  right: 0;
+  width: 89%;
+  height: clamp(180px, 15vw, 222px);
+  overflow: hidden;
+  border: 1px solid rgba(226, 234, 241, 0.4);
+  border-radius: 8px;
+  background: #06080b;
+  box-shadow:
+    0 24px 42px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: rotate(-4deg) skewY(-1deg);
+  transform-origin: 50% 60%;
+}
+
+.ve-strip::before,
+.ve-strip::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  left: 0;
+  height: 14px;
+  background:
+    radial-gradient(circle at 10px 50%, #d7dde4 0 3px, transparent 3.5px) 0 0 / 28px 14px repeat-x,
+    #0b0e13;
+  opacity: 0.9;
+}
+
+.ve-strip::before {
+  top: 0;
+}
+
+.ve-strip::after {
+  bottom: 0;
+}
+
+.ve-frames {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  padding: 17px 6px;
+}
+
+.ve-frame {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #11161d;
+}
+
+.ve-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) brightness(0.8) contrast(1.06);
+}
+
+.ve-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 35%, rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+.ve-scrubber {
+  position: absolute;
+  z-index: 4;
+  top: -7%;
+  right: 9%;
+  width: 1px;
+  height: 113%;
+  background: linear-gradient(180deg, transparent, #f3f6f8 8% 88%, transparent);
+  box-shadow: 0 0 12px rgba(235, 243, 249, 0.28);
+}
+
+.ve-scrubber::before {
+  content: "";
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #f6f9fb;
+  border-radius: 50%;
+  background: #e9eef2;
+  box-shadow: 0 0 14px rgba(230, 240, 248, 0.55);
+  transform: translateX(-50%);
+  animation: ve-scrub-dot 6s ease-in-out infinite;
+}
+
+.ve-scrubber::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  bottom: 2%;
+  width: 34px;
+  height: 9px;
+  background: repeating-linear-gradient(90deg, rgba(232, 238, 244, 0.65) 0 1px, transparent 1px 6px);
+  opacity: 0.7;
+}
+
+@keyframes ve-scrub-dot {
+  0%,
+  100% {
+    top: 7%;
+  }
+  50% {
+    top: 74%;
+  }
+}
+
+/* Flow panel ------------------------------------------------------------- */
+
+.ve-flow {
+  margin-top: clamp(22px, 2.8vw, 30px);
+  padding: clamp(17px, 2vw, 22px);
+  border: 1px solid rgba(224, 232, 239, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(17, 19, 24, 0.72), rgba(7, 9, 13, 0.58));
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.ve-flow__head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.ve-flow__dots {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: none;
+  grid-template-columns: repeat(2, 7px);
+  grid-template-rows: repeat(2, 7px);
+  align-content: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.ve-flow__dots i {
+  display: block;
+  border-radius: 2px;
+  background: #eef2f5;
+}
+
+.ve-flow__dots i:nth-child(2) {
+  opacity: 0.65;
+}
+
+.ve-flow__dots i:nth-child(3) {
+  opacity: 0.82;
+}
+
+.ve-flow__dots i:nth-child(4) {
+  opacity: 0.48;
+}
+
+.ve-flow h5 {
+  color: var(--ve-white);
+  font-size: 1.22rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.ve-steps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(8px, 1.4vw, 16px);
+  margin-top: 16px;
+}
+
+.ve-steps li {
+  position: relative;
+  min-width: 0;
+}
+
+.ve-steps li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  z-index: 2;
+  top: 44%;
+  right: calc(clamp(8px, 1.4vw, 16px) * -0.5 - 5px);
+  color: rgba(229, 236, 242, 0.52);
+  font-size: 13px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.ve-step {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 168px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 13px 14px;
+  border: 1px solid rgba(222, 230, 238, 0.14);
+  border-radius: 11px;
+  background:
+    linear-gradient(145deg, rgba(26, 29, 36, 0.66), rgba(9, 11, 15, 0.58));
+  color: var(--ve-white);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.ve-step__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: #e5e9ed;
+}
+
+.ve-step__icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+}
+
+.ve-step__no {
+  margin-top: 8px;
+  color: var(--ve-silver);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+.ve-step strong {
+  margin-top: 3px;
+  color: var(--ve-white);
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.ve-step p {
+  margin-top: 7px;
+  color: var(--ve-muted);
+  font-size: 0.72rem;
+  line-height: 1.62;
+}
+
+.ve-step:hover,
+.ve-step:focus-visible,
+.ve-step.is-active {
+  border-color: rgba(245, 249, 252, 0.68);
+  background-color: rgba(220, 229, 238, 0.04);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.2),
+    0 0 22px rgba(232, 241, 248, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.ve-step:hover .ve-step__icon,
+.ve-step:focus-visible .ve-step__icon,
+.ve-step.is-active .ve-step__icon {
+  color: #ffffff;
+  filter: drop-shadow(0 0 9px rgba(236, 244, 250, 0.42));
+}
+
+.ve-step:focus-visible {
+  outline: 1px solid #f5f8fa;
+  outline-offset: 3px;
+}
+
+.ve-steps li.is-anchor .ve-step::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-top: 7px solid #f5f8fa;
+  transform: translateX(-50%);
+}
+
+/* Bottom ----------------------------------------------------------------- */
+
+.ve-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
+  gap: clamp(12px, 1.5vw, 18px);
+  margin-top: clamp(20px, 2.6vw, 28px);
+}
+
+.ve-preview {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(222, 230, 238, 0.14);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(20, 23, 29, 0.7), rgba(7, 9, 13, 0.58));
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.17);
+}
+
+.ve-preview__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: #11161d;
+}
+
+.ve-preview__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.72) brightness(0.82) contrast(1.05);
+}
+
+.ve-preview__play {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(248, 250, 252, 0.66);
+  border-radius: 50%;
+  background: rgba(216, 226, 236, 0.1);
+  box-shadow: 0 0 22px rgba(228, 238, 246, 0.15);
+  transform: translate(-50%, -50%);
+  animation: ve-play-pulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ve-preview__play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #f9fbfc;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes ve-play-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 16px rgba(232, 241, 248, 0.12);
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(232, 241, 248, 0.28);
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}
+
+.ve-preview__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.ve-preview__thumbs img {
+  display: block;
+  width: 100%;
+  height: 37px;
+  object-fit: cover;
+  border-radius: 2px;
+  opacity: 0.72;
+  filter: saturate(0.6) brightness(0.8);
+}
+
+.ve-preview__wave {
+  display: flex;
+  height: 23px;
+  align-items: center;
+  gap: 2px;
+  margin-top: 9px;
+  padding: 0 2px;
+}
+
+.ve-preview__wave i {
+  display: block;
+  width: 2px;
+  height: 18%;
+  border-radius: 2px;
+  background: rgba(224, 233, 241, 0.65);
+  animation: ve-wave 1.4s ease-in-out infinite alternate;
+}
+
+.ve-preview__wave i:nth-child(2n) { animation-delay: -0.22s; }
+.ve-preview__wave i:nth-child(3n) { animation-delay: -0.47s; }
+.ve-preview__wave i:nth-child(4n) { animation-delay: -0.73s; }
+.ve-preview__wave i:nth-child(5n) { animation-delay: -0.91s; }
+
+@keyframes ve-wave {
+  0% {
+    height: 15%;
+    opacity: 0.45;
+  }
+  100% {
+    height: 78%;
+    opacity: 0.95;
+  }
+}
+
+.ve-preview__progress {
+  position: relative;
+  height: 1px;
+  margin-top: 6px;
+  background: rgba(222, 231, 239, 0.16);
+}
+
+.ve-preview__progress::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42%;
+  height: 1px;
+  background: #f3f7fa;
+  animation: ve-progress 8s ease-in-out infinite;
+}
+
+.ve-preview__progress::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 42%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f6f9fb;
+  box-shadow: 0 0 10px rgba(242, 248, 252, 0.4);
+  animation: ve-progress-dot 8s ease-in-out infinite;
+}
+
+@keyframes ve-progress {
+  0%,
+  100% {
+    width: 30%;
+  }
+  50% {
+    width: 64%;
+  }
+}
+
+@keyframes ve-progress-dot {
+  0%,
+  100% {
+    left: 30%;
+  }
+  50% {
+    left: 64%;
+  }
+}
+
+.ve-panel {
+  min-width: 0;
+  padding: clamp(16px, 1.8vw, 21px);
+  border: 1px solid rgba(222, 230, 238, 0.14);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(19, 22, 28, 0.7), rgba(7, 9, 13, 0.58));
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.17);
+}
+
+.ve-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.ve-panel__head span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  place-items: center;
+  color: #edf1f5;
+}
+
+.ve-panel__head svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.ve-panel__head h5 {
+  color: var(--ve-white);
+  font-size: 1.04rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.ve-bonus__list {
+  display: grid;
+  gap: 11px;
+  margin-top: 16px;
+}
+
+.ve-bonus__row {
+  display: grid;
+  grid-template-columns: 20px 84px minmax(0, 1fr);
+  align-items: start;
+  gap: 7px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(226, 234, 241, 0.08);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.ve-bonus__row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ve-bonus__check {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid rgba(231, 238, 244, 0.48);
+  border-radius: 50%;
+  color: #f1f5f8;
+}
+
+.ve-bonus__check svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.ve-bonus__row strong {
+  color: #e9edf1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ve-bonus__row p {
+  color: var(--ve-muted);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.ve-bonus__row:hover {
+  background-color: rgba(225, 233, 240, 0.025);
+}
+
+.ve-types__list {
+  display: grid;
+  gap: 0;
+  margin-top: 13px;
+}
+
+.ve-type {
+  display: grid;
+  grid-template-columns: 24px 102px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(226, 234, 241, 0.09);
+}
+
+.ve-type:first-child {
+  border-top: 0;
+}
+
+.ve-type__icon {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  color: #edf1f5;
+}
+
+.ve-type__icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.ve-type strong {
+  color: #e9edf1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ve-type p {
+  color: var(--ve-muted);
+  font-size: 0.76rem;
+  line-height: 1.62;
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .ve-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ve-visual {
+    min-height: 290px;
+    max-width: 690px;
+  }
+
+  .ve-steps {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .ve-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ve-steps li {
+    flex: 0 0 186px;
+  }
+
+  .ve-steps li:not(:last-child)::after {
+    display: none;
+  }
+
+  .ve-bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ve-preview {
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .ve-thinking {
+    padding: 17px 13px;
+    margin-bottom: 26px;
+  }
+
+  .ve-title-row {
+    gap: 9px;
+    margin-top: 10px;
+  }
+
+  .ve-title-row h4 {
+    font-size: clamp(1.72rem, 8vw, 2.3rem);
+  }
+
+  .ve-scissors {
+    width: 31px;
+    height: 31px;
+  }
+
+  .ve-scissors svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .ve-heading__sub {
+    font-size: 0.86rem;
+  }
+
+  .ve-visual {
+    min-height: 230px;
+  }
+
+  .ve-reel {
+    width: 82px;
+    height: 82px;
+    border-width: 5px;
+  }
+
+  .ve-strip {
+    width: 91%;
+    height: 148px;
+  }
+
+  .ve-frames {
+    gap: 3px;
+    padding: 13px 4px;
+  }
+
+  .ve-strip::before,
+  .ve-strip::after {
+    height: 10px;
+    background-size: 20px 10px;
+  }
+
+  .ve-scrubber {
+    right: 5%;
+  }
+
+  .ve-flow {
+    margin-top: 17px;
+    padding: 14px;
+  }
+
+  .ve-flow h5 {
+    font-size: 1.08rem;
+  }
+
+  .ve-steps {
+    margin-top: 12px;
+  }
+
+  .ve-steps li {
+    flex-basis: 172px;
+  }
+
+  .ve-step {
+    min-height: 158px;
+    padding: 13px 12px;
+  }
+
+  .ve-step strong {
+    font-size: 0.88rem;
+  }
+
+  .ve-step p {
+    font-size: 0.68rem;
+  }
+
+  .ve-bottom {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 17px;
+  }
+
+  .ve-preview {
+    grid-row: auto;
+  }
+
+  .ve-panel {
+    padding: 15px;
+  }
+
+  .ve-bonus__row {
+    grid-template-columns: 18px 76px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .ve-bonus__row strong {
+    font-size: 0.77rem;
+  }
+
+  .ve-bonus__row p {
+    font-size: 0.71rem;
+  }
+
+  .ve-type {
+    grid-template-columns: 22px 92px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .ve-type strong {
+    font-size: 0.77rem;
+  }
+
+  .ve-type p {
+    font-size: 0.71rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ve-visual,
+  .ve-reel,
+  .ve-scrubber::before,
+  .ve-preview__play,
+  .ve-preview__wave i,
+  .ve-preview__progress::before,
+  .ve-preview__progress::after {
+    animation: none;
+    transition: none;
+  }
+}
+
+</style>
+
+<style id="video-readability-pass">
+  .ve-heading__sub {
+    font-size: 0.98rem;
+    color: #b8c1c9;
+  }
+
+  .ve-flow h5 {
+    font-size: 1.28rem;
+  }
+
+  .ve-step {
+    min-height: 176px;
+  }
+
+  .ve-step__no {
+    font-size: 0.76rem;
+  }
+
+  .ve-step strong {
+    font-size: 0.98rem;
+  }
+
+  .ve-step p {
+    font-size: 0.78rem;
+    line-height: 1.62;
+    color: #b8c1ca;
+  }
+
+  .ve-panel__head h5 {
+    font-size: 1.1rem;
+  }
+
+  .ve-bonus__row strong,
+  .ve-type strong {
+    font-size: 0.86rem;
+  }
+
+  .ve-bonus__row p,
+  .ve-type p {
+    font-size: 0.8rem;
+    color: #b8c1ca;
+  }
+
+  @media (max-width: 760px) {
+    .ve-step {
+      min-height: 164px;
+    }
+
+    .ve-step strong {
+      font-size: 0.92rem;
+    }
+
+    .ve-step p {
+      font-size: 0.72rem;
+    }
+
+    .ve-bonus__row strong,
+    .ve-type strong {
+      font-size: 0.79rem;
+    }
+
+    .ve-bonus__row p,
+    .ve-type p {
+      font-size: 0.73rem;
+    }
+  }
+</style>
 </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
@@ -24635,12 +25705,172 @@ window.MEDIA_DATA = {
     `;
   }
 
+  function renderVideoDesignThinking() {
+    return `
+      <section class="ve-thinking" data-ve-thinking data-reveal aria-label="视频剪辑的剪辑思路">
+        <div class="ve-hero">
+          <header class="ve-heading">
+            <p class="ve-kicker">Video Editing Workflow</p>
+            <div class="ve-title-row">
+              <h4>视频剪辑的剪辑思路</h4>
+              <span class="ve-scissors" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.6" /><circle cx="6" cy="17" r="2.6" /><path d="m8.3 8.8 12 8.8M8.3 15.2 20.3 6.4" /></svg></span>
+            </div>
+            <p class="ve-heading__sub">从想法到成片的完整思路，帮你理清剪辑逻辑，让视频更有节奏、更有表现力。</p>
+            <span class="ve-heading__rule" aria-hidden="true"></span>
+          </header>
+
+          <div class="ve-visual" data-ve-visual aria-hidden="true">
+            <span class="ve-visual__halo"></span>
+            <div class="ve-reel"></div>
+            <div class="ve-strip">
+              <div class="ve-frames">
+                <figure class="ve-frame"><img src="assets/img/work/video/liondance.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" /></figure>
+                <figure class="ve-frame"><img src="assets/img/work/video/fishbun.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" /></figure>
+                <figure class="ve-frame"><img src="assets/img/work/video/food.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" /></figure>
+                <figure class="ve-frame"><img src="assets/img/work/video/dgpt.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" /></figure>
+              </div>
+            </div>
+            <span class="ve-scrubber"></span>
+          </div>
+        </div>
+
+        <section class="ve-flow" aria-label="剪辑基本思路六步成片">
+          <header class="ve-flow__head">
+            <span class="ve-flow__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <h5>剪辑基本思路：六步成片</h5>
+          </header>
+          <ol class="ve-steps">
+            <li>
+              <button class="ve-step" type="button" data-ve-step="0" aria-pressed="false">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg></span>
+                <span class="ve-step__no">01</span>
+                <strong>明确主题</strong>
+                <p>确定视频的核心表达（故事 / 信息 / 情绪），为剪辑定方向。</p>
+              </button>
+            </li>
+            <li>
+              <button class="ve-step" type="button" data-ve-step="1" aria-pressed="false">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5h6l2 2h9v9.5a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5V7.5Z" /><path d="M3.5 7.5V5.3A1.3 1.3 0 0 1 4.8 4h4.7l2 2" /></svg></span>
+                <span class="ve-step__no">02</span>
+                <strong>梳理素材</strong>
+                <p>整理并筛选可用素材，按内容、镜头、场景进行分类。</p>
+              </button>
+            </li>
+            <li>
+              <button class="ve-step" type="button" data-ve-step="2" aria-pressed="false">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 16 9 5 9-5" /></svg></span>
+                <span class="ve-step__no">03</span>
+                <strong>搭建结构</strong>
+                <p>规划视频框架：开头吸引 → 中段展开 → 结尾收束。</p>
+              </button>
+            </li>
+            <li class="is-anchor">
+              <button class="ve-step is-active" type="button" data-ve-step="3" aria-pressed="true">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.6" /><circle cx="6" cy="17" r="2.6" /><path d="m8.3 8.8 12 8.8M8.3 15.2 20.3 6.4" /></svg></span>
+                <span class="ve-step__no">04</span>
+                <strong>粗剪成型</strong>
+                <p>按结构把素材拼接起来，确定整体节奏和时长。</p>
+              </button>
+            </li>
+            <li>
+              <button class="ve-step" type="button" data-ve-step="4" aria-pressed="false">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h5M13 17h7" /><circle cx="15" cy="7" r="2" /><circle cx="10" cy="17" r="2" /></svg></span>
+                <span class="ve-step__no">05</span>
+                <strong>精剪优化</strong>
+                <p>优化镜头衔接、节奏、转场、字幕、配乐、调色等细节。</p>
+              </button>
+            </li>
+            <li>
+              <button class="ve-step" type="button" data-ve-step="5" aria-pressed="false">
+                <span class="ve-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5 3.5-5 3.5v-7Z" /></svg></span>
+                <span class="ve-step__no">06</span>
+                <strong>输出成片</strong>
+                <p>检查画面、声音、字幕等是否统一，导出适合发布平台的格式。</p>
+              </button>
+            </li>
+          </ol>
+        </section>
+
+        <div class="ve-bottom">
+          <div class="ve-preview">
+            <div class="ve-preview__media">
+              <img src="assets/img/work/video/fishbun.webp" alt="东莞中堂槎滘鱼包宣传视频画面" width="1200" height="675" loading="lazy" decoding="async" />
+              <span class="ve-preview__play" aria-hidden="true"></span>
+            </div>
+            <div class="ve-preview__thumbs">
+              <img src="assets/img/work/video/liondance.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="assets/img/work/video/fishbun.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="assets/img/work/video/food.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="assets/img/work/video/dgpt.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+            </div>
+            <div class="ve-preview__wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="ve-preview__progress" aria-hidden="true"></div>
+          </div>
+
+          <div class="ve-panel ve-bonus">
+            <div class="ve-panel__head">
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4" /><path d="M8.2 14.8a6 6 0 1 1 7.6 0c-.7.6-1 1.4-1 2.2H9.2c0-.8-.3-1.6-1-2.2Z" /></svg></span>
+              <h5>创意加分思路</h5>
+            </div>
+            <div class="ve-bonus__list">
+              <div class="ve-bonus__row">
+                <span class="ve-bonus__check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4 4 10-10" /></svg></span>
+                <strong>叙事节奏</strong>
+                <p>通过镜头长短、转场和配乐，控制情绪起伏。</p>
+              </div>
+              <div class="ve-bonus__row">
+                <span class="ve-bonus__check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4 4 10-10" /></svg></span>
+                <strong>视觉统一</strong>
+                <p>保持画面风格、色调、字体的一致性。</p>
+              </div>
+              <div class="ve-bonus__row">
+                <span class="ve-bonus__check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4 4 10-10" /></svg></span>
+                <strong>情绪表达</strong>
+                <p>用镜头语言、音乐和剪辑节奏强化情感。</p>
+              </div>
+              <div class="ve-bonus__row">
+                <span class="ve-bonus__check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4 4 10-10" /></svg></span>
+                <strong>亮点设计</strong>
+                <p>加入反转、对比、蒙太奇等手法，增强记忆点。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ve-panel ve-types">
+            <div class="ve-panel__head">
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15l-4-2-4 2-4-2V3Z" /><path d="m9 10 2 2 4-4" /></svg></span>
+              <h5>不同类型视频的剪辑侧重点</h5>
+            </div>
+            <div class="ve-types__list">
+              <div class="ve-type">
+                <span class="ve-type__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="12" height="12" rx="2" /><path d="m15 10 5-3v10l-5-3" /></svg></span>
+                <strong>Vlog / 生活记录</strong>
+                <p>真实自然、节奏轻快、突出氛围感。</p>
+              </div>
+              <div class="ve-type">
+                <span class="ve-type__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v16H4zM14 4h6v16h-6z" /><path d="M7 8h0M17 8h0" /></svg></span>
+                <strong>知识 / 教程类</strong>
+                <p>结构清晰、重点突出、信息节奏明确。</p>
+              </div>
+              <div class="ve-type">
+                <span class="ve-type__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 6.1 6.6.6-5 4.4 1.5 6.5L12 17.3l-5.7 3.3 1.5-6.5-5-4.4 6.6-.6L12 3Z" /></svg></span>
+                <strong>创意 / 短片类</strong>
+                <p>注重叙事与镜头语言，强化风格与表达。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderChapterThinking(category) {
     if (category.id === "ui") return renderUiDesignThinking();
     if (category.id === "aigc") return renderAigcDesignThinking();
     if (category.id === "three-d") return renderThreeDDesignThinking();
     if (category.id === "posters") return renderPosterDesignThinking();
     if (category.id === "digital-media") return renderMediaDesignThinking();
+    if (category.id === "video-edit") return renderVideoDesignThinking();
     const data = designThinkingData[category.id];
     if (!data) return "";
 
@@ -25008,6 +26238,48 @@ window.MEDIA_DATA = {
     });
   }
 
+  function initVideoThinking() {
+    const root = $("[data-ve-thinking]");
+    if (!root) return;
+
+    const steps = $$("[data-ve-step]", root);
+    const visual = $("[data-ve-visual]", root);
+
+    function setStep(index) {
+      steps.forEach((step, stepIndex) => {
+        const active = stepIndex === index;
+        step.classList.toggle("is-active", active);
+        step.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    steps.forEach((step, index) => {
+      step.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") setStep(index);
+      });
+      step.addEventListener("focus", () => setStep(index));
+      step.addEventListener("click", () => setStep(index));
+    });
+
+    setStep(3);
+
+    if (!visual || reduceMotion.matches) return;
+
+    visual.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      visual.style.setProperty("--ve-px", `${(x * 12).toFixed(2)}px`);
+      visual.style.setProperty("--ve-py", `${(y * 9).toFixed(2)}px`);
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      visual.style.setProperty("--ve-px", "0px");
+      visual.style.setProperty("--ve-py", "0px");
+    });
+  }
+
   function initThreeDThinking() {
     const root = $("[data-td-thinking]");
     if (!root) return;
@@ -25146,6 +26418,7 @@ window.MEDIA_DATA = {
   initThreeDThinking();
   initPosterThinking();
   initMediaThinking();
+  initVideoThinking();
 
   /* ---------------------------------------------------------------------
      Circular 3D class gallery
