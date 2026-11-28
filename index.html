@@ -3170,7 +3170,6 @@ body {
 </style>
     <link rel="prefetch" href="portfolio.html" />
     <link rel="prefetch" href="assets/video/hero-portfolio-poster.webp" as="image" />
-    <link rel="prefetch" href="assets/video/hero-portfolio-loop.mp4" />
     <script>
       document.documentElement.classList.add("js");
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -3279,11 +3278,11 @@ body {
           id="hero-video"
           muted
           loop
-          playsinline
+          playsinline webkit-playsinline
           preload="none"
           poster="assets/video/home-loop-poster.webp"
         >
-          <source src="assets/video/home-loop-720.mp4" type="video/mp4" />
+          <source src="assets/video/home-loop-2k-fast.mp4" type="video/mp4" />
         </video>
       </div>
       <canvas class="cosmos__dust" id="cosmos-canvas"></canvas>

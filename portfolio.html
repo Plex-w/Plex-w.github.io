@@ -18776,7 +18776,7 @@ body {
 
 
 </style>
-    <link rel="preload" href="assets/video/hero-portfolio-loop.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="assets/video/hero-portfolio-720-fast.mp4" as="video" type="video/mp4" />
     <link rel="preload" href="assets/video/hero-portfolio-poster.webp" as="image" fetchpriority="high" />
   
 <style id="td-spacing-tune">
@@ -22284,10 +22284,10 @@ body {
             id="hero-video"
             muted
             loop
-            playsinline
+            playsinline webkit-playsinline
             preload="auto"
             poster="assets/video/hero-portfolio-poster.webp"
-            src="assets/video/hero-portfolio-loop.mp4"
+            src="assets/video/hero-portfolio-720-fast.mp4"
           ></video>
         </div>
         <div class="hero__veil" aria-hidden="true"></div>
@@ -22354,7 +22354,7 @@ body {
                 class="about-stage__video"
                 muted
                 loop
-                playsinline
+                playsinline webkit-playsinline
                 preload="none"
                 poster="assets/video/about-background-poster.webp"
                 tabindex="-1"
@@ -22803,7 +22803,7 @@ body {
             id="work-background-video"
             muted
             loop
-            playsinline
+            playsinline webkit-playsinline
             preload="none"
             poster="assets/video/work-background-poster.webp"
             tabindex="-1"
@@ -22897,7 +22897,7 @@ body {
             id="contact-background-video"
             muted
             loop
-            playsinline
+            playsinline webkit-playsinline
             preload="none"
             poster="assets/video/contact-background-personal-poster.webp"
             disablepictureinpicture
@@ -28568,5 +28568,59 @@ window.MEDIA_DATA = {
 
 
 </script>
-  </body>
+  
+<script>
+(() => {
+  const connection = navigator.connection || {};
+  if (connection.saveData) return;
+  if (/2g|slow-2g/.test(connection.effectiveType || "")) return;
+  if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return;
+
+  const startPrefetch = () => {
+    const urls = new Set();
+    try {
+      (window.WORK_DATA?.categories || []).forEach((category) => {
+        (category.projects || []).forEach((project) => {
+          (project.images || []).forEach((image) => {
+            if (image?.src) urls.add(image.src);
+          });
+        });
+      });
+      (window.MEDIA_DATA?.videos?.projects || []).forEach((project) => {
+        if (project?.poster) urls.add(project.poster);
+      });
+    } catch (_error) {}
+
+    const queue = [...urls];
+    const mobile = window.matchMedia("(max-width: 760px)").matches;
+    const limit = mobile ? Math.min(queue.length, 18) : queue.length;
+    let cursor = 0;
+
+    const next = () => {
+      if (cursor >= limit) return;
+      const image = new Image();
+      image.decoding = "async";
+      image.fetchPriority = "low";
+      image.onload = image.onerror = () => window.setTimeout(next, 90);
+      image.src = queue[cursor++];
+    };
+
+    next();
+    next();
+  };
+
+  const schedule = () => {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(startPrefetch, { timeout: 3500 });
+    } else {
+      window.setTimeout(startPrefetch, 1500);
+    }
+  };
+
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", () => window.setTimeout(schedule, 1200), { once: true });
+})();
+</script>
+
+</body>
 </html>
