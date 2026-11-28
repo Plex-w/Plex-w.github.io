@@ -18888,6 +18888,743 @@ body {
     }
   }
 </style>
+
+<style id="poster-reference-style">
+/* ==========================================================================
+   Poster chapter — reference-led editorial design sheet
+   ========================================================================== */
+
+.pst-thinking {
+  --pst-lav: #c9b7e6;
+  --pst-ice: #b5d0e8;
+  --pst-text: #f3f0f7;
+  --pst-muted: #b9b4c2;
+  --pst-dim: #86818f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(24px, 2.8vw, 34px) clamp(8px, 1.2vw, 16px);
+  border-top: 1px solid rgba(203, 187, 231, 0.15);
+  border-bottom: 1px solid rgba(203, 187, 231, 0.1);
+  background:
+    radial-gradient(circle at 74% 13%, rgba(150, 119, 210, 0.14), transparent 36%),
+    radial-gradient(circle at 18% 87%, rgba(102, 137, 174, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(5, 8, 12, 0.36), rgba(4, 7, 10, 0.13) 52%, rgba(5, 8, 12, 0.38));
+  color: var(--pst-text);
+}
+
+.pst-thinking::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(230, 222, 242, 0.022) 1px, transparent 1px),
+    linear-gradient(rgba(230, 222, 242, 0.018) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(ellipse at 55% 45%, #000 10%, transparent 78%);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.pst-thinking,
+.pst-thinking * {
+  font-family: var(--font-sans);
+}
+
+.pst-thinking > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero ------------------------------------------------------------------- */
+
+.pst-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(330px, 1.02fr);
+  gap: clamp(18px, 3vw, 44px);
+  align-items: center;
+  min-width: 0;
+}
+
+.pst-heading {
+  min-width: 0;
+}
+
+.pst-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--pst-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+}
+
+.pst-kicker i {
+  display: block;
+  width: 42px;
+  height: 1px;
+  flex: none;
+  background: rgba(210, 196, 232, 0.5);
+}
+
+.pst-heading h4 {
+  margin-top: 17px;
+  color: var(--pst-text);
+  font-size: clamp(2.2rem, 3.35vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.18;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+}
+
+.pst-heading__intro {
+  max-width: 640px;
+  margin-top: 16px;
+  color: var(--pst-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.004em;
+  line-height: 1.88;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.22);
+}
+
+/* Poster composition ----------------------------------------------------- */
+
+.pst-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 350px;
+  perspective: 1000px;
+  transition: transform 0.55s var(--ease-out);
+  transform: translate3d(var(--pst-px, 0px), var(--pst-py, 0px), 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.pst-visual__planet {
+  position: absolute;
+  right: -7%;
+  bottom: -12%;
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(170, 147, 213, 0.23), rgba(56, 49, 74, 0.17) 42%, rgba(10, 12, 17, 0.08) 62%, transparent 72%);
+  filter: blur(9px);
+}
+
+.pst-visual__ring {
+  position: absolute;
+  top: 22%;
+  left: 1%;
+  width: 98%;
+  height: 51%;
+  border: 27px solid rgba(150, 118, 210, 0.16);
+  border-radius: 50%;
+  transform: rotate(-17deg);
+  box-shadow:
+    0 0 48px rgba(133, 101, 196, 0.17),
+    inset 0 0 30px rgba(195, 172, 231, 0.14);
+  filter: blur(1px);
+  animation: pst-ring-breathe 8s ease-in-out infinite;
+}
+
+.pst-visual__ring::before {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border: 1px solid rgba(210, 192, 240, 0.38);
+  border-radius: 50%;
+}
+
+.pst-visual__ring::after {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  border: 1px solid rgba(175, 151, 218, 0.13);
+  border-radius: 50%;
+}
+
+.pst-visual__orbit {
+  position: absolute;
+  top: 19%;
+  left: 7%;
+  width: 91%;
+  height: 48%;
+  border: 1px solid rgba(204, 187, 235, 0.28);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  animation: pst-orbit 9s ease-in-out infinite;
+}
+
+@keyframes pst-ring-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: rotate(-17deg) scale(0.99);
+  }
+  50% {
+    opacity: 0.95;
+    transform: rotate(-15deg) scale(1.015);
+  }
+}
+
+@keyframes pst-orbit {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: rotate(-20deg) scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: rotate(-17deg) scale(1.02);
+  }
+}
+
+.pst-poster-wrap {
+  position: absolute;
+  z-index: 3;
+  top: 1%;
+  left: 53%;
+  width: clamp(188px, 17vw, 248px);
+  aspect-ratio: 0.76;
+  transform: translateX(-50%) rotate(11deg);
+  animation: pst-poster-float 8s ease-in-out infinite;
+}
+
+.pst-poster {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(20px, 2.2vw, 28px);
+  border: 1px solid rgba(220, 207, 241, 0.33);
+  border-radius: 5px;
+  background:
+    linear-gradient(160deg, rgba(200, 182, 228, 0.24), rgba(88, 78, 113, 0.3) 46%, rgba(49, 44, 65, 0.36));
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 0 50px rgba(224, 210, 255, 0.06);
+  backdrop-filter: blur(7px);
+}
+
+.pst-poster::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -35%;
+  width: 95%;
+  height: 115%;
+  background: linear-gradient(120deg, transparent 36%, rgba(235, 224, 255, 0.12) 52%, transparent 66%);
+  transform: rotate(8deg);
+}
+
+.pst-poster__rule {
+  width: 44px;
+  height: 1px;
+  background: rgba(239, 231, 247, 0.42);
+}
+
+.pst-poster__label {
+  margin-top: 18px;
+  color: #eeebf4;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.pst-poster__line {
+  width: 72%;
+  height: 1px;
+  margin-top: 25px;
+  background: rgba(234, 225, 246, 0.24);
+}
+
+.pst-poster__line--short {
+  width: 45%;
+  margin-top: 8px;
+}
+
+.pst-poster small {
+  position: absolute;
+  right: clamp(16px, 1.8vw, 24px);
+  bottom: clamp(16px, 1.8vw, 24px);
+  color: rgba(228, 218, 244, 0.45);
+  font-size: 0.42rem;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.pst-spark {
+  position: absolute;
+  z-index: 4;
+  top: 8%;
+  right: 3%;
+  color: #fff2dc;
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(255, 228, 187, 0.65);
+  animation: pst-spark 4.8s ease-in-out infinite;
+}
+
+@keyframes pst-poster-float {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(11deg) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) rotate(9deg) translateY(-8px);
+  }
+}
+
+@keyframes pst-spark {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.86) rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) rotate(12deg);
+  }
+}
+
+/* Framework -------------------------------------------------------------- */
+
+.pst-flow {
+  margin-top: clamp(24px, 3vw, 34px);
+  padding-top: 17px;
+  border-top: 1px solid rgba(209, 194, 233, 0.13);
+}
+
+.pst-flow__layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.42fr) minmax(0, 1.58fr);
+  gap: 20px clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+.pst-flow__head {
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.pst-flow__head i {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pst-lav), transparent);
+  border-radius: 2px;
+}
+
+.pst-flow__head h5 {
+  margin-top: 14px;
+  color: var(--pst-text);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+
+.pst-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pst-steps li {
+  position: relative;
+  min-width: 0;
+}
+
+.pst-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 29px;
+  left: calc(50% + 38px);
+  width: calc(100% - 76px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(198, 181, 228, 0.3), rgba(198, 181, 228, 0.1));
+  pointer-events: none;
+}
+
+.pst-step {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pst-text);
+  text-align: center;
+  cursor: pointer;
+}
+
+.pst-step__icon {
+  position: relative;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(207, 190, 236, 0.28);
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 38%, rgba(122, 99, 165, 0.18), rgba(13, 16, 23, 0.26));
+  color: #d9c9f0;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s var(--ease-out);
+}
+
+.pst-step__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.pst-step strong {
+  margin-top: 13px;
+  color: var(--pst-text);
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.pst-step p {
+  margin-top: 5px;
+  color: var(--pst-muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.pst-step:hover .pst-step__icon,
+.pst-step:focus-visible .pst-step__icon,
+.pst-step.is-active .pst-step__icon {
+  border-color: rgba(218, 201, 246, 0.55);
+  background: rgba(146, 116, 196, 0.22);
+  color: #f4e9ff;
+  box-shadow:
+    0 0 22px rgba(154, 120, 215, 0.18),
+    inset 0 0 18px rgba(211, 189, 246, 0.12);
+  transform: translateY(-2px);
+}
+
+.pst-step:hover strong,
+.pst-step:focus-visible strong,
+.pst-step.is-active strong {
+  color: #fbf7ff;
+}
+
+/* Cards ------------------------------------------------------------------ */
+
+.pst-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
+  margin-top: clamp(22px, 2.8vw, 30px);
+}
+
+.pst-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  padding: clamp(18px, 2vw, 24px);
+  border: 1px solid rgba(205, 191, 229, 0.15);
+  border-radius: 16px;
+  background:
+    linear-gradient(150deg, rgba(22, 21, 30, 0.68), rgba(10, 13, 18, 0.58));
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 0.32s ease,
+    background-color 0.32s ease,
+    transform 0.4s var(--ease-out),
+    box-shadow 0.32s ease;
+}
+
+.pst-card::after {
+  content: "";
+  position: absolute;
+  right: -18%;
+  bottom: -42%;
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 30%, rgba(141, 118, 180, 0.18), rgba(34, 30, 46, 0.08) 52%, transparent 69%);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.pst-card:hover {
+  border-color: rgba(211, 194, 238, 0.3);
+  background-color: rgba(128, 103, 173, 0.035);
+  box-shadow:
+    0 24px 46px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+}
+
+.pst-card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pst-card__icon {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  flex: none;
+  place-items: center;
+  color: #d4c3ed;
+}
+
+.pst-card__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.pst-card h5 {
+  color: var(--pst-text);
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.pst-card__arrow {
+  margin-left: auto;
+  color: rgba(214, 198, 236, 0.55);
+  font-size: 1.05rem;
+  line-height: 1;
+  transition:
+    color 0.3s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.pst-card:hover .pst-card__arrow {
+  color: #f3e9ff;
+  transform: translate(2px, -2px);
+}
+
+.pst-card ul {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  margin-top: 21px;
+}
+
+.pst-card li {
+  position: relative;
+  padding-left: 13px;
+  color: var(--pst-muted);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.pst-card li::before {
+  content: "";
+  position: absolute;
+  top: 0.66em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(198, 176, 232, 0.68);
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .pst-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pst-visual {
+    min-height: 320px;
+    max-width: 620px;
+  }
+
+  .pst-flow__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .pst-steps {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .pst-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pst-steps li {
+    flex: 0 0 176px;
+  }
+
+  .pst-steps li:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .pst-thinking {
+    padding: 17px 13px;
+    margin-bottom: 26px;
+  }
+
+  .pst-kicker {
+    font-size: 0.66rem;
+    gap: 10px;
+  }
+
+  .pst-kicker i {
+    width: 30px;
+  }
+
+  .pst-heading h4 {
+    margin-top: 13px;
+    font-size: clamp(1.65rem, 7.8vw, 2.25rem);
+  }
+
+  .pst-heading__intro {
+    margin-top: 12px;
+    font-size: 0.87rem;
+    line-height: 1.8;
+  }
+
+  .pst-heading__intro br {
+    display: none;
+  }
+
+  .pst-visual {
+    min-height: 238px;
+  }
+
+  .pst-poster-wrap {
+    width: 150px;
+    left: 52%;
+  }
+
+  .pst-poster {
+    padding: 16px;
+  }
+
+  .pst-poster__label {
+    margin-top: 12px;
+    font-size: 1.4rem;
+  }
+
+  .pst-poster__line {
+    margin-top: 16px;
+  }
+
+  .pst-poster small {
+    font-size: 0.36rem;
+  }
+
+  .pst-spark {
+    top: 4%;
+    right: 2%;
+    font-size: 15px;
+  }
+
+  .pst-flow {
+    margin-top: 20px;
+    padding-top: 13px;
+  }
+
+  .pst-flow__head h5 {
+    margin-top: 10px;
+    font-size: 1.25rem;
+  }
+
+  .pst-steps li {
+    flex-basis: 164px;
+  }
+
+  .pst-step__icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pst-step strong {
+    margin-top: 10px;
+    font-size: 0.84rem;
+  }
+
+  .pst-step p {
+    font-size: 0.67rem;
+  }
+
+  .pst-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .pst-card {
+    min-height: 0;
+    padding: 17px;
+  }
+
+  .pst-card h5 {
+    font-size: 1.02rem;
+  }
+
+  .pst-card ul {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .pst-card li {
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pst-visual,
+  .pst-visual__ring,
+  .pst-visual__orbit,
+  .pst-poster-wrap,
+  .pst-spark {
+    animation: none;
+    transition: none;
+  }
+}
+
+</style>
 </head>
   <body class="portfolio">
     <a class="skip-link" href="#main">跳至主要内容</a>
@@ -22253,10 +22990,133 @@ window.MEDIA_DATA = {
     `;
   }
 
+  function renderPosterDesignThinking() {
+    return `
+      <section class="pst-thinking" data-poster-thinking data-reveal aria-label="海报设计的设计思路">
+        <div class="pst-hero">
+          <header class="pst-heading">
+            <p class="pst-kicker"><i aria-hidden="true"></i>Design Thinking</p>
+            <h4>海报设计的设计思路</h4>
+            <p class="pst-heading__intro">
+              海报设计是信息、视觉与情感的综合表达，通过清晰的思考路径，<br />
+              将主题转化为具有吸引力和传播力的视觉作品。
+            </p>
+          </header>
+
+          <div class="pst-visual" data-poster-visual aria-hidden="true">
+            <span class="pst-visual__planet"></span>
+            <span class="pst-visual__ring"></span>
+            <span class="pst-visual__orbit"></span>
+            <div class="pst-poster-wrap">
+              <div class="pst-poster">
+                <span class="pst-poster__rule"></span>
+                <span class="pst-poster__label">Poster<br />Design</span>
+                <span class="pst-poster__line"></span>
+                <span class="pst-poster__line pst-poster__line--short"></span>
+                <small>VISUAL COMMUNICATION / 2026</small>
+              </div>
+            </div>
+            <span class="pst-spark">✦</span>
+          </div>
+        </div>
+
+        <section class="pst-flow" aria-label="海报设计思路框架">
+          <div class="pst-flow__layout">
+            <header class="pst-flow__head">
+              <i aria-hidden="true"></i>
+              <h5>设计思路框架</h5>
+            </header>
+            <ol class="pst-steps">
+              <li>
+                <button class="pst-step" type="button" data-poster-step="0" aria-pressed="false">
+                  <span class="pst-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3.2" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg></span>
+                  <strong>明确目标</strong>
+                  <p>确定主题、受众与传达目的</p>
+                </button>
+              </li>
+              <li>
+                <button class="pst-step" type="button" data-poster-step="1" aria-pressed="false">
+                  <span class="pst-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4" /><path d="M8.2 14.8a6 6 0 1 1 7.6 0c-.7.6-1 1.4-1 2.2H9.2c0-.8-.3-1.6-1-2.2Z" /></svg></span>
+                  <strong>构思创意</strong>
+                  <p>提炼核心概念与视觉切入点</p>
+                </button>
+              </li>
+              <li>
+                <button class="pst-step" type="button" data-poster-step="2" aria-pressed="false">
+                  <span class="pst-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 16 9 5 9-5" /></svg></span>
+                  <strong>视觉规划</strong>
+                  <p>布局、配色、字体与图形风格</p>
+                </button>
+              </li>
+              <li>
+                <button class="pst-step" type="button" data-poster-step="3" aria-pressed="false">
+                  <span class="pst-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9.5" r="1.6" /><path d="m4.5 18 5.2-5.2 3.2 3.2 2.6-2.6 4.2 4.2" /></svg></span>
+                  <strong>细化设计</strong>
+                  <p>完善画面层次与信息呈现</p>
+                </button>
+              </li>
+              <li>
+                <button class="pst-step" type="button" data-poster-step="4" aria-pressed="false">
+                  <span class="pst-step__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="m8 12.2 2.6 2.6 5.4-5.6" /></svg></span>
+                  <strong>优化输出</strong>
+                  <p>检查完整性并适配传播场景</p>
+                </button>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="pst-cards" aria-label="海报设计要点">
+          <article class="pst-card">
+            <div class="pst-card__head">
+              <span class="pst-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="12" r="6" /><circle cx="15" cy="12" r="6" /></svg></span>
+              <h5>创意来源</h5>
+              <span class="pst-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <ul>
+              <li>从主题与受众需求中提炼灵感</li>
+              <li>结合文化、热点或生活场景</li>
+              <li>运用联想、对比、置换等创意手法</li>
+            </ul>
+          </article>
+
+          <article class="pst-card">
+            <div class="pst-card__head">
+              <span class="pst-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 16 9 5 9-5" /></svg></span>
+              <h5>视觉构成</h5>
+              <span class="pst-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <ul>
+              <li>以主视觉建立画面焦点</li>
+              <li>通过色彩传递情绪与氛围</li>
+              <li>运用字体强化主题与识别性</li>
+              <li>合理留白，提升信息可读性</li>
+            </ul>
+          </article>
+
+          <article class="pst-card">
+            <div class="pst-card__head">
+              <span class="pst-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 19 6.2-11 4.1 7.2 2.2-3.8L21 19H3Z" /><path d="M8 8.8 6.2 5.6 4.4 8.8" /></svg></span>
+              <h5>设计原则</h5>
+              <span class="pst-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <ul>
+              <li>主题突出：信息清晰、重点明确</li>
+              <li>风格统一：元素协调、气质一致</li>
+              <li>视觉平衡：层次有序、节奏舒适</li>
+              <li>创新表达：在规范中寻求独特性</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    `;
+  }
+
   function renderChapterThinking(category) {
     if (category.id === "ui") return renderUiDesignThinking();
     if (category.id === "aigc") return renderAigcDesignThinking();
     if (category.id === "three-d") return renderThreeDDesignThinking();
+    if (category.id === "posters") return renderPosterDesignThinking();
     const data = designThinkingData[category.id];
     if (!data) return "";
 
@@ -22544,6 +23404,46 @@ window.MEDIA_DATA = {
     });
   }
 
+  function initPosterThinking() {
+    const root = $("[data-poster-thinking]");
+    if (!root) return;
+
+    const steps = $$("[data-poster-step]", root);
+    const visual = $("[data-poster-visual]", root);
+
+    function setStep(index) {
+      steps.forEach((step, stepIndex) => {
+        const active = stepIndex === index;
+        step.classList.toggle("is-active", active);
+        step.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    steps.forEach((step, index) => {
+      step.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") setStep(index);
+      });
+      step.addEventListener("focus", () => setStep(index));
+      step.addEventListener("click", () => setStep(index));
+    });
+
+    if (!visual || reduceMotion.matches) return;
+
+    visual.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      visual.style.setProperty("--pst-px", `${(x * 12).toFixed(2)}px`);
+      visual.style.setProperty("--pst-py", `${(y * 9).toFixed(2)}px`);
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      visual.style.setProperty("--pst-px", "0px");
+      visual.style.setProperty("--pst-py", "0px");
+    });
+  }
+
   function initThreeDThinking() {
     const root = $("[data-td-thinking]");
     if (!root) return;
@@ -22680,6 +23580,7 @@ window.MEDIA_DATA = {
   initUiThinking();
   initAigcThinking();
   initThreeDThinking();
+  initPosterThinking();
 
   /* ---------------------------------------------------------------------
      Circular 3D class gallery
